@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -7,7 +8,8 @@ public class EnemyHealth : MonoBehaviour
     public float sinkSpeed = 2.5f;
     public int scoreValue = 10;
     public AudioClip deathClip;
-
+    public Image healthBar;
+    float healthBarLength;
 
     Animator anim;
     AudioSource enemyAudio;
@@ -27,6 +29,7 @@ public class EnemyHealth : MonoBehaviour
 
         //Set current health
         currentHealth = startingHealth;
+        healthBarLength = healthBar.rectTransform.rect.width;
     }
 
 
@@ -52,6 +55,7 @@ public class EnemyHealth : MonoBehaviour
 
         //kurangi health
         currentHealth -= amount;
+        healthBar.rectTransform.sizeDelta = new Vector2(healthBarLength * currentHealth / startingHealth, healthBar.rectTransform.rect.height);
 
         //Ganti posisi particle
         hitParticles.transform.position = hitPoint;
