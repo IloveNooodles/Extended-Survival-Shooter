@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 
-public class PlayerShooting : MonoBehaviour
+public class FPSShooting : MonoBehaviour
 {
     public int damagePerShot = 20;
     public float timeBetweenBullets = 0.15f;
     public float range = 100f;
-
+    public Transform target;
 
     float timer;
     Ray shootRay = new Ray();
@@ -42,14 +42,14 @@ public class PlayerShooting : MonoBehaviour
             Shoot();
         }
         //if user press r then reload
-        else if(Input.GetKeyDown(KeyCode.R))
+        else if (Input.GetKeyDown(KeyCode.R))
         {
             timer = 0f;
             isReloading = true;
-            NumberOfBulletsManager.numberOfBullets = 0; 
+            NumberOfBulletsManager.numberOfBullets = 0;
         }
 
-        if(isReloading && timer >= reloadTime)
+        if (isReloading && timer >= reloadTime)
         {
             isReloading = false;
             NumberOfBulletsManager.numberOfBullets = 30;
@@ -92,19 +92,28 @@ public class PlayerShooting : MonoBehaviour
 
         //Set posisi ray shoot dan direction
         shootRay.origin = transform.position;
-        shootRay.direction = transform.forward;
+        shootRay.direction = target.forward;
 
         //Lakukan raycast jika mendeteksi id nemy hit apapun
         if (Physics.Raycast(shootRay, out shootHit, range, shootableMask))
         {
-            //Lakukan raycast hit hace component Enemyhealth
-            EnemyHealth enemyHealth = shootHit.collider.GetComponent<EnemyHealth>();
-
-            if (enemyHealth != null)
+            Debug.Log(shootHit.collider.name);
+            if (shootHit.collider.name == "Clock")
             {
-                //Lakukan Take Damage
-                enemyHealth.TakeDamage(damagePerShot, shootHit.point);
+                shootHit.collider.GetComponent<ClockDown>().TakeDamage(damagePerShot, shootHit.point);
             }
+            else
+            {
+                //Lakukan raycast hit hace component Enemyhealth
+                EnemyHealth enemyHealth = shootHit.collider.GetComponent<EnemyHealth>();
+
+                if (enemyHealth != null)
+                {
+                    //Lakukan Take Damage
+                    enemyHealth.TakeDamage(damagePerShot, shootHit.point);
+                }
+            }
+
 
             //Set line end position ke hit position
             gunLine.SetPosition(1, shootHit.point);

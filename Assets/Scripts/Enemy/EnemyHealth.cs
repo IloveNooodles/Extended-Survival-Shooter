@@ -84,6 +84,12 @@ public class EnemyHealth : MonoBehaviour
         //Play Sound Dead
         enemyAudio.clip = deathClip;
         enemyAudio.Play();
+
+        try
+        {
+            FPSEnemyManager.numberOfEnemy--;
+        }
+        catch { }
     }
 
     public void StartSinking()

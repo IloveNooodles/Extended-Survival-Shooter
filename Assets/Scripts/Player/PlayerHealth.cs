@@ -40,12 +40,13 @@ public class PlayerHealth : MonoBehaviour
         if (damaged)
         {
             //Merubah warna gambar menjadi value dari flashColour
-            damageImage.color = flashColour;
+            // damageImage.color = flashColour;
+            Debug.Log("Terkena Damage");
         }
         else
         {
             //Fade out damage image
-            damageImage.color = Color.Lerp(damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
+            // damageImage.color = Color.Lerp(damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
         }
 
         //Set damage to false
