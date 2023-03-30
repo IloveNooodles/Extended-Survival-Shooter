@@ -97,7 +97,6 @@ public class FPSShooting : MonoBehaviour
         //Lakukan raycast jika mendeteksi id nemy hit apapun
         if (Physics.Raycast(shootRay, out shootHit, range, shootableMask))
         {
-            Debug.Log(shootHit.collider.name);
             if (shootHit.collider.name == "Clock")
             {
                 shootHit.collider.GetComponent<ClockDown>().TakeDamage(damagePerShot, shootHit.point);

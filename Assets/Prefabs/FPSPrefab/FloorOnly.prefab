@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2298512189525344068}
   - component: {fileID: 2298512189526671214}
   - component: {fileID: 2298512189527768494}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Planks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2298512189525344070}
   - component: {fileID: 2298512189516337318}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FloorOnly
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 2298512189525344094}
   - component: {fileID: 2298512189526671212}
   - component: {fileID: 2298512189527768492}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}

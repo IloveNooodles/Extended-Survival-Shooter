@@ -10,7 +10,7 @@ public class ClockDown : MonoBehaviour
     public AudioClip fallingClip;
     public Image healthBar;
     float healthBarLength;
-    bool isClockDown = false;
+    public bool isClockDown = false;
 
     float fallVelocity = 0f;
 
