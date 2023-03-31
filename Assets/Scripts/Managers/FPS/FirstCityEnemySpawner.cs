@@ -5,11 +5,11 @@ using UnityEngine;
 public class FirstCityEnemySpawner : MonoBehaviour
 {
     public GameObject enemyManager;
-    public ClockDown clock;
+    public Gate gate;
 
     void Update()
     {
-        if(clock.isClockDown)
+        if(gate.isDestroyed)
         {
             Destroy(gameObject);
         }

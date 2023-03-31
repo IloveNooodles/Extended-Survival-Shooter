@@ -6,6 +6,11 @@ public class ClockDown : MonoBehaviour, IEnvironment
 {
     public bool isClockDown = false;
     public AudioClip fallingClip;
+    public LayerMask floorLayer;
+    public GameObject Gate;
+    int floorLayerInt;
+    public bool isGrounded = false;
+
 
     float fallVelocity = 0f;
 
@@ -19,6 +24,7 @@ public class ClockDown : MonoBehaviour, IEnvironment
     void Start()
     {
         clockAudio = GetComponent<AudioSource>();
+        floorLayerInt = floorLayer.value;
         particleLeft = this.gameObject.transform.GetChild(2).gameObject;
         particleRight = this.gameObject.transform.GetChild(3).gameObject;
         particleDownLeft = this.gameObject.transform.GetChild(4).gameObject;
@@ -33,25 +39,38 @@ public class ClockDown : MonoBehaviour, IEnvironment
         }
         else
         {
-            if (transform.position.y > 0f)
+            if (!isGrounded)
             {
                 //simulate gravity
                 Vector3 pos = transform.position;
                 fallVelocity += Physics.gravity.y * Time.deltaTime;
                 pos.y += fallVelocity * Time.deltaTime;
                 transform.position = pos;
-            }else{
+            }
+            else
+            {
                 particleDownLeft.SetActive(true);
                 particleDownRight.SetActive(true);
             }
         }
     }
 
-    public void Death(){
-        if(isClockDown){
+    void OnCollisionEnter(Collision collision)
+    {
+        int collisionLayer = 1 << collision.collider.gameObject.layer;
+        if (collisionLayer == floorLayerInt)
+        {
+            isGrounded = true;
+        }
+    }
+
+    public void Death()
+    {
+        if (isClockDown)
+        {
             return;
         }
-        
+
         isClockDown = true;
 
         //Play falling audio
