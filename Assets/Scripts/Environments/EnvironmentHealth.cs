@@ -26,11 +26,21 @@ public class EnvironmentHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(currentHealth <= 0){
+            if(!isDead){
+                environmentObject.Death();
+                isDead = true;
+            }
+        }
+            
     }
 
     public void TakeDamage(int amount, Vector3 hitPoint)
     {
+        if(this.enabled == false){
+            return;
+        }
+        
         //Check jika dead
         if (isDead)
             return;
