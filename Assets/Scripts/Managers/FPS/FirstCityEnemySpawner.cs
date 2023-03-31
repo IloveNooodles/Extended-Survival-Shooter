@@ -11,7 +11,6 @@ public class FirstCityEnemySpawner : MonoBehaviour
     {
         if(clock.isClockDown)
         {
-            Debug.Log("Clock Down");
             Destroy(gameObject);
         }
     }

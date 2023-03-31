@@ -99,7 +99,7 @@ public class FPSShooting : MonoBehaviour
         {
             if (shootHit.collider.name == "Clock")
             {
-                shootHit.collider.GetComponent<ClockDown>().TakeDamage(damagePerShot, shootHit.point);
+                shootHit.collider.GetComponent<EnvironmentHealth>().TakeDamage(damagePerShot, shootHit.point);
             }
             else
             {
