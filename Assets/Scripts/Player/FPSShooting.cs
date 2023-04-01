@@ -100,6 +100,9 @@ public class FPSShooting : MonoBehaviour
             if (shootHit.collider.tag == "Environment")
             {
                 shootHit.collider.GetComponent<EnvironmentHealth>().TakeDamage(damagePerShot, shootHit.point);
+            }else if(shootHit.collider.tag == "Titan"){
+                Debug.Log("Titan");
+                shootHit.collider.GetComponent<TitanHealthPart>().TakeDamage(damagePerShot, shootHit.point, shootHit.collider.gameObject);
             }
             else
             {
