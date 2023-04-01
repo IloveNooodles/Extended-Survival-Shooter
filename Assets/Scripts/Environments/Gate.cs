@@ -11,9 +11,7 @@ public class Gate : MonoBehaviour, IEnvironment
     
     void OnCollisionEnter(Collision collision)
     {
-        int collisionLayer = 1 << collision.collider.gameObject.layer;
-        if (collisionLayer == environmentLayer)
-        {
+        if(collision.gameObject.name == "Clock"){
             Death();
         }
     }

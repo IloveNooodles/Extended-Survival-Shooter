@@ -32125,8 +32125,8 @@ MonoBehaviour:
   leftArmHealth: 500
   rightArmHealth: 500
   healthBar: {fileID: 166663115}
-  leftArmHealthBar: {fileID: 1961562170}
-  rightArmHealthBar: {fileID: 1179467327}
+  backgroundLeftArmHealthBar: {fileID: 0}
+  backgroundRightArmHealthBar: {fileID: 0}
 --- !u!114 &919132148383997100
 MonoBehaviour:
   m_ObjectHideFlags: 0
