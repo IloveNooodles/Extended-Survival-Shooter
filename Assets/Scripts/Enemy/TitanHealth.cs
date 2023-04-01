@@ -10,8 +10,10 @@ public class TitanHealth : MonoBehaviour
     public int leftArmHealth = 500;
     public int rightArmHealth = 500;
     public Image healthBar;
-    public Image leftArmHealthBar;
-    public Image rightArmHealthBar;
+    public Image backgroundLeftArmHealthBar;
+    public Image backgroundRightArmHealthBar;
+    Image leftArmHealthBar;
+    Image rightArmHealthBar;
     float healthBarLength;
     float leftArmHealthBarLength;
     float rightArmHealthBarLength;
@@ -29,8 +31,12 @@ public class TitanHealth : MonoBehaviour
         //Set health
         currentHealth = startingHealth;
         healthBarLength = healthBar.rectTransform.rect.width;
+        leftArmHealthBar = backgroundLeftArmHealthBar.transform.GetChild(0).GetComponent<Image>();
+        rightArmHealthBar = backgroundRightArmHealthBar.transform.GetChild(0).GetComponent<Image>();
         leftArmHealthBarLength = leftArmHealthBar.rectTransform.rect.width;
         rightArmHealthBarLength = rightArmHealthBar.rectTransform.rect.width;
+        backgroundLeftArmHealthBar.gameObject.SetActive(false);
+        backgroundRightArmHealthBar.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -42,11 +48,17 @@ public class TitanHealth : MonoBehaviour
     public void TakeDamage(int amount, Vector3 hitPoint, GameObject titanPart)
     {
         if(titanPart.name == "LeftArm"){
+            if(backgroundLeftArmHealthBar.gameObject.activeInHierarchy == false){
+                backgroundLeftArmHealthBar.gameObject.SetActive(true);
+            }
             leftArmHealth -= amount;
             leftArmHealthBar.rectTransform.sizeDelta = new Vector2(leftArmHealthBarLength * leftArmHealth / 500, leftArmHealthBar.rectTransform.rect.height);
         }
 
         if(titanPart.name == "RightArm"){
+            if(backgroundRightArmHealthBar.gameObject.activeInHierarchy == false){
+                backgroundRightArmHealthBar.gameObject.SetActive(true);
+            }
             rightArmHealth -= amount;
             rightArmHealthBar.rectTransform.sizeDelta = new Vector2(rightArmHealthBarLength * rightArmHealth / 500, rightArmHealthBar.rectTransform.rect.height);
         }
