@@ -10,24 +10,30 @@ public class StartingTitan : MonoBehaviour
     public AudioClip jumpClip;
     public AudioClip landingClip;
     Animator anim;
-    bool isJumping = false;
     AudioSource audioSource;
     ParticleSystem smoke;
+    float timer;
+    bool isSmoking = false;
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
         smoke = smokeLocation.GetComponent<ParticleSystem>();
         audioSource = GetComponent<AudioSource>();
-        isJumping = true;
+        jump();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isJumping)
-        {
-            jump();
+        if(isSmoking){
+            timer += Time.deltaTime;
+            smoke.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z) + (player.transform.forward * 3);
+            smoke.transform.rotation = player.transform.rotation * Quaternion.Euler(0, 180, 0);
+            if(timer >= 3f){
+                Destroy(gameObject);
+                fightingTitan.SetActive(true);
+            }
         }
     }
 
@@ -37,7 +43,6 @@ public class StartingTitan : MonoBehaviour
         audioSource.Play();
         anim.SetTrigger("Jump");
         StartCoroutine(jumpAnimation());
-        isJumping = false;
     }
 
     IEnumerator jumpAnimation()
@@ -48,8 +53,6 @@ public class StartingTitan : MonoBehaviour
         smoke.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z) + (player.transform.forward * 3);
         smoke.transform.rotation = player.transform.rotation * Quaternion.Euler(0, 180, 0);
         smoke.Play();
-        yield return new WaitForSeconds(3f);
-        Destroy(gameObject);
-        fightingTitan.SetActive(true);
+        isSmoking = true;
     }
 }

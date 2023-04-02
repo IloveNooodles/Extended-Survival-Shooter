@@ -8,10 +8,11 @@ public class Gate : MonoBehaviour, IEnvironment
     public ParticleSystem destroyParticle;
     public bool isDestroyed = false;
 
-    
+
     void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.name == "Clock"){
+        if (collision.gameObject.name == "Clock")
+        {
             Death();
         }
     }
@@ -19,7 +20,14 @@ public class Gate : MonoBehaviour, IEnvironment
     public void Death()
     {
         isDestroyed = true;
-        destroyParticle.Play();
+        try
+        {
+            destroyParticle.Play();
+        }
+        catch
+        {
+
+        }
         Destroy(gameObject, 0.5f);
     }
 }
