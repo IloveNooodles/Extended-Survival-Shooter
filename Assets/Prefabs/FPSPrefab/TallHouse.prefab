@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: eec0a941ebb666b458f6523bd925c87d, type: 3}
       propertyPath: m_Name
-      value: Dollhouse Variant
+      value: TallHouse
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: eec0a941ebb666b458f6523bd925c87d, type: 3}
       propertyPath: m_RootOrder
@@ -29,15 +29,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: eec0a941ebb666b458f6523bd925c87d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 472.4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: eec0a941ebb666b458f6523bd925c87d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.028364861
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: eec0a941ebb666b458f6523bd925c87d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: eec0a941ebb666b458f6523bd925c87d, type: 3}
       propertyPath: m_LocalRotation.w

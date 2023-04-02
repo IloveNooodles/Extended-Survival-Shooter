@@ -28,8 +28,6 @@ public class StartingTitan : MonoBehaviour
     {
         if(isSmoking){
             timer += Time.deltaTime;
-            smoke.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z) + (player.transform.forward * 3);
-            smoke.transform.rotation = player.transform.rotation * Quaternion.Euler(0, 180, 0);
             if(timer >= 3f){
                 Destroy(gameObject);
                 fightingTitan.SetActive(true);
@@ -50,8 +48,7 @@ public class StartingTitan : MonoBehaviour
         yield return new WaitForSeconds(3f);
         audioSource.clip = landingClip;
         audioSource.Play();
-        smoke.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z) + (player.transform.forward * 3);
-        smoke.transform.rotation = player.transform.rotation * Quaternion.Euler(0, 180, 0);
+        smoke.transform.position = new Vector3(gameObject.transform.position.x - 45, gameObject.transform.position.y+1, gameObject.transform.position.z);
         smoke.Play();
         isSmoking = true;
     }

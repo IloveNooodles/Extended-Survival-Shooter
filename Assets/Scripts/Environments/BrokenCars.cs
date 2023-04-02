@@ -12,6 +12,7 @@ public class BrokenCars : MonoBehaviour, IEnvironment
     EnvironmentHealth environmentHealth;
     AudioSource audioSource;
     GameObject cars;
+    Collider carCollider;
 
 
     public void Start()
@@ -19,6 +20,7 @@ public class BrokenCars : MonoBehaviour, IEnvironment
         audioSource = GetComponent<AudioSource>();
         cars = this.transform.GetChild(0).gameObject;
         environmentHealth = GetComponent<EnvironmentHealth>();
+        carCollider = GetComponent<Collider>();
     }
 
     void Update()
@@ -33,7 +35,8 @@ public class BrokenCars : MonoBehaviour, IEnvironment
         audioSource.clip = destroyedClip;
         audioSource.Play();
         destroyedParticles.Play();
+        carCollider.enabled = false;
         Destroy(cars, 1f);
-        Destroy(this.gameObject, 2f);
+        Destroy(this.gameObject, 4f);
     }
 }
