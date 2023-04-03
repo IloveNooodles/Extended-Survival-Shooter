@@ -8,6 +8,8 @@ public class TitanAudio : MonoBehaviour
     public AudioClip jumpClip;
     public AudioClip landingClip;
     public AudioClip titanHurtClip;
+    public AudioClip wooshClip;
+    public AudioClip titanWalkClip;
     AudioSource audioSource;
     // Start is called before the first frame update
     void Awake()
@@ -33,9 +35,21 @@ public class TitanAudio : MonoBehaviour
         audioSource.Play();
     }
 
+    public void Walk()
+    {
+        audioSource.clip = titanWalkClip;
+        audioSource.Play();
+    }
+
     public void TitanHurt()
     {
         audioSource.clip = titanHurtClip;
+        audioSource.Play();
+    }
+
+    public void Woosh()
+    {
+        audioSource.clip = wooshClip;
         audioSource.Play();
     }
 }

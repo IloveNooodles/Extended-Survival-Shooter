@@ -131,4 +131,10 @@ public class FPSMovement : MonoBehaviour
     {
         readyToJump = true;
     }
+
+    public void KnockBack()
+    {
+        rb.AddForce(gameObject.transform.forward * -50f, ForceMode.Impulse);
+        rb.AddForce(gameObject.transform.up * 10f, ForceMode.Impulse);
+    }
 }

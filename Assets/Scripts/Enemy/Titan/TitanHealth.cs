@@ -97,7 +97,9 @@ public class TitanHealth : MonoBehaviour
     IEnumerator ChangeToNoLeftArm()
     {
         noLeftArmTitan.transform.position = new Vector3(transform.position.x + 30, transform.position.y, transform.position.z);
+        anim.SetBool("isLeftArmDestroyed", true);
         anim.SetTrigger("LeftArmDestroyed");
+        anim.SetBool("isSomethingBeingDestroyed", true);
         yield return new WaitForSeconds(2.2f);
         titanAudio.Landing();
         smokeParticles.transform.position = new Vector3(transform.position.x + 20, transform.position.y, transform.position.z);
@@ -106,12 +108,15 @@ public class TitanHealth : MonoBehaviour
         yield return new WaitForSeconds(3f);
         noLeftArmTitan.SetActive(true);
         gameObject.SetActive(false);
+        anim.SetBool("isSomethingBeingDestroyed", false);
     }
 
     IEnumerator ChangeToNoRightArm()
     {
         noRightArmTitan.transform.position = new Vector3(transform.position.x + 30, transform.position.y, transform.position.z);
+        anim.SetBool("isRightArmDestroyed", true);
         anim.SetTrigger("RightArmDestroyed");
+        anim.SetBool("isSomethingBeingDestroyed", true);
         yield return new WaitForSeconds(2.2f);
         titanAudio.Landing();
         smokeParticles.transform.position = new Vector3(transform.position.x + 20, transform.position.y, transform.position.z);
@@ -120,5 +125,6 @@ public class TitanHealth : MonoBehaviour
         yield return new WaitForSeconds(3f);
         noRightArmTitan.SetActive(true);
         gameObject.SetActive(false);
+        anim.SetBool("isSomethingBeingDestroyed", false);
     }
 }
