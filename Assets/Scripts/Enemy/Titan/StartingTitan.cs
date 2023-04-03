@@ -7,10 +7,8 @@ public class StartingTitan : MonoBehaviour
     public GameObject player;
     public GameObject smokeLocation;
     public GameObject fightingTitan;
-    public AudioClip jumpClip;
-    public AudioClip landingClip;
+    public TitanAudio titanAudio;
     Animator anim;
-    AudioSource audioSource;
     ParticleSystem smoke;
     float timer;
     bool isSmoking = false;
@@ -19,7 +17,6 @@ public class StartingTitan : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         smoke = smokeLocation.GetComponent<ParticleSystem>();
-        audioSource = GetComponent<AudioSource>();
         jump();
     }
 
@@ -37,8 +34,7 @@ public class StartingTitan : MonoBehaviour
 
     void jump()
     {
-        audioSource.clip = jumpClip;
-        audioSource.Play();
+        titanAudio.Jump();
         anim.SetTrigger("Jump");
         StartCoroutine(jumpAnimation());
     }
@@ -46,8 +42,7 @@ public class StartingTitan : MonoBehaviour
     IEnumerator jumpAnimation()
     {
         yield return new WaitForSeconds(3f);
-        audioSource.clip = landingClip;
-        audioSource.Play();
+        titanAudio.Landing();
         smoke.transform.position = new Vector3(gameObject.transform.position.x - 45, gameObject.transform.position.y+1, gameObject.transform.position.z);
         smoke.Play();
         isSmoking = true;
