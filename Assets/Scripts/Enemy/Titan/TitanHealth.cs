@@ -8,7 +8,7 @@ public class TitanHealth : MonoBehaviour
     public TitanAudio titanAudio;
     public GameObject noLeftArmTitan;
     public GameObject noRightArmTitan;
-    static public int startingHealth = 100000;
+    static public int startingHealth = 100;
     static public int currentHealth;
     static public int leftArmHealth = 10;
     static public int rightArmHealth = 10;
@@ -20,15 +20,18 @@ public class TitanHealth : MonoBehaviour
     float healthBarLength;
     float leftArmHealthBarLength;
     float rightArmHealthBarLength;
+    TitanAttackAndMovement titanAttackAndMovement;
     public ParticleSystem hitParticles;
     public ParticleSystem smokeParticles;
     Animator anim;
+    bool isDead = false;
 
 
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
+        titanAttackAndMovement = GetComponent<TitanAttackAndMovement>();
 
         //Set health
         currentHealth = startingHealth;
@@ -49,6 +52,11 @@ public class TitanHealth : MonoBehaviour
 
     public void TakeDamage(int amount, Vector3 hitPoint, GameObject titanPart)
     {
+        if (isDead)
+        {
+            return;
+        }
+
         if (titanPart.name == "LeftArm")
         {
             if (backgroundLeftArmHealthBar.gameObject.activeInHierarchy == false)
@@ -92,6 +100,14 @@ public class TitanHealth : MonoBehaviour
 
         //Play particle system
         hitParticles.Play();
+
+        //Jika health habis
+        if(currentHealth <= 0)
+        {
+            titanAudio.TitanHurt();
+            titanAttackAndMovement.Dead();
+            StartCoroutine(Dead());
+        }
     }
 
     IEnumerator ChangeToNoLeftArm()
@@ -126,5 +142,19 @@ public class TitanHealth : MonoBehaviour
         noRightArmTitan.SetActive(true);
         gameObject.SetActive(false);
         anim.SetBool("isSomethingBeingDestroyed", false);
+    }
+
+    IEnumerator Dead()
+    {
+        anim.SetBool("isDead", true);
+        anim.SetTrigger("Dead");
+        titanAudio.TitanHurt();
+        isDead = true;
+        yield return new WaitForSeconds(5f);
+        smokeParticles.transform.position = new Vector3(transform.position.x + 20, transform.position.y, transform.position.z);
+        smokeParticles.transform.rotation = new Quaternion(0, 0, 0, 0);
+        titanAudio.Landing();
+        smokeParticles.Play();
+        Destroy(this.gameObject.GetComponent<TitanHealth>());
     }
 }

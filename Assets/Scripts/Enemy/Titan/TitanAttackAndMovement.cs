@@ -46,6 +46,7 @@ public class TitanAttackAndMovement : MonoBehaviour
         {
             anim.SetBool("isWalking", true);
             nav.SetDestination(playerTransform.position);
+            nav.enabled = true;
         }
         else
         {
@@ -70,11 +71,17 @@ public class TitanAttackAndMovement : MonoBehaviour
     }
 
     public void LeftArmAttack(){
+        if(!haveLeftArm){
+            return;
+        }
         anim.SetTrigger("LeftArmAttack");
         StartCoroutine(ArmAttackDelay());
     }
 
     public void LeftFootAttack(){
+        if(!haveLeftArm){
+            return;
+        }
         anim.SetTrigger("LeftFootAttack");
         StartCoroutine(FootAttackDelay());
     }
@@ -115,5 +122,10 @@ public class TitanAttackAndMovement : MonoBehaviour
     IEnumerator AttackDelay(){
         yield return new WaitForSeconds(attackDelay);
         isAttacking = false;
+    }
+
+    public void Dead(){
+        Debug.Log("Titan Dead from TitanAttackAndMovement");
+        Destroy(this.gameObject.GetComponent<TitanAttackAndMovement>());
     }
 }
