@@ -2114,7 +2114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a6827d6f1b3ed641a2663ebe47b6c9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titanHealth: {fileID: 919132148383997099}
+  titanHealth: {fileID: 919132149318354178}
 --- !u!65 &169508204
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10561,7 +10561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2e99d908d7bf7d4cbaa4f9d351eebef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titanAttackAndMovement: {fileID: 919132148383997103}
+  titanAttackAndMovement: {fileID: 919132149318354177}
 --- !u!23 &590853155
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -12669,7 +12669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a6827d6f1b3ed641a2663ebe47b6c9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titanHealth: {fileID: 919132148383997099}
+  titanHealth: {fileID: 919132149318354178}
 --- !u!65 &817526885
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13090,7 +13090,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a6827d6f1b3ed641a2663ebe47b6c9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titanHealth: {fileID: 919132148383997099}
+  titanHealth: {fileID: 919132149318354178}
 --- !u!65 &835986423
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14582,7 +14582,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a6827d6f1b3ed641a2663ebe47b6c9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titanHealth: {fileID: 919132148383997099}
+  titanHealth: {fileID: 919132149318354178}
 --- !u!65 &1007847616
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15355,7 +15355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a6827d6f1b3ed641a2663ebe47b6c9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titanHealth: {fileID: 919132148383997099}
+  titanHealth: {fileID: 919132149318354178}
 --- !u!65 &1076732278
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17463,7 +17463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a6827d6f1b3ed641a2663ebe47b6c9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titanHealth: {fileID: 919132148383997099}
+  titanHealth: {fileID: 919132149318354178}
 --- !u!82 &1212924197
 AudioSource:
   m_ObjectHideFlags: 0
@@ -18979,7 +18979,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a6827d6f1b3ed641a2663ebe47b6c9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titanHealth: {fileID: 919132148383997099}
+  titanHealth: {fileID: 919132149318354178}
 --- !u!65 &1395824083
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20046,7 +20046,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a6827d6f1b3ed641a2663ebe47b6c9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titanHealth: {fileID: 919132148383997099}
+  titanHealth: {fileID: 919132149318354178}
 --- !u!65 &1522646467
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22157,7 +22157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a6827d6f1b3ed641a2663ebe47b6c9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titanHealth: {fileID: 919132148383997099}
+  titanHealth: {fileID: 919132149318354178}
 --- !u!65 &1698742979
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27411,7 +27411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2e99d908d7bf7d4cbaa4f9d351eebef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titanAttackAndMovement: {fileID: 919132148383997103}
+  titanAttackAndMovement: {fileID: 919132149318354177}
 --- !u!65 &1732437754
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28042,7 +28042,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a6827d6f1b3ed641a2663ebe47b6c9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titanHealth: {fileID: 919132148383997099}
+  titanHealth: {fileID: 919132149318354178}
 --- !u!65 &1771219500
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -29724,7 +29724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a6827d6f1b3ed641a2663ebe47b6c9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titanHealth: {fileID: 919132148383997099}
+  titanHealth: {fileID: 919132149318354178}
 --- !u!65 &1998172262
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30077,7 +30077,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2e99d908d7bf7d4cbaa4f9d351eebef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titanAttackAndMovement: {fileID: 919132148383997103}
+  titanAttackAndMovement: {fileID: 919132149318354177}
 --- !u!65 &2068387581
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -31593,7 +31593,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &919132148383997099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31717,7 +31717,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132148383997098}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d3c7f26c28a97a346980cc62d8966c8b, type: 3}
   m_Name: 
@@ -31775,13 +31775,14 @@ GameObject:
   - component: {fileID: 919132149318354179}
   - component: {fileID: 919132149318354178}
   - component: {fileID: 919132149318354177}
+  - component: {fileID: 919132149318354180}
   m_Layer: 7
   m_Name: TitanNoLeftArm
   m_TagString: Titan
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &919132149318354177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31789,13 +31790,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132149318354176}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a1bbc66b679c18149ab4c48be59a5955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   titanAudio: {fileID: 1370328655}
-  haveLeftArm: 1
+  haveLeftArm: 0
   haveRightArm: 1
   attackDamage: 10
   attackDelay: 10
@@ -31841,6 +31842,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &919132149318354180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149318354176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1901a932c86dbb45ab40b3424486a42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  titanAudio: {fileID: 1370328655}
 --- !u!1 &1019032994755830671
 GameObject:
   m_ObjectHideFlags: 0
