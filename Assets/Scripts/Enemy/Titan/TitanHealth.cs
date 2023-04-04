@@ -8,10 +8,12 @@ public class TitanHealth : MonoBehaviour
     public TitanAudio titanAudio;
     public GameObject noLeftArmTitan;
     public GameObject noRightArmTitan;
-    static public int startingHealth = 100;
-    static public int currentHealth;
-    static public int leftArmHealth = 10;
-    static public int rightArmHealth = 10;
+    static public int startingHealth = 200;
+    static public int startingLeftArmHealth = 40;
+    static public int startingRightArmHealth = 40;
+    static public int currentHealth = int.MinValue;
+    static public int leftArmHealth = int.MinValue;
+    static public int rightArmHealth = int.MinValue;
     public Image healthBar;
     public Image backgroundLeftArmHealthBar;
     public Image backgroundRightArmHealthBar;
@@ -28,20 +30,70 @@ public class TitanHealth : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         anim = GetComponent<Animator>();
         titanAttackAndMovement = GetComponent<TitanAttackAndMovement>();
-
-        //Set health
-        currentHealth = startingHealth;
         healthBarLength = healthBar.rectTransform.rect.width;
-        leftArmHealthBar = backgroundLeftArmHealthBar.transform.GetChild(0).GetComponent<Image>();
-        rightArmHealthBar = backgroundRightArmHealthBar.transform.GetChild(0).GetComponent<Image>();
-        leftArmHealthBarLength = leftArmHealthBar.rectTransform.rect.width;
-        rightArmHealthBarLength = rightArmHealthBar.rectTransform.rect.width;
-        backgroundLeftArmHealthBar.gameObject.SetActive(false);
-        backgroundRightArmHealthBar.gameObject.SetActive(false);
+
+        //Jika Titan baru pertama kali diinisialisasi
+        if (TitanHealth.currentHealth == int.MinValue)
+        {
+            TitanHealth.currentHealth = TitanHealth.startingHealth;
+        }
+        else
+        {
+            //Set health bar
+            healthBar.rectTransform.sizeDelta = new Vector2(healthBarLength * currentHealth / startingHealth, healthBar.rectTransform.rect.height);
+        }
+
+        //Jika pertama kali diinisialisasi
+        if (leftArmHealth == int.MinValue)
+        {
+            leftArmHealth = startingLeftArmHealth;
+            leftArmHealthBar = backgroundLeftArmHealthBar.transform.GetChild(0).GetComponent<Image>();
+            leftArmHealthBarLength = leftArmHealthBar.rectTransform.rect.width;
+            backgroundLeftArmHealthBar.gameObject.SetActive(false);
+        }
+        //Jika sudah pernah diinisialisasi dan masih hidup
+        else if (leftArmHealth > 0)
+        {
+            leftArmHealthBar = backgroundLeftArmHealthBar.transform.GetChild(0).GetComponent<Image>();
+            leftArmHealthBarLength = leftArmHealthBar.rectTransform.rect.width;
+
+            //Jika Belum pernah terkena hit
+            if (leftArmHealth == startingLeftArmHealth)
+            {
+                backgroundLeftArmHealthBar.gameObject.SetActive(false);
+            }else{
+                backgroundLeftArmHealthBar.gameObject.SetActive(true);
+                leftArmHealthBar.rectTransform.sizeDelta = new Vector2(leftArmHealthBarLength * leftArmHealth / startingLeftArmHealth, leftArmHealthBar.rectTransform.rect.height);
+            }
+        }
+
+        //Jika pertama kali diinisialisasi
+        if (rightArmHealth == int.MinValue)
+        {
+            rightArmHealth = startingRightArmHealth;
+            rightArmHealthBar = backgroundRightArmHealthBar.transform.GetChild(0).GetComponent<Image>();
+            rightArmHealthBarLength = rightArmHealthBar.rectTransform.rect.width;
+            backgroundRightArmHealthBar.gameObject.SetActive(false);
+        }
+        //Jika sudah pernah diinisialisasi dan masih hidup
+        else if (rightArmHealth > 0)
+        {
+            rightArmHealthBar = backgroundRightArmHealthBar.transform.GetChild(0).GetComponent<Image>();
+            rightArmHealthBarLength = rightArmHealthBar.rectTransform.rect.width;
+
+            //Jika Belum pernah terkena hit
+            if (rightArmHealth == startingRightArmHealth)
+            {
+                backgroundRightArmHealthBar.gameObject.SetActive(false);
+            }else{
+                backgroundRightArmHealthBar.gameObject.SetActive(true);
+                rightArmHealthBar.rectTransform.sizeDelta = new Vector2(rightArmHealthBarLength * rightArmHealth / startingRightArmHealth, rightArmHealthBar.rectTransform.rect.height);
+            }
+        }
     }
 
     // Update is called once per frame
@@ -63,11 +115,11 @@ public class TitanHealth : MonoBehaviour
             {
                 backgroundLeftArmHealthBar.gameObject.SetActive(true);
             }
-            leftArmHealth -= amount;
-            leftArmHealthBar.rectTransform.sizeDelta = new Vector2(leftArmHealthBarLength * leftArmHealth / 500, leftArmHealthBar.rectTransform.rect.height);
+            TitanHealth.leftArmHealth -= amount;
+            leftArmHealthBar.rectTransform.sizeDelta = new Vector2(leftArmHealthBarLength * leftArmHealth / startingLeftArmHealth, leftArmHealthBar.rectTransform.rect.height);
 
             //Jika Left Arm Health habis
-            if (leftArmHealth <= 0)
+            if (TitanHealth.leftArmHealth <= 0)
             {
                 titanAudio.TitanHurt();
                 StartCoroutine(ChangeToNoLeftArm());
@@ -80,11 +132,11 @@ public class TitanHealth : MonoBehaviour
             {
                 backgroundRightArmHealthBar.gameObject.SetActive(true);
             }
-            rightArmHealth -= amount;
-            rightArmHealthBar.rectTransform.sizeDelta = new Vector2(rightArmHealthBarLength * rightArmHealth / 500, rightArmHealthBar.rectTransform.rect.height);
-        
+            TitanHealth.rightArmHealth -= amount;
+            rightArmHealthBar.rectTransform.sizeDelta = new Vector2(rightArmHealthBarLength * rightArmHealth / startingRightArmHealth, rightArmHealthBar.rectTransform.rect.height);
+
             //Jika Right Arm Health habis
-            if (rightArmHealth <= 0)
+            if (TitanHealth.rightArmHealth <= 0)
             {
                 titanAudio.TitanHurt();
                 StartCoroutine(ChangeToNoRightArm());
@@ -92,7 +144,7 @@ public class TitanHealth : MonoBehaviour
         }
 
         //kurangi health
-        currentHealth -= amount;
+        TitanHealth.currentHealth -= amount;
         healthBar.rectTransform.sizeDelta = new Vector2(healthBarLength * currentHealth / startingHealth, healthBar.rectTransform.rect.height);
 
         //Ganti posisi particle
@@ -102,7 +154,7 @@ public class TitanHealth : MonoBehaviour
         hitParticles.Play();
 
         //Jika health habis
-        if(currentHealth <= 0)
+        if (TitanHealth.currentHealth <= 0)
         {
             titanAudio.TitanHurt();
             titanAttackAndMovement.Dead();
@@ -113,9 +165,9 @@ public class TitanHealth : MonoBehaviour
     IEnumerator ChangeToNoLeftArm()
     {
         noLeftArmTitan.transform.position = new Vector3(transform.position.x + 30, transform.position.y, transform.position.z);
-        anim.SetBool("isLeftArmDestroyed", true);
-        anim.SetTrigger("LeftArmDestroyed");
+        anim.SetBool("isWalking", false);
         anim.SetBool("isSomethingBeingDestroyed", true);
+        anim.SetTrigger("LeftArmDestroyed");
         yield return new WaitForSeconds(2.2f);
         titanAudio.Landing();
         smokeParticles.transform.position = new Vector3(transform.position.x + 20, transform.position.y, transform.position.z);
@@ -125,14 +177,15 @@ public class TitanHealth : MonoBehaviour
         noLeftArmTitan.SetActive(true);
         gameObject.SetActive(false);
         anim.SetBool("isSomethingBeingDestroyed", false);
+        anim.SetBool("isLeftArmDestroyed", true);
     }
 
     IEnumerator ChangeToNoRightArm()
     {
         noRightArmTitan.transform.position = new Vector3(transform.position.x + 30, transform.position.y, transform.position.z);
-        anim.SetBool("isRightArmDestroyed", true);
-        anim.SetTrigger("RightArmDestroyed");
+        anim.SetBool("isWalking", false);
         anim.SetBool("isSomethingBeingDestroyed", true);
+        anim.SetTrigger("RightArmDestroyed");
         yield return new WaitForSeconds(2.2f);
         titanAudio.Landing();
         smokeParticles.transform.position = new Vector3(transform.position.x + 20, transform.position.y, transform.position.z);
@@ -142,6 +195,7 @@ public class TitanHealth : MonoBehaviour
         noRightArmTitan.SetActive(true);
         gameObject.SetActive(false);
         anim.SetBool("isSomethingBeingDestroyed", false);
+        anim.SetBool("isRightArmDestroyed", true);
     }
 
     IEnumerator Dead()
@@ -156,5 +210,13 @@ public class TitanHealth : MonoBehaviour
         titanAudio.Landing();
         smokeParticles.Play();
         Destroy(this.gameObject.GetComponent<TitanHealth>());
+        Destroy(this.gameObject.GetComponent<TitanAttackAndMovement>());
+        
+        //Destroy all hit trigger
+        TitanHitDetector[] hitDetectors = this.gameObject.GetComponentsInChildren<TitanHitDetector>();
+        foreach (TitanHitDetector hitDetector in hitDetectors)
+        {
+            Destroy(hitDetector);
+        }
     }
 }

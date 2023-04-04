@@ -19,8 +19,6 @@ public class TitanAttackAndMovement : MonoBehaviour
     Animator anim;
     UnityEngine.AI.NavMeshAgent nav;
     bool isAttacking = false;
-    bool isWalkingSoundPlayed = false;
-    float walkingSoundTimer = 0f;
 
     // Start is called before the first frame update
     void Awake()
@@ -54,6 +52,7 @@ public class TitanAttackAndMovement : MonoBehaviour
             gameObject.transform.LookAt(playerTransform);
             nav.enabled = false;
             int randomAttack = Random.Range(0, 4);
+            isAttacking = true;
             if(randomAttack == 0){
                 LeftArmAttack();
             }
@@ -66,12 +65,12 @@ public class TitanAttackAndMovement : MonoBehaviour
             else if(randomAttack == 3){
                 RightFootAttack();
             }
-            isAttacking = true;
         }
     }
 
     public void LeftArmAttack(){
         if(!haveLeftArm){
+            isAttacking = false;
             return;
         }
         anim.SetTrigger("LeftArmAttack");
@@ -80,6 +79,7 @@ public class TitanAttackAndMovement : MonoBehaviour
 
     public void LeftFootAttack(){
         if(!haveLeftArm){
+            isAttacking = false;
             return;
         }
         anim.SetTrigger("LeftFootAttack");
