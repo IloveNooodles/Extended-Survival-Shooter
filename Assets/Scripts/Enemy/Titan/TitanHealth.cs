@@ -8,9 +8,11 @@ public class TitanHealth : MonoBehaviour
     public TitanAudio titanAudio;
     public GameObject noLeftArmTitan;
     public GameObject noRightArmTitan;
-    static public int startingHealth = 200;
-    static public int startingLeftArmHealth = 40;
-    static public int startingRightArmHealth = 40;
+    public GameObject noArmTitan;
+    public float destroyingArmHealthPercentage = 0.3f;
+    static public int startingHealth = 10000;
+    static public int startingLeftArmHealth = 200;
+    static public int startingRightArmHealth = 200;
     static public int currentHealth = int.MinValue;
     static public int leftArmHealth = int.MinValue;
     static public int rightArmHealth = int.MinValue;
@@ -23,16 +25,19 @@ public class TitanHealth : MonoBehaviour
     float leftArmHealthBarLength;
     float rightArmHealthBarLength;
     TitanAttackAndMovement titanAttackAndMovement;
+    UnityEngine.AI.NavMeshAgent nav;
     public ParticleSystem hitParticles;
     public ParticleSystem smokeParticles;
     Animator anim;
     bool isDead = false;
+    bool isInvincible = false;
 
 
     // Start is called before the first frame update
     void Awake()
     {
         anim = GetComponent<Animator>();
+        nav = GetComponent<UnityEngine.AI.NavMeshAgent>();
         titanAttackAndMovement = GetComponent<TitanAttackAndMovement>();
         healthBarLength = healthBar.rectTransform.rect.width;
 
@@ -109,6 +114,10 @@ public class TitanHealth : MonoBehaviour
             return;
         }
 
+        if(isInvincible){
+            return;
+        }
+
         if (titanPart.name == "LeftArm")
         {
             if (backgroundLeftArmHealthBar.gameObject.activeInHierarchy == false)
@@ -121,8 +130,14 @@ public class TitanHealth : MonoBehaviour
             //Jika Left Arm Health habis
             if (TitanHealth.leftArmHealth <= 0)
             {
-                titanAudio.TitanHurt();
-                StartCoroutine(ChangeToNoLeftArm());
+                if(TitanHealth.currentHealth - (int)(destroyingArmHealthPercentage * TitanHealth.startingHealth) <= 0){
+                    amount = (int)(destroyingArmHealthPercentage * TitanHealth.startingHealth);
+                }else{
+                    isInvincible = true;
+                    titanAudio.TitanHurt();
+                    StartCoroutine(ChangeToNoLeftArm());
+                }
+                
             }
         }
 
@@ -138,8 +153,15 @@ public class TitanHealth : MonoBehaviour
             //Jika Right Arm Health habis
             if (TitanHealth.rightArmHealth <= 0)
             {
-                titanAudio.TitanHurt();
-                StartCoroutine(ChangeToNoRightArm());
+                if(TitanHealth.currentHealth - (int)(destroyingArmHealthPercentage * TitanHealth.startingHealth) <= 0){
+                    amount = (int)(destroyingArmHealthPercentage * TitanHealth.startingHealth);
+
+                }
+                else{
+                    isInvincible = true;
+                    titanAudio.TitanHurt();
+                    StartCoroutine(ChangeToNoRightArm());
+                }
             }
         }
 
@@ -164,7 +186,7 @@ public class TitanHealth : MonoBehaviour
 
     IEnumerator ChangeToNoLeftArm()
     {
-        noLeftArmTitan.transform.position = new Vector3(transform.position.x + 30, transform.position.y, transform.position.z);
+        nav.enabled = false;
         anim.SetBool("isWalking", false);
         anim.SetBool("isSomethingBeingDestroyed", true);
         anim.SetTrigger("LeftArmDestroyed");
@@ -174,15 +196,24 @@ public class TitanHealth : MonoBehaviour
         smokeParticles.transform.rotation = new Quaternion(0, 0, 0, 0);
         smokeParticles.Play();
         yield return new WaitForSeconds(3f);
-        noLeftArmTitan.SetActive(true);
+        isInvincible = false;
+        TakeDamage((int)(destroyingArmHealthPercentage * TitanHealth.startingHealth), transform.position, gameObject);
+        if(TitanHealth.rightArmHealth <= 0){
+            noArmTitan.transform.position = new Vector3(transform.position.x + 30, transform.position.y, transform.position.z);
+            noArmTitan.SetActive(true);
+        }else{
+            noLeftArmTitan.transform.position = new Vector3(transform.position.x + 30, transform.position.y, transform.position.z);
+            noLeftArmTitan.SetActive(true);
+        }
         gameObject.SetActive(false);
         anim.SetBool("isSomethingBeingDestroyed", false);
         anim.SetBool("isLeftArmDestroyed", true);
+        
     }
 
     IEnumerator ChangeToNoRightArm()
     {
-        noRightArmTitan.transform.position = new Vector3(transform.position.x + 30, transform.position.y, transform.position.z);
+        nav.enabled = false;
         anim.SetBool("isWalking", false);
         anim.SetBool("isSomethingBeingDestroyed", true);
         anim.SetTrigger("RightArmDestroyed");
@@ -192,14 +223,24 @@ public class TitanHealth : MonoBehaviour
         smokeParticles.transform.rotation = new Quaternion(0, 0, 0, 0);
         smokeParticles.Play();
         yield return new WaitForSeconds(3f);
-        noRightArmTitan.SetActive(true);
+        isInvincible = false;
+        TakeDamage((int)(destroyingArmHealthPercentage * TitanHealth.startingHealth), transform.position, gameObject);
+        if(TitanHealth.leftArmHealth <= 0){
+            noArmTitan.transform.position = new Vector3(transform.position.x + 30, transform.position.y, transform.position.z);
+            noArmTitan.SetActive(true);
+        }else{
+            noRightArmTitan.transform.position = new Vector3(transform.position.x + 30, transform.position.y, transform.position.z);
+            noRightArmTitan.SetActive(true);
+        }
         gameObject.SetActive(false);
         anim.SetBool("isSomethingBeingDestroyed", false);
-        anim.SetBool("isRightArmDestroyed", true);
+        anim.SetBool("isRightArmDestroyed", true);  
     }
 
     IEnumerator Dead()
     {
+        isInvincible = true;
+        nav.enabled = false;
         anim.SetBool("isDead", true);
         anim.SetTrigger("Dead");
         titanAudio.TitanHurt();

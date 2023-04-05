@@ -9,6 +9,7 @@ public class TitanAttackAndMovement : MonoBehaviour
     public bool haveRightArm = true;
     public int attackDamage = 10;
     public float attackDelay = 10f;
+    int randomAttack;
 
     GameObject player;
     PlayerHealth playerHealth;
@@ -35,12 +36,13 @@ public class TitanAttackAndMovement : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {  
-        if(isAttacking ){
+    {
+        if (isAttacking)
+        {
             return;
         }
         playerDistance = Vector3.Distance(playerTransform.position, transform.position);
-        if(TitanHealth.currentHealth > 0 && playerHealth.currentHealth > 0 && playerDistance > 35f)
+        if (TitanHealth.currentHealth > 0 && playerHealth.currentHealth > 0 && playerDistance > 35f)
         {
             anim.SetBool("isWalking", true);
             nav.SetDestination(playerTransform.position);
@@ -51,25 +53,40 @@ public class TitanAttackAndMovement : MonoBehaviour
             anim.SetBool("isWalking", false);
             gameObject.transform.LookAt(playerTransform);
             nav.enabled = false;
-            int randomAttack = Random.Range(0, 4);
             isAttacking = true;
-            if(randomAttack == 0){
+            Debug.Log(playerDistance);
+            if (playerDistance > 30f)
+            {
+                randomAttack = Random.Range(2, 4);
+            }
+            else
+            {
+                randomAttack = Random.Range(0, 2);
+            }
+
+            if (randomAttack == 0)
+            {
                 LeftArmAttack();
             }
-            else if(randomAttack == 1){
+            else if (randomAttack == 1)
+            {
                 LeftFootAttack();
             }
-            else if(randomAttack == 2){
+            else if (randomAttack == 2)
+            {
                 RightArmAttack();
             }
-            else if(randomAttack == 3){
+            else if (randomAttack == 3)
+            {
                 RightFootAttack();
             }
         }
     }
 
-    public void LeftArmAttack(){
-        if(!haveLeftArm){
+    public void LeftArmAttack()
+    {
+        if (!haveLeftArm)
+        {
             isAttacking = false;
             return;
         }
@@ -77,8 +94,10 @@ public class TitanAttackAndMovement : MonoBehaviour
         StartCoroutine(ArmAttackDelay());
     }
 
-    public void LeftFootAttack(){
-        if(!haveLeftArm){
+    public void LeftFootAttack()
+    {
+        if (!haveLeftArm)
+        {
             isAttacking = false;
             return;
         }
@@ -86,45 +105,53 @@ public class TitanAttackAndMovement : MonoBehaviour
         StartCoroutine(FootAttackDelay());
     }
 
-    public void RightArmAttack(){
+    public void RightArmAttack()
+    {
         anim.SetTrigger("RightArmAttack");
         StartCoroutine(ArmAttackDelay());
     }
 
-    public void RightFootAttack(){
+    public void RightFootAttack()
+    {
         anim.SetTrigger("RightFootAttack");
         StartCoroutine(FootAttackDelay());
     }
 
-    public void HitPlayer(){
-        if(Time.time - lastHitTime < 1f){
+    public void HitPlayer()
+    {
+        if (Time.time - lastHitTime < 1f)
+        {
             return;
         }
         lastHitTime = Time.time;
         playerHealth.TakeDamage(attackDamage);
-        player.GetComponent<FPSMovement>().KnockBack();   
+        player.GetComponent<FPSMovement>().KnockBack();
     }
 
-    IEnumerator FootAttackDelay(){
+    IEnumerator FootAttackDelay()
+    {
         yield return new WaitForSeconds(2);
         titanAudio.Woosh();
-        yield return new WaitForSeconds(attackDelay-2);
+        yield return new WaitForSeconds(attackDelay - 2);
         isAttacking = false;
     }
 
-    IEnumerator ArmAttackDelay(){
+    IEnumerator ArmAttackDelay()
+    {
         yield return new WaitForSeconds(3.5f);
         titanAudio.Woosh();
-        yield return new WaitForSeconds(attackDelay-3.5f);
+        yield return new WaitForSeconds(attackDelay - 3.5f);
         isAttacking = false;
     }
 
-    IEnumerator AttackDelay(){
+    IEnumerator AttackDelay()
+    {
         yield return new WaitForSeconds(attackDelay);
         isAttacking = false;
     }
 
-    public void Dead(){
+    public void Dead()
+    {
         Debug.Log("Titan Dead from TitanAttackAndMovement");
         Destroy(this.gameObject.GetComponent<TitanAttackAndMovement>());
     }
