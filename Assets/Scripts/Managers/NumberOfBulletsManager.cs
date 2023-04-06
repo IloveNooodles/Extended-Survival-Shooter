@@ -17,6 +17,6 @@ public class NumberOfBulletsManager : MonoBehaviour
     
     void Update()
     {
-        text.text = "Weapon: AK-47\nBullets: " + numberOfBullets + " / 30";
+        text.text = "Bullets: " + numberOfBullets + " / 30";
     }
 }

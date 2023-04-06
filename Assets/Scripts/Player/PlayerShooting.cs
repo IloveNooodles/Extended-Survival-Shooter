@@ -68,7 +68,6 @@ public class PlayerShooting : MonoBehaviour
         }
         
         timer += Time.deltaTime;
-        Debug.Log(NumberOfBulletsManager.numberOfBullets);
         isShooting = Input.GetButton("Fire1") && timer >= timeBetweenBullets && Time.timeScale != 0 &&
                      NumberOfBulletsManager.numberOfBullets > 0 && !isReloading;
         
