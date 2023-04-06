@@ -15,7 +15,8 @@ public class PlayerShooting : MonoBehaviour
     int shootableMask;
     ParticleSystem gunParticles;
     LineRenderer gunLine;
-    AudioSource gunAudio;
+    public AudioSource gunAudio;
+    public AudioSource gunReloadAudio;
     Light gunLight;
     float effectsDisplayTime = 0.2f;
     private bool reloadKeyPressed = false;
@@ -32,7 +33,6 @@ public class PlayerShooting : MonoBehaviour
         //Mendapatkan Reference component
         gunParticles = GetComponent<ParticleSystem>();
         gunLine = GetComponent<LineRenderer>();
-        gunAudio = GetComponent<AudioSource>();
         gunLight = GetComponent<Light>();
     }
     
@@ -44,6 +44,7 @@ public class PlayerShooting : MonoBehaviour
         {
             isReloading = true;
             reloadKeyPressed = false;
+            gunReloadAudio.Play();
             StartCoroutine(Reload());
         } else if (isShooting)
         { 
@@ -56,6 +57,7 @@ public class PlayerShooting : MonoBehaviour
         yield return new WaitForSeconds(reloadTime);
         NumberOfBulletsManager.numberOfBullets = NumberOfBulletsManager.MAX_NUM_BULLET;
         isReloading = false;
+        gunReloadAudio.Stop();
     }
     
     void Update()
