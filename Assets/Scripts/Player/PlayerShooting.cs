@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
@@ -16,7 +18,10 @@ public class PlayerShooting : MonoBehaviour
     AudioSource gunAudio;
     Light gunLight;
     float effectsDisplayTime = 0.2f;
+    private bool reloadKeyPressed = false;
     bool isReloading = false;
+    private bool isShooting = false;
+    private float currentTimer = 0f;
     float reloadTime = 2f;
 
     void Awake()
@@ -30,31 +35,48 @@ public class PlayerShooting : MonoBehaviour
         gunAudio = GetComponent<AudioSource>();
         gunLight = GetComponent<Light>();
     }
+    
+    
+    
+    private void FixedUpdate()
+    {
+        if (reloadKeyPressed)
+        {
+            isReloading = true;
+            reloadKeyPressed = false;
+            StartCoroutine(Reload());
+        } else if (isShooting)
+        { 
+            Shoot();
+        }  
+    }
 
-
+    IEnumerator Reload()
+    {
+        yield return new WaitForSeconds(reloadTime);
+        NumberOfBulletsManager.numberOfBullets = NumberOfBulletsManager.MAX_NUM_BULLET;
+        isReloading = false;
+    }
+    
     void Update()
     {
-
+        
+        if(isReloading){
+           return;
+        }
+        
         timer += Time.deltaTime;
-
-        if (Input.GetButton("Fire1") && timer >= timeBetweenBullets && Time.timeScale != 0 && NumberOfBulletsManager.numberOfBullets > 0 && !isReloading)
-        {
-            Shoot();
-        }
+        Debug.Log(NumberOfBulletsManager.numberOfBullets);
+        isShooting = Input.GetButton("Fire1") && timer >= timeBetweenBullets && Time.timeScale != 0 &&
+                     NumberOfBulletsManager.numberOfBullets > 0 && !isReloading;
+        
         //if user press r then reload
-        else if(Input.GetKeyDown(KeyCode.R))
+        if(Input.GetKeyDown(KeyCode.R) && !isReloading && !isShooting)
         {
-            timer = 0f;
-            isReloading = true;
-            NumberOfBulletsManager.numberOfBullets = 0; 
+            reloadKeyPressed = true;
+            return;
         }
-
-        if(isReloading && timer >= reloadTime)
-        {
-            isReloading = false;
-            NumberOfBulletsManager.numberOfBullets = 30;
-        }
-
+        
         if (timer >= timeBetweenBullets * effectsDisplayTime)
         {
             DisableEffects();

@@ -4,7 +4,8 @@ using System.Collections;
 
 public class NumberOfBulletsManager : MonoBehaviour
 {
-    public static int numberOfBullets = 30;
+    public const int MAX_NUM_BULLET = 30;
+    public static int numberOfBullets = 0;
     Text text;
 
 
@@ -13,8 +14,7 @@ public class NumberOfBulletsManager : MonoBehaviour
         text = GetComponent<Text>();
         numberOfBullets = 30;
     }
-
-
+    
     void Update()
     {
         text.text = "Weapon: AK-47\nBullets: " + numberOfBullets + " / 30";
