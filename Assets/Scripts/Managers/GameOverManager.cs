@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class GameOverManager : MonoBehaviour
 {
     public PlayerHealth playerHealth;
 
     Animator anim;
+    [SerializeField] private Text scoreText;
 
     void Awake()
     {
@@ -16,6 +18,7 @@ public class GameOverManager : MonoBehaviour
         if (playerHealth.currentHealth <= 0)
         {
             anim.SetTrigger("GameOver");
+            scoreText.text = $"Highschore: {ScoreManager.score}";
         }
     }
 

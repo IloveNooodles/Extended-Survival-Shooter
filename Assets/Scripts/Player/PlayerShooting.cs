@@ -22,7 +22,6 @@ public class PlayerShooting : MonoBehaviour
     private bool reloadKeyPressed = false;
     bool isReloading = false;
     private bool isShooting = false;
-    private float currentTimer = 0f;
     float reloadTime = 2f;
 
     void Awake()

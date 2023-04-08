@@ -7,6 +7,7 @@ public class EnemyHealth : MonoBehaviour
     public int currentHealth;
     public float sinkSpeed = 2.5f;
     public int scoreValue = 10;
+    public int goldValue = 1;
     public AudioClip deathClip;
     public Image healthBar;
     float healthBarLength;
@@ -39,7 +40,7 @@ public class EnemyHealth : MonoBehaviour
         if (isSinking)
         {
             //memindahkan object kebawah
-            transform.Translate(-Vector3.up * sinkSpeed * Time.deltaTime);
+            transform.Translate(-Vector3.up * (sinkSpeed * Time.deltaTime));
         }
     }
 
@@ -92,14 +93,17 @@ public class EnemyHealth : MonoBehaviour
         catch { }
     }
 
+    /* Trigger the animation for the death*/
     public void StartSinking()
     {
         //disable Navmesh Component
         GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
+        
         //Set rigisbody ke kinematic
         GetComponent<Rigidbody>().isKinematic = true;
         isSinking = true;
         ScoreManager.score += scoreValue;
+        GoldManager.Gold += goldValue;
         Destroy(gameObject, 2f);
     }
 }
