@@ -11,5 +11,5 @@ public class Quest
     public string title;
     public string description;
     public string goldReward;
-    public string questGoal;
+    public QuestGoal questGoal;
 }

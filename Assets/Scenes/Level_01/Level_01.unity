@@ -392,6 +392,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 589d2dfe3ec84c87a2b583c112f4637a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  quest:
+    isActive: 0
+    title: 
+    description: 
+    goldReward: 
+    questGoal: 
 --- !u!114 &492232728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -584,6 +590,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Environment
       objectReference: {fileID: 0}
+    - target: {fileID: 186378, guid: 149d6dcc67e8d1240bbc0dd6ddf0c1bd, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     - target: {fileID: 187432, guid: 149d6dcc67e8d1240bbc0dd6ddf0c1bd, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -756,6 +766,14 @@ PrefabInstance:
     - target: {fileID: 5342825306004964773, guid: 2b267011f2e38a248a2552bcc29782a5, type: 3}
       propertyPath: m_Name
       value: Hellephant
+      objectReference: {fileID: 0}
+    - target: {fileID: 8296681074446840219, guid: 2b267011f2e38a248a2552bcc29782a5, type: 3}
+      propertyPath: attackDamage
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8296681074446840219, guid: 2b267011f2e38a248a2552bcc29782a5, type: 3}
+      propertyPath: timeBetweenAttacks
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b267011f2e38a248a2552bcc29782a5, type: 3}
@@ -1004,6 +1022,14 @@ PrefabInstance:
     - target: {fileID: 820953897815260706, guid: ac8483e641f491646afa2acf69ab6502, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3966294541950339230, guid: ac8483e641f491646afa2acf69ab6502, type: 3}
+      propertyPath: attackDamage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3966294541950339230, guid: ac8483e641f491646afa2acf69ab6502, type: 3}
+      propertyPath: timeBetweenAttacks
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 3966294543010802421, guid: ac8483e641f491646afa2acf69ab6502, type: 3}
       propertyPath: m_Name
@@ -1475,7 +1501,7 @@ MonoBehaviour:
     description: MARIOOO GAIS
     goldReward: 30
     questGoal: Kill 5 Enemies
-  player: {fileID: 492232718}
+  playerQuest: {fileID: 0}
   questWindow: {fileID: 771483864}
   title: {fileID: 168605171}
   goal: {fileID: 984857718}

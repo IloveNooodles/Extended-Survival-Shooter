@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyHealth : MonoBehaviour
+public class EnemyHealth : MonoBehaviour, IEnemy
 {
     public int startingHealth = 100;
     public int currentHealth;
@@ -18,7 +19,8 @@ public class EnemyHealth : MonoBehaviour
     CapsuleCollider capsuleCollider;
     bool isDead;
     bool isSinking;
-
+    
+    public int Id { get; set; }
 
     void Awake()
     {
@@ -27,10 +29,26 @@ public class EnemyHealth : MonoBehaviour
         enemyAudio = GetComponent<AudioSource>();
         hitParticles = GetComponentInChildren<ParticleSystem>();
         capsuleCollider = GetComponent<CapsuleCollider>();
-
+    
         //Set current health
         currentHealth = startingHealth;
         healthBarLength = healthBar.rectTransform.rect.width;
+        
+        if (this.name.Contains(EnemyName.Zombunny))
+        {
+            Id = EnemyName.GetEnemyId(EnemyName.Zombunny);
+        } else if (this.name.Contains(EnemyName.Zombear))
+        {
+            Id =EnemyName.GetEnemyId(EnemyName.Zombear);
+        }
+        else if (this.name.Contains(EnemyName.Hellepant))
+        {
+            Id = EnemyName.GetEnemyId(EnemyName.Hellepant);
+        }
+        else if (this.name.Contains(EnemyName.Titan))
+        {
+            Id = EnemyName.GetEnemyId(EnemyName.Titan);
+        }
     }
 
 
@@ -43,7 +61,6 @@ public class EnemyHealth : MonoBehaviour
             transform.Translate(-Vector3.up * (sinkSpeed * Time.deltaTime));
         }
     }
-
 
     public void TakeDamage(int amount, Vector3 hitPoint)
     {
@@ -70,8 +87,8 @@ public class EnemyHealth : MonoBehaviour
             Death();
         }
     }
-
-    void Death()
+    
+    public void Death()
     {
         //set isdead
         isDead = true;
