@@ -4,16 +4,18 @@ using UnityEngine.UI;
 
 public class QuestManager : MonoBehaviour
 {
-    public static int Quest;
+    public static int CompletedQuest; 
+    [SerializeField] private QuestGiver _questGiver;
     [SerializeField] private Text text;
 
     private void Awake()
     {
-        Quest = 0;
+        CompletedQuest = 0;
+        _questGiver.UpdateQuest();
     }
 
     private void Update()
     {
-        text.text = $"Quest: ({Quest}/4)";
+        text.text = $"Quest: ({CompletedQuest}/4)";
     }
 }
