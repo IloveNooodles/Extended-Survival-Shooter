@@ -9,6 +9,8 @@ public class CutSceneManager : MonoBehaviour
     FPSMovement fpsMovement;
     FPSShooting fpsShooting;
     public Camera playerCamera;
+    public FirstCityCutScene firstCityCutScene;
+    public SecondCityCutScene secondCityCutScene;
     public ThirdCityCutScene thirdCityCutScene;
     public BossSpawnCutScene bossSpawnCutScene;
 
@@ -27,6 +29,26 @@ public class CutSceneManager : MonoBehaviour
         fpsMovement.enabled = true;
         fpsShooting.enabled = true;
         playerCamera.enabled = true;
+    }
+
+    public void startFirstCityCutScene(){
+        firstCityCutScene.startCutScene();
+        StartCoroutine(endFirstCityCutScene());
+    }
+
+    IEnumerator endFirstCityCutScene(){
+        yield return new WaitForSeconds(18.85f);
+        firstCityCutScene.endCutScene();
+    }
+
+    public void startSecondCityCutScene(){
+        secondCityCutScene.startCutScene();
+        StartCoroutine(endSecondCityCutScene());
+    }
+
+    IEnumerator endSecondCityCutScene(){
+        yield return new WaitForSeconds(13.3f);
+        secondCityCutScene.endCutScene();
     }
 
     public void startThirdCityCutScene(){
