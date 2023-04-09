@@ -6,16 +6,26 @@ public class CutSceneManager : MonoBehaviour
 {
 
     public GameObject player;
+    FPSMovement fpsMovement;
+    FPSShooting fpsShooting;
     public Camera playerCamera;
     public ThirdCityCutScene thirdCityCutScene;
+    public BossSpawnCutScene bossSpawnCutScene;
+
+    void Start(){
+        fpsMovement = player.GetComponent<FPSMovement>();
+        fpsShooting = player.GetComponentInChildren<FPSShooting>();
+    }
 
     public void startCutScene(){
-        player.SetActive(false);
+        fpsMovement.enabled = false;
+        fpsShooting.enabled = false;
         playerCamera.enabled = false;
     }
 
     public void endCutScene(){
-        player.SetActive(true);
+        fpsMovement.enabled = true;
+        fpsShooting.enabled = true;
         playerCamera.enabled = true;
     }
 
@@ -27,5 +37,15 @@ public class CutSceneManager : MonoBehaviour
     IEnumerator endThirdCityCutScene(){
         yield return new WaitForSeconds(17);
         thirdCityCutScene.endCutScene();
+    }
+
+    public void startBossSpawnCutScene(){
+        bossSpawnCutScene.startCutScene();
+        StartCoroutine(endBossSpawnCutScene());
+    }
+
+    IEnumerator endBossSpawnCutScene(){
+        yield return new WaitForSeconds(15);
+        bossSpawnCutScene.endCutScene();
     }
 }

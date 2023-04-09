@@ -8,12 +8,14 @@ public class SpawnBoss : MonoBehaviour
     public GameObject ThirdCityEnemySpawner;
     public GameObject enemyManager;
     public GameObject[] spawnGates;
+    public CutSceneManager cutSceneManager;
 
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player")
         {
             StartCoroutine(SpawnBossLogic());
+            cutSceneManager.startBossSpawnCutScene();
         }
     }
 

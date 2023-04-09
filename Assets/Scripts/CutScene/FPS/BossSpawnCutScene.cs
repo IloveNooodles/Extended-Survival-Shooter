@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 
-public class ThirdCityCutScene : MonoBehaviour
+public class BossSpawnCutScene : MonoBehaviour
 {
     public CutSceneManager cutSceneManager;
     PlayableDirector playableDirector;
@@ -14,10 +14,9 @@ public class ThirdCityCutScene : MonoBehaviour
         playableDirector = cutSceneClip.GetComponent<PlayableDirector>();
         cutSceneClip.SetActive(false);
     }
-
     void OnTriggerEnter(Collider other){
         if(other.gameObject.tag == "Player"){
-            cutSceneManager.startThirdCityCutScene();
+            cutSceneManager.startBossSpawnCutScene();
         }
     }
 
