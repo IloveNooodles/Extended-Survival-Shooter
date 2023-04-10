@@ -62,7 +62,7 @@ public class EnemyHealth : MonoBehaviour, IEnemy
         }
     }
 
-    public void TakeDamage(int amount, Vector3 hitPoint)
+    public virtual void TakeDamage(int amount, Vector3 hitPoint)
     {
         //Check jika dead
         if (isDead)
@@ -88,7 +88,7 @@ public class EnemyHealth : MonoBehaviour, IEnemy
         }
     }
     
-    public void Death()
+    public virtual void Death()
     {
         //set isdead
         isDead = true;
