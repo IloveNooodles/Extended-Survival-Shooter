@@ -7,9 +7,17 @@ using System.Collections.Generic;
 public class Quest
 {
     public bool isActive;
-    
     public string title;
     public string description;
-    public string goldReward;
-    public QuestGoal questGoal;
+    public int goldReward;
+    public QuestGoal[] questGoal;
+
+    public Quest(string title, string description, int reward, QuestGoal questGoal)
+    {
+        this.isActive = false;
+        this.title = title;
+        this.description = description;
+        this.goldReward = reward;
+        this.questGoal = this.questGoal;
+    }
 }

@@ -17,6 +17,7 @@ public class EnemyHealth : MonoBehaviour, IEnemy
     AudioSource enemyAudio;
     ParticleSystem hitParticles;
     CapsuleCollider capsuleCollider;
+
     bool isDead;
     bool isSinking;
     
@@ -87,12 +88,17 @@ public class EnemyHealth : MonoBehaviour, IEnemy
             Death();
         }
     }
-    
+
+    public bool IsDead()
+    {
+        return isDead;
+    }
+
     public void Death()
     {
         //set isdead
         isDead = true;
-
+        
         //SetCapcollider ke trigger
         capsuleCollider.isTrigger = true;
 

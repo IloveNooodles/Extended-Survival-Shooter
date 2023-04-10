@@ -1,19 +1,23 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class KillQuestGoal : QuestGoal
 {
-    public int EnemyId;
+    private int enemyId;
 
-    public KillQuestGoal(int enemyId, string description, bool completed, int currentAmount, int requiredAmount)
+    public KillQuestGoal(int enemyId, string[] objective, int requiredAmount) : base(GoalType.Kill, objective,
+        requiredAmount)
     {
-        this.EnemyId = enemyId;
-        this.description = description;
-        this.isCompleted = completed;
-        this.currentAmount = currentAmount;
-        this.requiredAmount = requiredAmount;
+        this.enemyId = enemyId;
     }
 
-    public void Track()
+    public override void TrackQuest(int enemyId)
     {
+        if (enemyId == this.enemyId)
+        {
+            currentAmount++;
+        }
+        base.IsCompleted();
     }
+        
 }

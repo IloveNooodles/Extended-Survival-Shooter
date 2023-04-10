@@ -2,5 +2,5 @@
 {
     Kill,
     Spend,
-    Boss,
+    Gather,
 }

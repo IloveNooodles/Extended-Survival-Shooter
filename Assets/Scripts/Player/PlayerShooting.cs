@@ -7,10 +7,9 @@ public class PlayerShooting : MonoBehaviour
     public int damagePerShot = 20;
     public float timeBetweenBullets = 0.15f;
     public float range = 100f;
-
-
+    
     float timer;
-    Ray shootRay = new Ray();
+    Ray shootRay;
     RaycastHit shootHit;
     int shootableMask;
     ParticleSystem gunParticles;
@@ -24,8 +23,14 @@ public class PlayerShooting : MonoBehaviour
     private bool isShooting = false;
     float reloadTime = 2f;
 
+    [SerializeField] private GameObject player;
+    private PlayerQuest pq;
+    
     void Awake()
     {
+        /* Get player quest */
+        pq = player.GetComponent<PlayerQuest>();
+        
         //GetMask
         shootableMask = LayerMask.GetMask("Shootable");
 
@@ -126,6 +131,10 @@ public class PlayerShooting : MonoBehaviour
             {
                 //Lakukan Take Damage
                 enemyHealth.TakeDamage(damagePerShot, shootHit.point);
+                if (enemyHealth.IsDead())
+                {
+                    pq.Track(enemyHealth.Id);
+                }
             }
 
             //Set line end position ke hit position
