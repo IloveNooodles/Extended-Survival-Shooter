@@ -11,8 +11,10 @@ public class KillQuestGoal : QuestGoal
         this.enemyId = enemyId;
     }
 
-    public override void TrackQuest(int enemyId)
+    public override void TrackQuest(GoalType goalType, int enemyId)
     {
+        if (this.GoalType != GoalType.Kill) return;
+        
         if (enemyId == this.enemyId)
         {
             currentAmount++;

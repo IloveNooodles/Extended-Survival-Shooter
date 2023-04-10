@@ -30,7 +30,6 @@ public class QuestGoal
         if (currentAmount >= requiredAmount)
         {
             Complete();
-            Debug.Log("Quest complete");
         }
     }
 
@@ -50,12 +49,7 @@ public class QuestGoal
      * Track the quest
      * Override for each the quest goal
      */
-    public virtual void TrackQuest()
-    {
-        throw new NotImplementedException();
-    }
-
-    public virtual void TrackQuest(int id)
+    public virtual void TrackQuest(GoalType goalType, int id)
     {
         throw new NotImplementedException();
     }

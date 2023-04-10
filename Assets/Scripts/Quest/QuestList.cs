@@ -12,7 +12,9 @@ public class QuestList : MonoBehaviour
     }
 
     public void InitQuestList() {
-        string[] firstTarget = {EnemyName.Zombunny};
+        
+        /* First Quest */
+        string[] firstTarget = {EnemyName.Zombunny, EnemyName.Hellepant};
         List<QuestGoal> list = new List<QuestGoal>();
         for (int i = 0; i < firstTarget.Length; i++)
         {
@@ -20,10 +22,21 @@ public class QuestList : MonoBehaviour
             KillQuestGoal killQuestGoal = new KillQuestGoal(EnemyName.GetEnemyId(target), target, 3);
             list.Add(killQuestGoal);
         }
+        
+        SpendQuestGoal spentQuestGoal = new SpendQuestGoal("Bullet", 50);
+        list.Add(spentQuestGoal);
 
         Quest addedQuest = new Quest("Kalahkan musuh!",
             "Ketika kamu ingin mengalahkan boss, kamu dihalangi oleh banyak zombie zombie aneh. Kalahkan mereka!", 500,
             list.ToArray());
+        
+        // /* Second Quest */
+        // list = new List<QuestGoal>();
+        // SpendQuestGoal spentQuestGoal = new SpendQuestGoal("Bullet", 1000);
+        // list.Add(spentQuestGoal);
+        // addedQuest = new Quest("Senjatamu Rusak??",
+        //     "Kamu ingin mengalahkan boss namun kamu tidak yakin dengan senjatamu", 100, list.ToArray());
+        //
         questList.Add(addedQuest);
     }
 
