@@ -8,6 +8,7 @@ TagManager:
   - Environment
   - Titan
   - Spawnpoint
+  - Pet
   layers:
   - Default
   - TransparentFX
