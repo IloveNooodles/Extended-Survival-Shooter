@@ -5,7 +5,7 @@ public class KillQuestGoal : QuestGoal
 {
     private int enemyId;
 
-    public KillQuestGoal(int enemyId, string[] objective, int requiredAmount) : base(GoalType.Kill, objective,
+    public KillQuestGoal(int enemyId, string objective, int requiredAmount) : base(GoalType.Kill, objective,
         requiredAmount)
     {
         this.enemyId = enemyId;

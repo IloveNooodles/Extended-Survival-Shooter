@@ -12,12 +12,17 @@ public class Quest
     public int goldReward;
     public QuestGoal[] questGoal;
 
-    public Quest(string title, string description, int reward, QuestGoal questGoal)
+    public Quest()
+    {
+        
+    }
+    
+    public Quest(string title, string description, int reward, QuestGoal[] questGoal)
     {
         this.isActive = false;
         this.title = title;
         this.description = description;
         this.goldReward = reward;
-        this.questGoal = this.questGoal;
+        this.questGoal = questGoal;
     }
 }

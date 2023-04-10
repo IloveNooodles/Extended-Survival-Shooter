@@ -9,7 +9,7 @@ public class PlayerShooting : MonoBehaviour
     public float range = 100f;
     
     float timer;
-    Ray shootRay;
+    Ray shootRay = new Ray();
     RaycastHit shootHit;
     int shootableMask;
     ParticleSystem gunParticles;
@@ -30,7 +30,7 @@ public class PlayerShooting : MonoBehaviour
     {
         /* Get player quest */
         pq = player.GetComponent<PlayerQuest>();
-        
+
         //GetMask
         shootableMask = LayerMask.GetMask("Shootable");
 
