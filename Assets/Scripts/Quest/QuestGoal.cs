@@ -30,6 +30,7 @@ public class QuestGoal
         if (currentAmount >= requiredAmount)
         {
             Complete();
+            Debug.Log("Quest complete");
         }
     }
 

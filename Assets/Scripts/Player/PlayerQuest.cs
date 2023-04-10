@@ -15,7 +15,7 @@ public class PlayerQuest : MonoBehaviour
     
     public void Track(int id)
     {
-        bool status = false;
+        bool status = true;
         int size = quest.questGoal.Length;
         for (int i = 0; i < size; i++)
         {
@@ -24,18 +24,20 @@ public class PlayerQuest : MonoBehaviour
         }
         
         questGiver.UpdateQuestWindow(quest);
-
-        if (status)
+        
+        if (status && quest.isActive)
         {
             CompleteQuest();
         }
-        
     }
     
     private void CompleteQuest()
     {
         QuestManager.CompletedQuest += 1;
         quest.isActive = false;
+
+        /* Reward */
+        GoldManager.Gold += quest.goldReward;
         
         /* Pindah scene ada button save apa gak */
         questGiver.SetNewQuest(QuestManager.CompletedQuest);

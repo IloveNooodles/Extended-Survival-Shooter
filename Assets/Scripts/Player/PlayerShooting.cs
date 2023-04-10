@@ -126,10 +126,16 @@ public class PlayerShooting : MonoBehaviour
         {
             //Lakukan raycast hit hace component Enemyhealth
             EnemyHealth enemyHealth = shootHit.collider.GetComponent<EnemyHealth>();
-
-            if (enemyHealth != null)
+            
+            if (enemyHealth)
             {
-                //Lakukan Take Damage
+                /* kalo udah mati biarin */
+                if (enemyHealth.IsDead())
+                {
+                    return;
+                }
+                
+                /* Lakukan Take Damage */
                 enemyHealth.TakeDamage(damagePerShot, shootHit.point);
                 if (enemyHealth.IsDead())
                 {
