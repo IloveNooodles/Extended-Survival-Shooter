@@ -13,13 +13,13 @@ public class PlayerQuest : MonoBehaviour
         questGiver.UpdateQuestWindow(quest);
     }
     
-    public void Track(GoalType goalType, int id)
+    public void Track(GoalType goalType, int id, int amount)
     {
         bool status = true;
         int size = quest.questGoal.Length;
         for (int i = 0; i < size; i++)
         {
-            quest.questGoal[i].TrackQuest(goalType, id);
+            quest.questGoal[i].TrackQuest(goalType, id, amount);
             status = status && quest.questGoal[i].GetQuestStatus();
         }
         

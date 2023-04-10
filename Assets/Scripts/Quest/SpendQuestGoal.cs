@@ -1,10 +1,17 @@
 ﻿public class SpendQuestGoal : QuestGoal
 {
-    public SpendQuestGoal(string objective, int requiredAmount) : base(GoalType.Spend, objective, requiredAmount){}
+    private int objectId;
 
-    public override void TrackQuest(GoalType goalType, int amount)
+    public SpendQuestGoal(string objective,int objectId, int requiredAmount) : base(GoalType.Spend, objective,
+        requiredAmount)
+    {
+        this.objectId = objectId;
+    }
+
+    public override void TrackQuest(GoalType goalType, int id, int amount)
     {
         if (goalType != GoalType.Spend) return;
+        if (this.objectId != id) return;
         this.currentAmount += amount;
         base.IsCompleted();
     }

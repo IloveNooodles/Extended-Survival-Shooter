@@ -1,7 +1,5 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-
 public class QuestManager : MonoBehaviour
 {
     public static int CompletedQuest;
@@ -17,3 +15,4 @@ public class QuestManager : MonoBehaviour
         text.text = $"Quest: ({CompletedQuest}/4)";
     }
 }
+

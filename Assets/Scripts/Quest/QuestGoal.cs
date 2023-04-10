@@ -49,7 +49,7 @@ public class QuestGoal
      * Track the quest
      * Override for each the quest goal
      */
-    public virtual void TrackQuest(GoalType goalType, int id)
+    public virtual void TrackQuest(GoalType goalType, int id, int amount)
     {
         throw new NotImplementedException();
     }

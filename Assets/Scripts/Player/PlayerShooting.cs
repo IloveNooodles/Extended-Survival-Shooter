@@ -139,7 +139,7 @@ public class PlayerShooting : MonoBehaviour
                 enemyHealth.TakeDamage(damagePerShot, shootHit.point);
                 if (enemyHealth.IsDead())
                 {
-                    pq.Track(GoalType.Kill, enemyHealth.Id);
+                    pq.Track(GoalType.Kill, enemyHealth.Id, 1);
                 }
             }
 
@@ -154,6 +154,6 @@ public class PlayerShooting : MonoBehaviour
 
         //Kurangi jumlah peluru
         NumberOfBulletsManager.numberOfBullets--;
-        pq.Track(GoalType.Spend, 1);
+        pq.Track(GoalType.Spend, ItemName.ItemId(ItemName.Bullet), 1);
     }
 }

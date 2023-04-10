@@ -23,7 +23,7 @@ public class QuestList : MonoBehaviour
             list.Add(killQuestGoal);
         }
         
-        SpendQuestGoal spentQuestGoal = new SpendQuestGoal("Bullet", 50);
+        SpendQuestGoal spentQuestGoal = new SpendQuestGoal(ItemName.Bullet, ItemName.ItemId(ItemName.Bullet), 50);
         list.Add(spentQuestGoal);
 
         Quest addedQuest = new Quest("Kalahkan musuh!",
