@@ -66,6 +66,7 @@ public class WizardHealth : EnemyHealth
         anim.SetBool("isDead", true);
 
         //Play Sound Dead
+        enemyAudio.volume = 1f;
         enemyAudio.clip = deathClip;
         enemyAudio.Play();
         

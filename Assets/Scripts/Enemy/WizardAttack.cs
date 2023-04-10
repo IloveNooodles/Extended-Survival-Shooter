@@ -7,9 +7,11 @@ public class WizardAttack : MonoBehaviour
     public bool isAttacking = false;
     public bool isPreparingAttack = false;
     public bool isFireballBeingShooted = false;
-    public float attackCooldown = 10f;
-    public int attackDamage = 10;
+    public float attackCooldown = 3f;
+    public int attackDamage = 5;
     public AudioClip fireballSound;
+    public int attackingRange = 50;
+    public float projectileSpeed = 0.5f;
     float timer;
     float attackTimer;
 
@@ -19,7 +21,6 @@ public class WizardAttack : MonoBehaviour
     PlayerHealth playerHealth;
     Vector3 fireballTarget;
     EnemyHealth enemyHealth;
-    int attackingRange = 25;
     Animator anim;
     AudioSource audioSource;
 
@@ -34,9 +35,6 @@ public class WizardAttack : MonoBehaviour
 
         //Set attack cooldown
         attackCooldown = attackCooldown + 7;
-
-        //Sementara buat testing
-        timer = attackCooldown;
     }
 
     void Update()
@@ -84,6 +82,7 @@ public class WizardAttack : MonoBehaviour
                 anim.SetBool("Attack", true);
 
                 //Play fireball sound
+                audioSource.volume = 0.2f;
                 audioSource.PlayOneShot(fireballSound);
             }
         }
@@ -136,7 +135,7 @@ public class WizardAttack : MonoBehaviour
         }
 
         if(isFireballBeingShooted){
-            fireball.transform.position += fireballTarget * 0.1f;
+            fireball.transform.position += fireballTarget * projectileSpeed;
         }
     }
 

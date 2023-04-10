@@ -693,7 +693,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -792,9 +792,11 @@ MonoBehaviour:
   isAttacking: 0
   isPreparingAttack: 0
   isFireballBeingShooted: 0
-  attackCooldown: 10
-  attackDamage: 10
+  attackCooldown: 5
+  attackDamage: 5
   fireballSound: {fileID: 8300000, guid: 9bc0f1de287902744857970acf2d9da9, type: 3}
+  attackingRange: 50
+  projectileSpeed: 0.3
 --- !u!114 &35817590811945012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -807,11 +809,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d04663424cd40e2459e11fde9682a2af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 500
+  startingHealth: 100
   currentHealth: 0
   sinkSpeed: 2.5
-  scoreValue: 10
-  goldValue: 1
+  scoreValue: 0
+  goldValue: 0
   deathClip: {fileID: 8300000, guid: ce6afac7621b7b0459c4a07a5df9dd1c, type: 3}
   healthBar: {fileID: 7208919559857718818}
   knockDownDuration: 20
@@ -966,7 +968,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 045e96176af69064798714948ecb8d3b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 045e96176af69064798714948ecb8d3b, type: 3}
@@ -1023,3 +1025,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wizardAttack: {fileID: 8102934435824181721}
   fireballDamage: 10
+  floorMaskInt: 6
