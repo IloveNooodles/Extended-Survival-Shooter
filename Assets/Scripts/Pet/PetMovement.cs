@@ -52,15 +52,21 @@ public class PetMovement : MonoBehaviour
         if (closestEnemy != null && distanceToPlayer < thresholdPlayerDistance)
         {
             Vector3 runTo = transform.position + ((transform.position - closestEnemy.transform.position) * offsetVector);
-            if (closestDistance < thresholdEnemyDistance) nav.SetDestination(runTo);
+            if (closestDistance < thresholdEnemyDistance)
+            {
+                nav.ResetPath();
+                nav.SetDestination(runTo);
+            }
             else
             {
                 // just stop there so its avoid pet to oscillate between player and enemy
+                nav.ResetPath();
                 nav.SetDestination(transform.position);
             }
         }
         else
         {
+            nav.ResetPath();
             nav.SetDestination(player.position);
         }
         

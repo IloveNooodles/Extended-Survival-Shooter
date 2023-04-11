@@ -91,7 +91,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: root|root|root|Running|root|Running
+      name: Move
       takeName: root|root|root|Running|root|Running
       internalID: -6186466995557294431
       firstFrame: 0
