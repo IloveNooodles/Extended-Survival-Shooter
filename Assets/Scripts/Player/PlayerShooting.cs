@@ -7,7 +7,9 @@ public class PlayerShooting : MonoBehaviour
     public int damagePerShot = 20;
     public float timeBetweenBullets = 0.15f;
     public float range = 100f;
-    
+
+
+    int buffDamage = 0;
     float timer;
     Ray shootRay = new Ray();
     RaycastHit shootHit;
@@ -38,6 +40,11 @@ public class PlayerShooting : MonoBehaviour
         gunParticles = GetComponent<ParticleSystem>();
         gunLine = GetComponent<LineRenderer>();
         gunLight = GetComponent<Light>();
+    }
+    
+    public void setBuffDamage(int buffDamage)
+    {
+        this.buffDamage = buffDamage;
     }
     
     
@@ -136,7 +143,7 @@ public class PlayerShooting : MonoBehaviour
                 }
                 
                 /* Lakukan Take Damage */
-                enemyHealth.TakeDamage(damagePerShot, shootHit.point);
+                enemyHealth.TakeDamage(damagePerShot+buffDamage, shootHit.point);
                 if (enemyHealth.IsDead())
                 {
                     pq.Track(GoalType.Kill, enemyHealth.Id, 1);

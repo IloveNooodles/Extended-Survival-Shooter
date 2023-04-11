@@ -10,29 +10,35 @@ public class PetMovement : MonoBehaviour
     private NavMeshAgent nav;
     private Transform player;
     private GameObject[] enemies;
+
+    Animator anim;
+
+    private float thresholdPlayerDistance = 15f;
+    private float thresholdEnemyDistance = 30f;
+    private float offsetVector = 5f;
+
+
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         nav = GetComponent<NavMeshAgent>();
+        anim = GetComponent<Animator>();
+
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
         
-         enemies = GameObject.FindGameObjectsWithTag("Enemy");
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Vector3 runTo = transform.position + ((transform.position - player.position) * 1);
-        // float distance = Vector3.Distance(transform.position, player.position);
-        // if (distance < 30) nav.SetDestination(runTo);
-        nav.SetDestination(player.position);
-        
         // get closest enemy
         GameObject closestEnemy = null;
         float closestDistance = Mathf.Infinity;
         Vector3 currentPosition = transform.position;
         foreach (GameObject enemy in enemies)
         {
-            if(enemy == null) continue;
+            if (enemy == null) continue;
             Vector3 directionToTarget = enemy.transform.position - currentPosition;
             float dSqrToTarget = directionToTarget.sqrMagnitude;
             if (dSqrToTarget < closestDistance)
@@ -41,28 +47,43 @@ public class PetMovement : MonoBehaviour
                 closestEnemy = enemy;
             }
         }
-        
-        // find distance between pet and player
-        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-        
-        // run away from closest enemy
-        if (closestEnemy != null && distanceToPlayer < 3)
-        {
-            Vector3 runTo = transform.position + ((transform.position - closestEnemy.transform.position) * 1);
-            float distance = Vector3.Distance(transform.position, closestEnemy.transform.position);
-            
-            // print
-            Debug.DrawLine(transform.position, closestEnemy.transform.position, Color.red);
-            Debug.DrawLine(transform.position, runTo, Color.green);
-            
-            //print distance and distance to player
-            Debug.Log("Distance to player: " + distanceToPlayer);
-            Debug.Log("Distance to enemy: " + distance);
-            
-            
-            
-            if (distance < 10) nav.SetDestination(runTo);
-        }
 
+        // find distance between pet and player
+        float distanceToPlayer = (player.position - currentPosition).sqrMagnitude;
+
+
+        // run away from closest enemy
+        if (closestEnemy != null && distanceToPlayer < thresholdPlayerDistance)
+        {
+            Vector3 runTo = transform.position +
+                            ((transform.position - closestEnemy.transform.position) * offsetVector);
+            if (closestDistance < thresholdEnemyDistance)
+            {
+                nav.ResetPath();
+                nav.SetDestination(runTo);
+            }
+            else
+            {
+                // just stop there so its avoid pet to oscillate between player and enemy
+                nav.ResetPath();
+                nav.SetDestination(transform.position);
+            }
+        }
+        else
+        {
+            nav.ResetPath();
+            nav.SetDestination(player.position);
+        }
+        
+        // check if pet is moving or not
+        if (nav.velocity.magnitude < 0.1f)
+        {
+            // change animation to idle
+            anim.SetBool("IsWalking", false);
+        }
+        else
+        {
+            anim.SetBool("IsWalking", true);
+        }
     }
 }

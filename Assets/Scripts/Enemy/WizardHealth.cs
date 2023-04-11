@@ -53,7 +53,18 @@ public class WizardHealth : EnemyHealth
             Death();
         }
     }
-    
+
+    public override void TakeDamage(int amount)
+    {
+        currentHealth -= amount;
+        healthBar.rectTransform.sizeDelta = new Vector2(healthBarLength * currentHealth / startingHealth, healthBar.rectTransform.rect.height);
+
+        if (currentHealth <= 0)
+        {
+            Death();
+        }
+    }
+
     public override void Death()
     {
         //set isdead
