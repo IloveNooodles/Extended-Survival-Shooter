@@ -149,7 +149,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Idle
+      name: Ti-Pche_Rig|AA_TPose
       takeName: Ti-Pche_Rig|AA_TPose
       internalID: 4284096341948019980
       firstFrame: 0

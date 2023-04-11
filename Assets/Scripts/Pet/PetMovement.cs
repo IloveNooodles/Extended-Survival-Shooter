@@ -10,19 +10,23 @@ public class PetMovement : MonoBehaviour
     private NavMeshAgent nav;
     private Transform player;
     private GameObject[] enemies;
-    
+
     Animator anim;
-    
+
     private float thresholdPlayerDistance = 15f;
     private float thresholdEnemyDistance = 30f;
     private float offsetVector = 5f;
+
+
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         nav = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
+
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
         
-         enemies = GameObject.FindGameObjectsWithTag("Enemy");
     }
 
     // Update is called once per frame
@@ -34,7 +38,7 @@ public class PetMovement : MonoBehaviour
         Vector3 currentPosition = transform.position;
         foreach (GameObject enemy in enemies)
         {
-            if(enemy == null) continue;
+            if (enemy == null) continue;
             Vector3 directionToTarget = enemy.transform.position - currentPosition;
             float dSqrToTarget = directionToTarget.sqrMagnitude;
             if (dSqrToTarget < closestDistance)
@@ -43,15 +47,16 @@ public class PetMovement : MonoBehaviour
                 closestEnemy = enemy;
             }
         }
-        
+
         // find distance between pet and player
         float distanceToPlayer = (player.position - currentPosition).sqrMagnitude;
-        
-        
+
+
         // run away from closest enemy
         if (closestEnemy != null && distanceToPlayer < thresholdPlayerDistance)
         {
-            Vector3 runTo = transform.position + ((transform.position - closestEnemy.transform.position) * offsetVector);
+            Vector3 runTo = transform.position +
+                            ((transform.position - closestEnemy.transform.position) * offsetVector);
             if (closestDistance < thresholdEnemyDistance)
             {
                 nav.ResetPath();
@@ -80,8 +85,5 @@ public class PetMovement : MonoBehaviour
         {
             anim.SetBool("IsWalking", true);
         }
-
     }
-    
-    
 }
