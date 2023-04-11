@@ -5,30 +5,40 @@ using UnityEngine.UI;
 
 public class QuestGiver : MonoBehaviour
 {
-    [SerializeField] private Quest quest;
-    [SerializeField] private PlayerQuest playerQuest;
+    [SerializeField] private QuestList questList;
+    [SerializeField] private Quest activeQuest = new Quest();
     [SerializeField] private GameObject questWindow;
     [SerializeField] private TMP_Text title;
     [SerializeField] private TMP_Text goal;
     [SerializeField] private TMP_Text reward;
     [SerializeField] private TMP_Text description;
-
-    public void Awake()
+    
+    public void SetNewQuest(int index)
     {
-        playerQuest = GetComponent<PlayerQuest>();
+        activeQuest = questList.GetQuestByIndex(index);
     }
 
-    public void UpdateQuest()
+    public void UpdateQuestWindow(Quest quest)
     {
+        this.activeQuest = quest;
         questWindow.SetActive(true);
-        title.text =  $"Quest\n{quest.title}";
-        description.text = $"Description\n{quest.description}";
-        goal.text = $"Goal\n{quest.questGoal}";
-        reward.text = $"Reward\n{quest.goldReward.ToString()} Gold";
+        title.text =  $"Quest: #{QuestManager.CompletedQuest + 1}" +
+                      $"\n{quest.title}";
+        description.text = $"\n{quest.description}";
+        string goalText = "Goal\n";
+        for (int i = 0; i < quest.questGoal.Length; i++)
+        {
+            goalText +=
+                $"{quest.questGoal[i].objective} {quest.questGoal[i].currentAmount.ToString()}/{quest.questGoal[i].requiredAmount.ToString()}\n";
+        }
+
+        goal.text = goalText;
+        reward.text = "Reward" +
+                      $"\n{quest.goldReward.ToString()} Gold";
     }
 
-    public void SetQuest()
-    {
-        playerQuest.quest = quest;
+    public Quest GiveQuestToUser(){
+        activeQuest.isActive = true;
+        return activeQuest;
     }
 }

@@ -1,17 +1,13 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-
 public class QuestManager : MonoBehaviour
 {
-    public static int CompletedQuest; 
-    [SerializeField] private QuestGiver _questGiver;
+    public static int CompletedQuest;
     [SerializeField] private Text text;
 
     private void Awake()
     {
         CompletedQuest = 0;
-        _questGiver.UpdateQuest();
     }
 
     private void Update()
@@ -19,3 +15,4 @@ public class QuestManager : MonoBehaviour
         text.text = $"Quest: ({CompletedQuest}/4)";
     }
 }
+

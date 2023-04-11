@@ -47,7 +47,7 @@ public class CutSceneManager : MonoBehaviour
     }
 
     IEnumerator endSecondCityCutScene(){
-        yield return new WaitForSeconds(13.3f);
+        yield return new WaitForSeconds(21.5f);
         secondCityCutScene.endCutScene();
     }
 

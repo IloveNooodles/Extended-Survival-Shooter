@@ -17,6 +17,7 @@ public class EnemyHealth : MonoBehaviour, IEnemy
     AudioSource enemyAudio;
     ParticleSystem hitParticles;
     CapsuleCollider capsuleCollider;
+
     bool isDead;
     bool isSinking;
     
@@ -33,19 +34,20 @@ public class EnemyHealth : MonoBehaviour, IEnemy
         //Set current health
         currentHealth = startingHealth;
         healthBarLength = healthBar.rectTransform.rect.width;
-        
-        if (this.name.Contains(EnemyName.Zombunny))
+
+        string enemyName = this.gameObject.name.ToLower();
+        if (enemyName.Contains(EnemyName.Zombunny))
         {
             Id = EnemyName.GetEnemyId(EnemyName.Zombunny);
-        } else if (this.name.Contains(EnemyName.Zombear))
+        } else if (enemyName.Contains(EnemyName.Zombear))
         {
-            Id =EnemyName.GetEnemyId(EnemyName.Zombear);
+            Id = EnemyName.GetEnemyId(EnemyName.Zombear);
         }
-        else if (this.name.Contains(EnemyName.Hellepant))
+        else if (enemyName.Contains(EnemyName.Hellepant))
         {
             Id = EnemyName.GetEnemyId(EnemyName.Hellepant);
         }
-        else if (this.name.Contains(EnemyName.Titan))
+        else if (enemyName.Contains(EnemyName.Titan))
         {
             Id = EnemyName.GetEnemyId(EnemyName.Titan);
         }
@@ -62,7 +64,7 @@ public class EnemyHealth : MonoBehaviour, IEnemy
         }
     }
 
-    public void TakeDamage(int amount, Vector3 hitPoint)
+    public virtual void TakeDamage(int amount, Vector3 hitPoint)
     {
         //Check jika dead
         if (isDead)
@@ -87,12 +89,17 @@ public class EnemyHealth : MonoBehaviour, IEnemy
             Death();
         }
     }
-    
-    public void Death()
+
+    public bool IsDead()
+    {
+        return isDead;
+    }
+
+    public virtual void Death()
     {
         //set isdead
         isDead = true;
-
+        
         //SetCapcollider ke trigger
         capsuleCollider.isTrigger = true;
 

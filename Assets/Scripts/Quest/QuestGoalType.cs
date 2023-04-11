@@ -2,5 +2,4 @@
 {
     Kill,
     Spend,
-    Boss,
 }

@@ -7,8 +7,7 @@ public class PlayerShooting : MonoBehaviour
     public int damagePerShot = 20;
     public float timeBetweenBullets = 0.15f;
     public float range = 100f;
-
-
+    
     float timer;
     Ray shootRay = new Ray();
     RaycastHit shootHit;
@@ -24,8 +23,14 @@ public class PlayerShooting : MonoBehaviour
     private bool isShooting = false;
     float reloadTime = 2f;
 
+    [SerializeField] private GameObject player;
+    private PlayerQuest pq;
+    
     void Awake()
     {
+        /* Get player quest */
+        pq = player.GetComponent<PlayerQuest>();
+
         //GetMask
         shootableMask = LayerMask.GetMask("Shootable");
 
@@ -121,11 +126,21 @@ public class PlayerShooting : MonoBehaviour
         {
             //Lakukan raycast hit hace component Enemyhealth
             EnemyHealth enemyHealth = shootHit.collider.GetComponent<EnemyHealth>();
-
-            if (enemyHealth != null)
+            
+            if (enemyHealth)
             {
-                //Lakukan Take Damage
+                /* kalo udah mati biarin */
+                if (enemyHealth.IsDead())
+                {
+                    return;
+                }
+                
+                /* Lakukan Take Damage */
                 enemyHealth.TakeDamage(damagePerShot, shootHit.point);
+                if (enemyHealth.IsDead())
+                {
+                    pq.Track(GoalType.Kill, enemyHealth.Id, 1);
+                }
             }
 
             //Set line end position ke hit position
@@ -139,5 +154,6 @@ public class PlayerShooting : MonoBehaviour
 
         //Kurangi jumlah peluru
         NumberOfBulletsManager.numberOfBullets--;
+        pq.Track(GoalType.Spend, ItemName.ItemId(ItemName.Bullet), 1);
     }
 }
