@@ -95,6 +95,25 @@ public class EnemyHealth : MonoBehaviour, IEnemy
         return isDead;
     }
 
+    public virtual void TakeDamage(int amount)
+    {
+        //Check jika dead
+        if (isDead)
+            return;
+
+        //play audio
+        enemyAudio.Play();
+        
+        
+        currentHealth -= amount;
+        healthBar.rectTransform.sizeDelta = new Vector2(healthBarLength * currentHealth / startingHealth, healthBar.rectTransform.rect.height);
+        //Dead jika health <= 0
+        if (currentHealth <= 0)
+        {
+            Death();
+        }
+    }
+
     public virtual void Death()
     {
         //set isdead
