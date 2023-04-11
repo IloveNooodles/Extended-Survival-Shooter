@@ -1,10 +1,10 @@
 ﻿public class EnemyName
 {
-    public static string Zombunny = "Zombunny";
-    public static string Zombear = "Zombear";
-    public static string Hellepant = "Hellepant";
-    public static string Titan = "Titan";
-    public static string Wizard = "Wizard";
+    public static string Zombunny = "zombunny";
+    public static string Zombear = "zombear";
+    public static string Hellepant = "hellephant";
+    public static string Titan = "titan";
+    public static string Wizard = "wizard";
 
     public static int GetEnemyId(string name)
     {
