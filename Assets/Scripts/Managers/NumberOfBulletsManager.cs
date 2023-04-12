@@ -8,7 +8,6 @@ public class NumberOfBulletsManager : MonoBehaviour
     public static int numberOfBullets = 0;
     Text text;
 
-
     void Awake()
     {
         text = GetComponent<Text>();
