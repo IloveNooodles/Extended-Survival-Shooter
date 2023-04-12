@@ -8,8 +8,15 @@ public class Gun : MonoBehaviour, IWeapon
     public int damage = 10;
     public float attackSpeed = 1f;
 
+    
+    int buffDamage = 0;
     public void Attack()
     {
         Debug.Log(weaponName + " Attack");
+    }
+    
+    public void setBuff(int buffDamage)
+    {
+        this.buffDamage = buffDamage;
     }
 }
