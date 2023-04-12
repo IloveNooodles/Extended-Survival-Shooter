@@ -20,8 +20,7 @@ public class Gun : MonoBehaviour, IWeapon
         numberOfBullets = MAX_NUM_BULLET;
     }
 
-    
-    int buffDamage = 0;
+
     public void Attack()
     {
         Debug.Log(weaponName + " Attack");

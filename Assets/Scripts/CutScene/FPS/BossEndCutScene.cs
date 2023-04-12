@@ -11,14 +11,19 @@ public class BossEndCutScene : MonoBehaviour
     public GameObject player;
     bool isCutScenePlaying = false;
 
-    GameObject cutSceneClip;
-    PlayableDirector playableDirector;
+    public GameObject noArmCutScene;
+    public GameObject noLeftArmCutScene;
+    public GameObject noRightArmCutScene;
+    public GameObject bothArmsCutScene;
+    PlayableDirector endingCutScene;
+
     // Start is called before the first frame update
     void Start()
     {
-        cutSceneClip = gameObject.transform.GetChild(0).gameObject;
-        playableDirector = cutSceneClip.GetComponent<PlayableDirector>();
-        cutSceneClip.SetActive(false);
+        noArmCutScene.SetActive(false);
+        noLeftArmCutScene.SetActive(false);
+        noRightArmCutScene.SetActive(false);
+        bothArmsCutScene.SetActive(false);
     }
     public void startCutScene(){
         cutSceneManager.startCutScene();
@@ -27,8 +32,23 @@ public class BossEndCutScene : MonoBehaviour
         }
         boss.SetActive(false);
         player.SetActive(false);
-        cutSceneClip.SetActive(true);
-        playableDirector.Play();
+        if(TitanHealth.leftArmHealth <= 0 && TitanHealth.rightArmHealth <= 0){
+            noArmCutScene.SetActive(true);
+            endingCutScene = noArmCutScene.GetComponent<PlayableDirector>();
+            endingCutScene.Play();
+        }else if(TitanHealth.leftArmHealth <= 0){
+            noLeftArmCutScene.SetActive(true);
+            endingCutScene = noLeftArmCutScene.GetComponent<PlayableDirector>();
+            endingCutScene.Play();
+        }else if(TitanHealth.rightArmHealth <= 0){
+            noRightArmCutScene.SetActive(true);
+            endingCutScene = noRightArmCutScene.GetComponent<PlayableDirector>();
+            endingCutScene.Play();
+        }else{
+            bothArmsCutScene.SetActive(true);
+            endingCutScene = bothArmsCutScene.GetComponent<PlayableDirector>();
+            endingCutScene.Play();
+        }
     }
 
     public void endCutScene(){

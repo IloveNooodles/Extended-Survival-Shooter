@@ -10,7 +10,7 @@ public class TitanHealth : MonoBehaviour
     public GameObject noRightArmTitan;
     public GameObject noArmTitan;
     public float destroyingArmHealthPercentage = 0.3f;
-    static public int startingHealth = 100;
+    static public int startingHealth = 500;
     static public int startingLeftArmHealth = 200;
     static public int startingRightArmHealth = 200;
     static public int currentHealth = int.MinValue;
