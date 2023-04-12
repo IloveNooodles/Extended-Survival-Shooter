@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
 
 
@@ -70,6 +72,21 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealth <= 0 && !isDead)
         {
             Death();
+        }
+    }
+
+    public void Heal(int amount)
+    {
+        // increment health until it reaches its startingHealth
+        if (currentHealth + amount <= startingHealth)
+        {
+            currentHealth += amount;
+            healthSlider.value = currentHealth;
+        }
+        else
+        {
+            currentHealth = startingHealth;
+            healthSlider.value = currentHealth;
         }
     }
 

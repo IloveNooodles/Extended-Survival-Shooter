@@ -17,6 +17,8 @@ public class EnemyHealth : MonoBehaviour, IEnemy
     AudioSource enemyAudio;
     ParticleSystem hitParticles;
     CapsuleCollider capsuleCollider;
+    private GameObject player;
+    private PlayerQuest playerQuest;
 
     bool isDead;
     bool isSinking;
@@ -30,7 +32,9 @@ public class EnemyHealth : MonoBehaviour, IEnemy
         enemyAudio = GetComponent<AudioSource>();
         hitParticles = GetComponentInChildren<ParticleSystem>();
         capsuleCollider = GetComponent<CapsuleCollider>();
-    
+        player = GameObject.FindWithTag("Player");
+        playerQuest = player.GetComponent<PlayerQuest>();
+        
         //Set current health
         currentHealth = startingHealth;
         healthBarLength = healthBar.rectTransform.rect.width;
@@ -51,6 +55,8 @@ public class EnemyHealth : MonoBehaviour, IEnemy
         {
             Id = EnemyName.GetEnemyId(EnemyName.Titan);
         }
+
+        goldValue += Id;
     }
 
 
@@ -95,6 +101,25 @@ public class EnemyHealth : MonoBehaviour, IEnemy
         return isDead;
     }
 
+    public virtual void TakeDamage(int amount)
+    {
+        //Check jika dead
+        if (isDead)
+            return;
+
+        //play audio
+        enemyAudio.Play();
+        
+        
+        currentHealth -= amount;
+        healthBar.rectTransform.sizeDelta = new Vector2(healthBarLength * currentHealth / startingHealth, healthBar.rectTransform.rect.height);
+        //Dead jika health <= 0
+        if (currentHealth <= 0)
+        {
+            Death();
+        }
+    }
+
     public virtual void Death()
     {
         //set isdead
@@ -128,6 +153,7 @@ public class EnemyHealth : MonoBehaviour, IEnemy
         isSinking = true;
         ScoreManager.score += scoreValue;
         GoldManager.Gold += goldValue;
+        playerQuest.Track(GoalType.Spend,  ItemName.ItemId(ItemName.Gold), goldValue);
         Destroy(gameObject, 2f);
     }
 }

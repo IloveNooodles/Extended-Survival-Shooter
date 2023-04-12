@@ -2,7 +2,7 @@
 {
     private int objectId;
 
-    public SpendQuestGoal(string objective,int objectId, int requiredAmount) : base(GoalType.Spend, objective,
+    public SpendQuestGoal(int objectId, string objective, int requiredAmount) : base(GoalType.Spend, objective,
         requiredAmount)
     {
         this.objectId = objectId;
