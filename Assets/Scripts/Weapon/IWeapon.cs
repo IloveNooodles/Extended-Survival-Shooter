@@ -4,7 +4,10 @@ using UnityEngine;
 
 public interface IWeapon
 {
-    void Attack();
+    string weaponName { get; set; }
+    int numberOfBullets { get; set; }
 
-    void setBuff(int buffDamage);
+    void Attack();
+    void Reload();
+    void setBuffDamage(int buffDamage);
 }

@@ -4,18 +4,31 @@ using UnityEngine;
 
 public class Sword : MonoBehaviour, IWeapon
 {
-    public string weaponName = "Sword";
     public int damage = 10;
+    public int buffDamage = 0;
     public float attackSpeed = 1f;
-    
-    int buffDamage = 0;
+    public float range = 20f;
+
+    public string weaponName { get; set; }
+    public int numberOfBullets { get; set; }
+
+    public void Awake()
+    {
+        weaponName = "Sword";
+        numberOfBullets = 0;
+    }
 
     public void Attack()
     {
         Debug.Log(weaponName + " Attack");
     }
-    
-    public void setBuff(int buffDamage)
+
+    public void Reload()
+    {
+        Debug.Log(weaponName + " Reload");
+    }
+
+    public void setBuffDamage(int buffDamage)
     {
         this.buffDamage = buffDamage;
     }

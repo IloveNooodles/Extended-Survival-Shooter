@@ -4,6 +4,7 @@ public class WeaponManager : MonoBehaviour
 {
     [SerializeField] public GameObject[] weaponsPrefab;
     public int currentWeaponIndex = 0;
+    public static IWeapon currentWeapon;
 
     public void Awake()
     {
@@ -16,6 +17,7 @@ public class WeaponManager : MonoBehaviour
     public void Start()
     {
         weaponsPrefab[currentWeaponIndex].SetActive(true);
+        currentWeapon = weaponsPrefab[currentWeaponIndex].GetComponent<IWeapon>();
     }
 
     public void Update()
@@ -43,6 +45,24 @@ public class WeaponManager : MonoBehaviour
 
         weaponsPrefab[currentWeaponIndex].SetActive(false);
         weaponsPrefab[index].SetActive(true);
+        currentWeapon = weaponsPrefab[index].GetComponent<IWeapon>();
+
+        WeaponNameManager.weaponName = currentWeapon.weaponName;
+        NumberOfBulletsManager.numberOfBullets = currentWeapon.numberOfBullets;
+
         currentWeaponIndex = index;
+    }
+
+    public static void Attack()
+    {
+        currentWeapon.Attack();
+        NumberOfBulletsManager.numberOfBullets = currentWeapon.numberOfBullets;
+    }
+
+    public static void Reload()
+    {
+        if (currentWeapon.weaponName == "Sword") return; // Sword doesn't have bullets
+        currentWeapon.Reload();
+        NumberOfBulletsManager.numberOfBullets = currentWeapon.numberOfBullets;
     }
 }

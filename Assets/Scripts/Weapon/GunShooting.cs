@@ -2,14 +2,8 @@
 using System.Collections;
 using UnityEngine;
 
-public class PlayerShooting : MonoBehaviour
+public class GunShooting : MonoBehaviour
 {
-    public int damagePerShot = 20;
-    public float timeBetweenBullets = 0.15f;
-    public float range = 100f;
-
-
-    int buffDamage = 0;
     float timer;
     Ray shootRay = new Ray();
     RaycastHit shootHit;
@@ -23,13 +17,18 @@ public class PlayerShooting : MonoBehaviour
     private bool reloadKeyPressed = false;
     bool isReloading = false;
     private bool isShooting = false;
-    float reloadTime = 2f;
+
+    [SerializeField] private GameObject gun;
+    private Gun gunScript;
 
     [SerializeField] private GameObject player;
     private PlayerQuest pq;
     
     void Awake()
     {
+        //Get Gun Script
+        gunScript = gun.GetComponent<Gun>();
+
         /* Get player quest */
         pq = player.GetComponent<PlayerQuest>();
 
@@ -40,14 +39,7 @@ public class PlayerShooting : MonoBehaviour
         gunParticles = GetComponent<ParticleSystem>();
         gunLine = GetComponent<LineRenderer>();
         gunLight = GetComponent<Light>();
-    }
-    
-    public void setBuffDamage(int buffDamage)
-    {
-        this.buffDamage = buffDamage;
-    }
-    
-    
+    }    
     
     private void FixedUpdate()
     {
@@ -65,8 +57,8 @@ public class PlayerShooting : MonoBehaviour
 
     IEnumerator Reload()
     {
-        yield return new WaitForSeconds(reloadTime);
-        NumberOfBulletsManager.numberOfBullets = NumberOfBulletsManager.MAX_NUM_BULLET;
+        yield return new WaitForSeconds(gunScript.reloadTime);
+        WeaponManager.Reload();
         isReloading = false;
         gunReloadAudio.Stop();
     }
@@ -79,7 +71,7 @@ public class PlayerShooting : MonoBehaviour
         }
         
         timer += Time.deltaTime;
-        isShooting = Input.GetButton("Fire1") && timer >= timeBetweenBullets && Time.timeScale != 0 &&
+        isShooting = Input.GetButton("Fire1") && timer >= gunScript.attackSpeed && Time.timeScale != 0 &&
                      NumberOfBulletsManager.numberOfBullets > 0 && !isReloading;
         
         //if user press r then reload
@@ -89,7 +81,7 @@ public class PlayerShooting : MonoBehaviour
             return;
         }
         
-        if (timer >= timeBetweenBullets * effectsDisplayTime)
+        if (timer >= gunScript.attackSpeed * effectsDisplayTime)
         {
             DisableEffects();
         }
@@ -129,7 +121,7 @@ public class PlayerShooting : MonoBehaviour
         shootRay.direction = transform.forward;
 
         //Lakukan raycast jika mendeteksi id nemy hit apapun
-        if (Physics.Raycast(shootRay, out shootHit, range, shootableMask))
+        if (Physics.Raycast(shootRay, out shootHit, gunScript.range, shootableMask))
         {
             //Lakukan raycast hit hace component Enemyhealth
             EnemyHealth enemyHealth = shootHit.collider.GetComponent<EnemyHealth>();
@@ -143,7 +135,7 @@ public class PlayerShooting : MonoBehaviour
                 }
                 
                 /* Lakukan Take Damage */
-                enemyHealth.TakeDamage(damagePerShot+buffDamage, shootHit.point);
+                enemyHealth.TakeDamage(gunScript.damage+gunScript.buffDamage, shootHit.point);
                 if (enemyHealth.IsDead())
                 {
                     pq.Track(GoalType.Kill, enemyHealth.Id, 1);
@@ -156,11 +148,11 @@ public class PlayerShooting : MonoBehaviour
         else
         {
             //set line end position ke range freom barrel
-            gunLine.SetPosition(1, shootRay.origin + shootRay.direction * range);
+            gunLine.SetPosition(1, shootRay.origin + shootRay.direction * gunScript.range);
         }
 
         //Kurangi jumlah peluru
-        NumberOfBulletsManager.numberOfBullets--;
+        WeaponManager.Attack();
         pq.Track(GoalType.Spend, ItemName.ItemId(ItemName.Bullet), 1);
     }
 }

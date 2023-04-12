@@ -4,19 +4,37 @@ using UnityEngine;
 
 public class Bow : MonoBehaviour, IWeapon
 {
-    public string weaponName = "Bow";
+    const int MAX_NUM_BULLET = 30;
     public int damage = 10;
+    public int buffDamage = 0;
     public float attackSpeed = 1f;
     
     
-    int buffDamage = 0;
+    public float reloadTime = 2f;
+    public float range = 100f;
+
+    public string weaponName { get; set; }
+    public int numberOfBullets { get; set; }
+
+    public void Awake()
+    {
+        weaponName = "Bow";
+        numberOfBullets = 30;
+    }
 
     public void Attack()
     {
         Debug.Log(weaponName + " Attack");
+        numberOfBullets--;
     }
-    
-    public void setBuff(int buffDamage)
+
+    public void Reload()
+    {
+        Debug.Log(weaponName + " Reload");
+        numberOfBullets = 30;
+    }
+
+    public void setBuffDamage(int buffDamage)
     {
         this.buffDamage = buffDamage;
     }
