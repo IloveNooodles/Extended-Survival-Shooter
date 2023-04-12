@@ -8,6 +8,8 @@ public class Bow : MonoBehaviour, IWeapon
     public int damage = 10;
     public int buffDamage = 0;
     public float attackSpeed = 1f;
+    
+    
     public float reloadTime = 2f;
     public float range = 100f;
 
