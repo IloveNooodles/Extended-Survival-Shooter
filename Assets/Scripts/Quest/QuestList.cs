@@ -5,10 +5,22 @@ using UnityEngine;
 
 public class QuestList : MonoBehaviour
 {
+    private static QuestList instance;
     private static List<Quest> questList = new List<Quest>();
 
     public void Awake()
     {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+            instance = null;
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        
         InitQuestList();
     }
 
@@ -58,7 +70,7 @@ public class QuestList : MonoBehaviour
         
         list.Add(spentQuestGoal);
         addedQuest = new Quest(secondQuestTitle,
-            secondQuestDescription, 200, list.ToArray());
+            secondQuestDescription, secondQuestReward, list.ToArray());
         
         questList.Add(addedQuest);
         
