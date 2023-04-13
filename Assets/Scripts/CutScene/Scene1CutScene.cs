@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 
-public class Level1CutScene : MonoBehaviour
+public class Scene1CutScene : MonoBehaviour
 {
     public GameObject player;
     public GameObject mainCamera;

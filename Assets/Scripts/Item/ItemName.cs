@@ -5,8 +5,8 @@
 
     public static int ItemId(string name)
     {
-        if (name == Gold) return 0;
-        if (name == Bullet) return 1;
+        if (name == Gold) return 1;
+        if (name == Bullet) return 2;
         
         return 0;
     }

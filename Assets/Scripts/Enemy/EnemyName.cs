@@ -8,11 +8,11 @@
 
     public static int GetEnemyId(string name)
     {
-        if (name == Zombunny) return 0;
-        if (name == Zombear) return 1;
-        if (name == Hellepant) return 2;
-        if (name == Titan) return 3;
-        if (name == Wizard) return 4;
+        if (name == Zombunny) return 1;
+        if (name == Zombear) return 2;
+        if (name == Hellepant) return 3;
+        if (name == Titan) return 4;
+        if (name == Wizard) return 5;
 
         return 0;
     }
