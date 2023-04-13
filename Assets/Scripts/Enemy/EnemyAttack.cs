@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 
 public class EnemyAttack : MonoBehaviour
@@ -10,9 +11,11 @@ public class EnemyAttack : MonoBehaviour
     GameObject player;
     PlayerHealth playerHealth;
     EnemyHealth enemyHealth;
-    bool playerInRange, petInRange;
+    bool playerInRange;
     float timer;
+    private float petTimer;
 
+    GameObject petInRange;
 
     void Awake()
     {
@@ -38,11 +41,10 @@ public class EnemyAttack : MonoBehaviour
         {
             playerInRange = true;
         }
-        
-        //Set pet in range
-        if (other.gameObject.tag.Equals("Pet") && other.isTrigger == false)
+
+        if (other.gameObject == PetManager.currentPet)
         {
-            petInRange = true;
+            petInRange = other.gameObject;
         }
     }
 
@@ -54,11 +56,10 @@ public class EnemyAttack : MonoBehaviour
         {
             playerInRange = false;
         }
-        
-        //Set pet jika tidak dalam range
-        if (other.gameObject.tag.Equals("Pet"))
+
+        if (other.gameObject == PetManager.currentPet)
         {
-            petInRange = false;
+            petInRange = null;
         }
     }
 
@@ -66,10 +67,16 @@ public class EnemyAttack : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
+        petTimer += Time.deltaTime;
 
-        if (timer >= timeBetweenAttacks && (playerInRange || petInRange) && enemyHealth.currentHealth > 0)
+        if (timer >= timeBetweenAttacks && playerInRange && enemyHealth.currentHealth > 0)
         {
             Attack();
+        }
+
+        if (petTimer >= timeBetweenAttacks && petInRange != null && enemyHealth.currentHealth > 0)
+        {
+           AttackPet();
         }
 
         //mentrigger animasi PlayerDead jika darah player kurang dari sama dengan 0
@@ -90,15 +97,15 @@ public class EnemyAttack : MonoBehaviour
         {
             playerHealth.TakeDamage(attackDamage);
         }
-        
-        GameObject pet = GameObject.FindGameObjectWithTag("Pet");
-        if (petInRange && pet != null)
+    }
+
+    void AttackPet()
+    {
+        petTimer = 0f;
+        PetHealth petHealth = petInRange.GetComponent<PetHealth>();
+        if (petHealth.currentHealth > 0)
         {
-            PetHealth petHealth = pet.GetComponent<PetHealth>();
-            if (petHealth.currentHealth > 0)
-            {
-                petHealth.TakeDamage(attackDamage);
-            }
+            petHealth.TakeDamage(attackDamage);
         }
     }
 }
