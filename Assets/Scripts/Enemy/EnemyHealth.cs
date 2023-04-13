@@ -153,7 +153,7 @@ public class EnemyHealth : MonoBehaviour, IEnemy
         isSinking = true;
         ScoreManager.score += scoreValue;
         GoldManager.Gold += goldValue;
-        playerQuest.Track(GoalType.Spend,  ItemName.ItemId(ItemName.Gold), goldValue);
+          playerQuest.Track(GoalType.Spend,  ItemName.ItemId(ItemName.Gold), goldValue);
         Destroy(gameObject, 2f);
     }
 }

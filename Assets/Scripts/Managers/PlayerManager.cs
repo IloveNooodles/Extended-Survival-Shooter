@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    public static string name;
+    public static string PlayerName;
 
     private void Awake()
     {
@@ -12,7 +12,7 @@ public class PlayerManager : MonoBehaviour
 
     private static void SetName(string newName)
     {
-        name = newName;
+        PlayerName = newName;
     }
     
 }

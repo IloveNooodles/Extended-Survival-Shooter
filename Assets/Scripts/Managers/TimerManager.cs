@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class TimerManager : MonoBehaviour
 {
+    private static TimerManager instance;
     public static float time;
     private bool isActive;
 
@@ -12,9 +13,19 @@ public class TimerManager : MonoBehaviour
 
     private void Awake()
     {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+            time = 0;
+            isActive = true;
+        }
+        
         text = GetComponent<Text>();
-        time = 0;
-        isActive = true;
     }
 
     public void stopTimer()
