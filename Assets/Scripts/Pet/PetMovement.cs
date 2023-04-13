@@ -7,6 +7,8 @@ using UnityEngine.AI;
 public class PetMovement : MonoBehaviour
 {
     // Start is called before the first frame update
+    public bool isAvoidingEnemy = true;
+    
     private NavMeshAgent nav;
     private Transform player;
     private GameObject[] enemies;
@@ -16,7 +18,7 @@ public class PetMovement : MonoBehaviour
     private float thresholdPlayerDistance = 15f;
     private float thresholdEnemyDistance = 30f;
     private float offsetVector = 5f;
-
+    
 
 
     void Start()
@@ -31,6 +33,35 @@ public class PetMovement : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+      
+        
+
+        if (isAvoidingEnemy)
+        {
+            AvoidEnemy();
+        }
+        else
+        {
+            nav.SetDestination(player.position);
+        }
+        
+       
+        
+        // check if pet is moving or not
+        if (nav.velocity.magnitude < 0.1f)
+        {
+            // change animation to idle
+            anim.SetBool("IsWalking", false);
+        }
+        else
+        {
+            anim.SetBool("IsWalking", true);
+        }
+        
+    }
+
+    void AvoidEnemy()
     {
         // get closest enemy
         GameObject closestEnemy = null;
@@ -74,16 +105,8 @@ public class PetMovement : MonoBehaviour
             nav.ResetPath();
             nav.SetDestination(player.position);
         }
-        
-        // check if pet is moving or not
-        if (nav.velocity.magnitude < 0.1f)
-        {
-            // change animation to idle
-            anim.SetBool("IsWalking", false);
-        }
-        else
-        {
-            anim.SetBool("IsWalking", true);
-        }
     }
+    
+   
+   
 }

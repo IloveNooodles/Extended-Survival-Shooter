@@ -10,7 +10,7 @@ public class EnemyAttack : MonoBehaviour
     GameObject player;
     PlayerHealth playerHealth;
     EnemyHealth enemyHealth;
-    bool playerInRange;
+    bool playerInRange, petInRange;
     float timer;
 
 
@@ -38,6 +38,12 @@ public class EnemyAttack : MonoBehaviour
         {
             playerInRange = true;
         }
+        
+        //Set pet in range
+        if (other.gameObject.tag.Equals("Pet") && other.isTrigger == false)
+        {
+            petInRange = true;
+        }
     }
 
     //Callback jika ada object yang keluar dari trigger
@@ -48,6 +54,12 @@ public class EnemyAttack : MonoBehaviour
         {
             playerInRange = false;
         }
+        
+        //Set pet jika tidak dalam range
+        if (other.gameObject.tag.Equals("Pet"))
+        {
+            petInRange = false;
+        }
     }
 
 
@@ -55,7 +67,7 @@ public class EnemyAttack : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if (timer >= timeBetweenAttacks && playerInRange && enemyHealth.currentHealth > 0)
+        if (timer >= timeBetweenAttacks && (playerInRange || petInRange) && enemyHealth.currentHealth > 0)
         {
             Attack();
         }
@@ -74,9 +86,19 @@ public class EnemyAttack : MonoBehaviour
         timer = 0f;
 
         //Taking Damage
-        if (playerHealth.currentHealth > 0)
+        if (playerInRange && playerHealth.currentHealth > 0)
         {
             playerHealth.TakeDamage(attackDamage);
+        }
+        
+        GameObject pet = GameObject.FindGameObjectWithTag("Pet");
+        if (petInRange && pet != null)
+        {
+            PetHealth petHealth = pet.GetComponent<PetHealth>();
+            if (petHealth.currentHealth > 0)
+            {
+                petHealth.TakeDamage(attackDamage);
+            }
         }
     }
 }

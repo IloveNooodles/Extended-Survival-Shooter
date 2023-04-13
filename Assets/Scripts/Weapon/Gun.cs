@@ -21,7 +21,6 @@ public class Gun : MonoBehaviour, IWeapon
     }
 
     
-    int buffDamage = 0;
     public void Attack()
     {
         Debug.Log(weaponName + " Attack");

@@ -39,8 +39,8 @@ public class EnemyMovement : MonoBehaviour
                 float distanceToPlayer = (player.position - transform.position).sqrMagnitude;
                 float distanceToPet = (pet.position - transform.position).sqrMagnitude;
                 
-                if(distanceToPlayer < distanceToPet)
-                    nav.SetDestination(player.position);
+                if(distanceToPlayer > distanceToPet)
+                    nav.SetDestination(pet.position);
             }
         }
         else //Stop moving
