@@ -116,6 +116,7 @@ public class EnemyHealth : MonoBehaviour, IEnemy
         //Dead jika health <= 0
         if (currentHealth <= 0)
         {
+            
             Death();
         }
     }
@@ -127,6 +128,7 @@ public class EnemyHealth : MonoBehaviour, IEnemy
         
         //SetCapcollider ke trigger
         capsuleCollider.isTrigger = true;
+        playerQuest.Track(GoalType.Kill, Id, 1);
 
         //trigger play animation Dead
         anim.SetTrigger("Dead");
