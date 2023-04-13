@@ -5,7 +5,6 @@ public class PlayerMovement : MonoBehaviour
     Vector3 movement;
     float h; //input horizontal movement
     float v; //input vertical movement
-    bool isJumping = false;
     Animator anim;
     Rigidbody playerRigidbody;
     Transform playerTransform;
@@ -34,12 +33,6 @@ public class PlayerMovement : MonoBehaviour
 
         //Mendapatkan nilai input vertical (-1,0,1)
         v = Input.GetAxisRaw("Vertical");
-
-        //Mendapatkan nilai input jump
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            isJumping = true;
-        }
     }
 
     private void FixedUpdate()
@@ -60,13 +53,6 @@ public class PlayerMovement : MonoBehaviour
 
         //Move to position
         playerRigidbody.MovePosition(transform.position + movement);
-
-        //Jump
-        if (isJumping)
-        {
-            playerRigidbody.AddForce(Vector3.up * 5, ForceMode.Impulse);
-            isJumping = false;
-        }
     }
 
     void Turning()

@@ -5547,7 +5547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27c63be2a8918c741863160b9d9da122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagePerShot: 20
-  timeBetweenBullets: 0.15
-  range: 100
-  timer: 0
+  gunAudio: {fileID: 0}
+  gunReloadAudio: {fileID: 0}
+  gun: {fileID: 0}
+  player: {fileID: 0}
