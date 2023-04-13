@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class Sword : MonoBehaviour, IWeapon
 {
-    public int damage = 10;
+    public int damage = 5;
     public int buffDamage = 0;
     public float attackSpeed = 1f;
-    public float range = 20f;
 
     public string weaponName { get; set; }
     public int numberOfBullets { get; set; }

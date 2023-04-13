@@ -19,9 +19,10 @@ public class PetCast : MonoBehaviour
     public int healEffect = 0;
 
     public int buffEffect = 0;
+    
 
 
-    NavMeshAgent nav;
+
     private Animator anim;
 
     private GameObject player;
@@ -47,8 +48,7 @@ public class PetCast : MonoBehaviour
         auraEndTime = psAura.main.duration;
         
         anim = GetComponent<Animator>();
-        nav = GetComponent<NavMeshAgent>();
-        
+
         if (castTime < 0.1f)
         {
             
@@ -62,11 +62,12 @@ public class PetCast : MonoBehaviour
             
             PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
             playerHealth.Heal(healEffect);
-            
-            
-            // TODO: buff damage waiting for weapon system
-            // PlayerShooting playerShooting = player.GetComponent<PlayerShooting>();
-            // playerShooting.setBuffDamage(buffEffect);
+
+
+            if (WeaponManager.currentWeapon != null)
+            {
+                WeaponManager.currentWeapon.setBuffDamage(buffEffect);
+            }
             
         }
         else
@@ -136,8 +137,7 @@ public class PetCast : MonoBehaviour
                                 health.TakeDamage(attackDamage);
                             }
                         }
-
-
+                        
                         Destroy(cast, castEndTime);
                         Destroy(aura, auraEndTime);
                     }
@@ -159,9 +159,8 @@ public class PetCast : MonoBehaviour
             playerHealth.Heal(healEffect);
             
             anim.SetTrigger("Cast");
-            // TODO: buff damage waiting for weapon system
-            // PlayerShooting playerShooting = player.GetComponent<PlayerShooting>();
-            // playerShooting.setBuffDamage(buffEffect);
+            
+            
 
             // destroy after particle time
             Destroy(cast, castEndTime);

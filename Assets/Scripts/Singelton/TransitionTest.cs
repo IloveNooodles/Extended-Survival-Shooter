@@ -8,15 +8,15 @@ public class TransitionTest : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (SceneManager.GetActiveScene().buildIndex == 1)
-            {
-                SceneManager.LoadScene(2);
-                
-            }
-            else
-            {
-                SceneManager.LoadScene(1);
-            }
+            // if (SceneManager.GetActiveScene().buildIndex == 1)
+            // {
+            //     SceneManager.LoadScene(2);
+            //     
+            // }
+            // else
+            // {
+            //     SceneManager.LoadScene(1);
+            // }
         }
     }
 }

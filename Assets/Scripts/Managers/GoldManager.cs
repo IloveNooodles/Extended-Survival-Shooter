@@ -6,7 +6,7 @@ public class GoldManager : MonoBehaviour
 {
     private static GoldManager _instance;
     public static int Gold;
-    [SerializeField] private Text text;
+    private Text text;
 
     private void Awake()
     {
@@ -20,6 +20,7 @@ public class GoldManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             Gold = 0;
         }
+        text = GetComponent <Text> ();
     }
 
     private void Update()

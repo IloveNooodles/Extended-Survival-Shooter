@@ -10,10 +10,16 @@ public class PetManager : MonoBehaviour
     public GameObject summoningMagic;
 
     private GameObject[] pets;
-    Slider petHeartSlider; 
+    public static GameObject currentPet;
+    Slider petHeartSlider;
+
+    private GameObject player;
+    
 
     void Awake()
     {
+        
+        player = GameObject.FindWithTag("Player");
         petHeartSlider = GameObject.Find("PetHeartSlider").GetComponent<Slider>();
         pets = new GameObject[petsPrefab.Length];
         int i = 0;
@@ -22,6 +28,7 @@ public class PetManager : MonoBehaviour
         foreach (var pet in petsPrefab)
         {
             pets[i] = Instantiate(pet);
+            pets[i].tag = "Pet";
             i++;
         }
 
@@ -57,10 +64,37 @@ public class PetManager : MonoBehaviour
             petHeartSlider.gameObject.SetActive(false);   
             return;
         }
-       
+        
+        if (pets[currentPetIndex].gameObject.GetComponent<PetHealth>().currentHealth <= 0)
+        {
+            // pet is dead
+            petHeartSlider.gameObject.SetActive(false);
+            return;
+        }
+        
+        placePet();
+
         pets[currentPetIndex].SetActive(true);
+        currentPet = pets[currentPetIndex];
 
         summon();
+    }
+
+    private void placePet()
+    {
+        // place pet randomly near player.transform
+        float r = UnityEngine.Random.Range(3, 5);
+        float x = UnityEngine.Random.Range(-r, r);
+        float z = r * r - x * x;
+        z = Mathf.Sqrt(z);
+        
+        
+        pets[currentPetIndex].transform.position = new Vector3(
+            player.transform.position.x + x,
+            player.transform.position.y,
+            player.transform.position.z + z
+        );
+        
     }
 
     void Update()
@@ -68,14 +102,17 @@ public class PetManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha7))
         {
             ChangePet(0);
+   
         }
         else if (Input.GetKeyDown(KeyCode.Alpha8))
         {
             ChangePet(1);
+
         }
         else if (Input.GetKeyDown(KeyCode.Alpha9))
         {
             ChangePet(2);
+
         }
         else if (Input.GetKeyDown(KeyCode.Alpha0))
         {
@@ -89,6 +126,7 @@ public class PetManager : MonoBehaviour
 
         if (currentPetIndex < pets.Length)
         {
+            currentPet = null;
             pets[currentPetIndex].SetActive(false);
         }
 
@@ -98,9 +136,19 @@ public class PetManager : MonoBehaviour
             petHeartSlider.gameObject.SetActive(false);
             return;
         }
+
+        if (pets[currentPetIndex].gameObject.GetComponent<PetHealth>().currentHealth <= 0)
+        {
+            // pet is dead
+            petHeartSlider.gameObject.SetActive(false);
+            return;
+        }
         
         petHeartSlider.gameObject.SetActive(true);
+        
+        placePet();
         pets[currentPetIndex].SetActive(true);
+        currentPet = pets[currentPetIndex];
         summon();
     }
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -6,19 +7,13 @@ public class EnemyMovement : MonoBehaviour
     PlayerHealth playerHealth;
     EnemyHealth enemyHealth;
     UnityEngine.AI.NavMeshAgent nav;
-    private Transform pet;
+
 
     void Awake()
     {
         //Cari game object with tag player
         player = GameObject.FindGameObjectWithTag("Player").transform;
-
-        // Cari game object with tag pet
-        if (GameObject.FindGameObjectWithTag("Pet")!= null)
-        {
-            pet = GameObject.FindGameObjectWithTag("Pet").transform;
-        }
-
+        
         //Mendapatkan componen reference
         playerHealth = player.GetComponent<PlayerHealth>();
         enemyHealth = GetComponent<EnemyHealth>();
@@ -26,21 +21,33 @@ public class EnemyMovement : MonoBehaviour
     }
 
 
+
     void Update()
     {
         //Pindah ke player position
         if (enemyHealth.currentHealth > 0 && playerHealth.currentHealth > 0)
         {
-            nav.SetDestination(player.position);
-            
-            if (pet != null)
+            if (PetManager.currentPet != null && PetManager.currentPet.activeInHierarchy)
             {
                 // find the closest distance between pet and player
                 float distanceToPlayer = (player.position - transform.position).sqrMagnitude;
-                float distanceToPet = (pet.position - transform.position).sqrMagnitude;
-                
-                if(distanceToPlayer > distanceToPet)
-                    nav.SetDestination(pet.position);
+                float distanceToPet = (PetManager.currentPet.transform.position - transform.position).sqrMagnitude;
+
+                if (distanceToPlayer > distanceToPet)
+                {
+                    nav.ResetPath();
+                    nav.SetDestination(PetManager.currentPet.transform.position);
+                }
+                else
+                {
+                    nav.ResetPath();
+                    nav.SetDestination(player.position);
+                }
+            }
+            else
+            {
+                nav.ResetPath();
+                nav.SetDestination(player.position);
             }
         }
         else //Stop moving

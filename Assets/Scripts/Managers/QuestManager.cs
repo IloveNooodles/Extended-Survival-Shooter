@@ -4,7 +4,7 @@ public class QuestManager : MonoBehaviour
 {
     private static QuestManager instance;
     public static int CompletedQuest;
-    [SerializeField] private Text text;
+    private Text text;
 
     private void Awake()
     {
@@ -18,6 +18,7 @@ public class QuestManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             CompletedQuest = 0;
         }
+        text = GetComponent <Text> ();
     }
 
     private void Update()

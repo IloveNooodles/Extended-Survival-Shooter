@@ -43,6 +43,7 @@ public class PetMovement : MonoBehaviour
         }
         else
         {
+            nav.ResetPath();
             nav.SetDestination(player.position);
         }
         
@@ -88,6 +89,9 @@ public class PetMovement : MonoBehaviour
         {
             Vector3 runTo = transform.position +
                             ((transform.position - closestEnemy.transform.position) * offsetVector);
+            // log runTo
+            // log closest distance
+            
             if (closestDistance < thresholdEnemyDistance)
             {
                 nav.ResetPath();
@@ -105,6 +109,7 @@ public class PetMovement : MonoBehaviour
             nav.ResetPath();
             nav.SetDestination(player.position);
         }
+
     }
     
    

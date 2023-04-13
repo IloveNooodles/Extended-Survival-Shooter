@@ -10,15 +10,15 @@ public class PetHealth : MonoBehaviour
     public int startingHealth = 100;
     public int currentHealth;
     private Slider healthSlider;
-    // public AudioClip deathClip;
+    public AudioClip deathClip;
 
 
     Animator anim;
-    // AudioSource petAudio;
+    AudioSource petAudio;
 
-    PlayerMovement petMovement;
+    PetMovement petMovement;
 
-    // PlayerShooting playerShooting;
+    private PetCast petCast;
     bool isDead;
 
     void Awake()
@@ -26,11 +26,13 @@ public class PetHealth : MonoBehaviour
         healthSlider = GameObject.Find("PetHeartSlider").GetComponent<Slider>();
          //Mendapatkan refernce komponen
         anim = GetComponent<Animator>();
-        // playerAudio = GetComponent<AudioSource>();
-        petMovement = GetComponent<PlayerMovement>();
+        petAudio = GetComponent<AudioSource>();
+        petMovement = GetComponent<PetMovement>();
 
         // playerShooting = GetComponentInChildren <PlayerShooting> ();
+        petCast = GetComponent<PetCast>(); 
         currentHealth = startingHealth;
+        healthSlider.value = currentHealth;
     }
 
     private void Start()
@@ -56,17 +58,17 @@ public class PetHealth : MonoBehaviour
         healthSlider.value = currentHealth;
 
         //Memainkan suara ketika terkena damage
-        // petAudio.Play();
+        petAudio.Play();
 
         //Memanggil method Death() jika darahnya kurang dari sama dengan 0 dan belu mati
         if (currentHealth <= 0 && !isDead)
         {
-            Death();
+            StartCoroutine(Death());
         }
     }
     
 
-    void Death()
+    IEnumerator Death()
     {
         isDead = true;
 
@@ -76,17 +78,20 @@ public class PetHealth : MonoBehaviour
         anim.SetTrigger("Die");
 
         //Memainkan suara ketika mati
-        // petAudio.clip = deathClip;
-        // petAudio.Play();
-
+        petAudio.clip = deathClip;
+        petAudio.Play();
+        
+        // get current animation clip
+        AnimationClip clip = anim.runtimeAnimatorController.animationClips[0];
+        float duration = Mathf.Max(clip.length, deathClip.length);
+        
         //mematikan script player movement
         petMovement.enabled = false;
         
-
-        // playerShooting.enabled = false;
-        
-        
         healthSlider.gameObject.SetActive(false);
+        
+        yield return new WaitForSeconds(duration);
+        gameObject.SetActive(false);
     }
 
 
