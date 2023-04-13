@@ -13,6 +13,7 @@ public class CutSceneManager : MonoBehaviour
     public SecondCityCutScene secondCityCutScene;
     public ThirdCityCutScene thirdCityCutScene;
     public BossSpawnCutScene bossSpawnCutScene;
+    public BossEndCutScene bossEndCutScene;
 
     void Start(){
         fpsMovement = player.GetComponent<FPSMovement>();
@@ -69,5 +70,15 @@ public class CutSceneManager : MonoBehaviour
     IEnumerator endBossSpawnCutScene(){
         yield return new WaitForSeconds(15);
         bossSpawnCutScene.endCutScene();
+    }
+
+    public void startBossEndCutScene(){
+        bossEndCutScene.startCutScene();
+        StartCoroutine(endBossEndCutScene());
+    }
+
+    IEnumerator endBossEndCutScene(){
+        yield return new WaitForSeconds(26.6f);
+        bossEndCutScene.endCutScene();
     }
 }
