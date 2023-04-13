@@ -133,10 +133,6 @@ public class GunShooting : MonoBehaviour
             {
                 /* Lakukan Take Damage */
                 enemyHealth.TakeDamage(gunScript.damage+gunScript.buffDamage, shootHit.point);
-                if (enemyHealth.IsDead())
-                {
-                    pq.Track(GoalType.Kill, enemyHealth.Id, 1);
-                }
             }
 
             //Set line end position ke hit position
