@@ -1,9 +1,19 @@
+using System;
 using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
-    public Transform target;
+    private static CameraFollow instance;
+    private GameObject player;
+    private Transform target;
     public float smoothing = 5f;
     Vector3 offset;
+
+    private void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        player.transform.position.Set( 0, 0, 0);
+        target = player.transform;
+    }
 
     private void Start()
     {

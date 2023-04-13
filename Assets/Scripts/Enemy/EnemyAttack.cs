@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 
 public class EnemyAttack : MonoBehaviour
@@ -12,7 +13,9 @@ public class EnemyAttack : MonoBehaviour
     EnemyHealth enemyHealth;
     bool playerInRange;
     float timer;
+    private float petTimer;
 
+    GameObject petInRange;
 
     void Awake()
     {
@@ -38,6 +41,11 @@ public class EnemyAttack : MonoBehaviour
         {
             playerInRange = true;
         }
+
+        if (other.gameObject == PetManager.currentPet)
+        {
+            petInRange = other.gameObject;
+        }
     }
 
     //Callback jika ada object yang keluar dari trigger
@@ -48,16 +56,27 @@ public class EnemyAttack : MonoBehaviour
         {
             playerInRange = false;
         }
+
+        if (other.gameObject == PetManager.currentPet)
+        {
+            petInRange = null;
+        }
     }
 
 
     void Update()
     {
         timer += Time.deltaTime;
+        petTimer += Time.deltaTime;
 
         if (timer >= timeBetweenAttacks && playerInRange && enemyHealth.currentHealth > 0)
         {
             Attack();
+        }
+
+        if (petTimer >= timeBetweenAttacks && petInRange != null && enemyHealth.currentHealth > 0)
+        {
+           AttackPet();
         }
 
         //mentrigger animasi PlayerDead jika darah player kurang dari sama dengan 0
@@ -74,9 +93,19 @@ public class EnemyAttack : MonoBehaviour
         timer = 0f;
 
         //Taking Damage
-        if (playerHealth.currentHealth > 0)
+        if (playerInRange && playerHealth.currentHealth > 0)
         {
             playerHealth.TakeDamage(attackDamage);
+        }
+    }
+
+    void AttackPet()
+    {
+        petTimer = 0f;
+        PetHealth petHealth = petInRange.GetComponent<PetHealth>();
+        if (petHealth.currentHealth > 0)
+        {
+            petHealth.TakeDamage(attackDamage);
         }
     }
 }

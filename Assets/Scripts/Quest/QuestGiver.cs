@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class QuestGiver : MonoBehaviour
 {
+    private static QuestGiver instance;
     [SerializeField] private QuestList questList;
     [SerializeField] private Quest activeQuest = new Quest();
     [SerializeField] private GameObject questWindow;
@@ -12,7 +13,21 @@ public class QuestGiver : MonoBehaviour
     [SerializeField] private TMP_Text goal;
     [SerializeField] private TMP_Text reward;
     [SerializeField] private TMP_Text description;
-    
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+            instance = null;
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+
     public void SetNewQuest(int index)
     {
         activeQuest = questList.GetQuestByIndex(index);

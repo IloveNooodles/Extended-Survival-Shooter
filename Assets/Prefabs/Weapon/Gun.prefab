@@ -104,7 +104,6 @@ MonoBehaviour:
   attackSpeed: 1
   reloadTime: 2
   range: 100
-  MAX_NUM_BULLET: 30
 --- !u!1 &1789450590867082095
 GameObject:
   m_ObjectHideFlags: 0
@@ -5362,4 +5361,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunAudio: {fileID: 1789450590867082086}
   gunReloadAudio: {fileID: 1789450590867082090}
+  gun: {fileID: 0}
   player: {fileID: 0}

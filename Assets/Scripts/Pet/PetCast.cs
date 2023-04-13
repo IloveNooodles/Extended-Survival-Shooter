@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -13,13 +14,15 @@ public class PetCast : MonoBehaviour
 
     public int attackDamage = 0;
     public float attackRadius = 0;
+    public float AOERadius = 0;
 
     public int healEffect = 0;
 
     public int buffEffect = 0;
+    
 
 
-    NavMeshAgent nav;
+
     private Animator anim;
 
     private GameObject player;
@@ -27,10 +30,13 @@ public class PetCast : MonoBehaviour
     
     float castEndTime = 0f;
     float auraEndTime = 0f;
-    // Start is called before the first frame update
+    
+    
+    GameObject permanentAura;
+    GameObject permanentCast;
+    
 
-
-    void Start()
+    void OnEnable()
     {
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
         player = GameObject.FindGameObjectWithTag("Player");
@@ -45,26 +51,28 @@ public class PetCast : MonoBehaviour
 
         if (castTime < 0.1f)
         {
+            
             Transform playerPosition = player.transform;
             // cast to player
-            GameObject cast = Instantiate(castPrefab, playerPosition.position, Quaternion.identity);
-            GameObject aura = Instantiate(auraPrefab, transform.position, Quaternion.identity);
+            permanentCast = Instantiate(castPrefab, playerPosition.position, Quaternion.identity);
+            permanentAura = Instantiate(auraPrefab, transform.position, Quaternion.identity);
 
-            aura.transform.parent = transform;
-            cast.transform.parent = playerPosition;
+            permanentAura.transform.parent = transform;
+            permanentCast.transform.parent = playerPosition;
             
             PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
             playerHealth.Heal(healEffect);
-            
-            
-            // TODO: buff damage waiting for weapon system
-            // PlayerShooting playerShooting = player.GetComponent<PlayerShooting>();
-            // playerShooting.setBuffDamage(buffEffect);
+
+
+            if (WeaponManager.currentWeapon != null)
+            {
+                WeaponManager.currentWeapon.setBuffDamage(buffEffect);
+            }
             
         }
         else
         {
-            InvokeRepeating("Cast", 0, castTime);
+            InvokeRepeating("Cast", 2f, castTime);
         }
     }
 
@@ -76,12 +84,13 @@ public class PetCast : MonoBehaviour
             GameObject closestEnemy = null;
             float closestDistance = Mathf.Infinity;
             Vector3 currentPosition = transform.position;
-
+            
             foreach (GameObject enemy in enemies)
             {
                 if (enemy == null) continue;
                 Vector3 directionToTarget = enemy.transform.position - currentPosition;
                 float dSqrToTarget = directionToTarget.sqrMagnitude;
+                
                 if (dSqrToTarget < closestDistance)
                 {
                     closestDistance = dSqrToTarget;
@@ -90,7 +99,7 @@ public class PetCast : MonoBehaviour
             }
 
             // cast spell
-            if (closestEnemy != null)
+            if (closestEnemy != null && closestDistance < attackRadius)
             {
                 EnemyHealth enemyHealth = closestEnemy.GetComponent<EnemyHealth>();
             
@@ -99,24 +108,38 @@ public class PetCast : MonoBehaviour
                     /* kalo udah mati biarin */
                     if (!enemyHealth.IsDead())
                     {
+                        
                         GameObject cast = Instantiate(castPrefab, closestEnemy.transform.position, Quaternion.identity);
                         GameObject aura = Instantiate(auraPrefab, transform.position, Quaternion.identity);
                         
+                        // change look at to enemy
+                        transform.LookAt(closestEnemy.transform);
+                        
                         anim.SetTrigger("Cast");
+                        
+
 
                         aura.transform.parent = transform;
 
 
                         /* Lakukan Take Damage */
-                        enemyHealth.TakeDamage(attackDamage);
-                        // TODO: integrasi dengan quest
-                        // if (enemyHealth.IsDead())
-                        // {
-                        //     pq.Track(GoalType.Kill, enemyHealth.Id, 1);
-                        // }
+                        
+                        // enemyHealth.TakeDamage(attackDamage);
+                        foreach (GameObject enemy in enemies)
+                        {
+                            if (enemy == null) continue;
+                            Vector3 directionToTarget = enemy.transform.position - closestEnemy.transform.position;
+                            float dSqrToTarget = directionToTarget.sqrMagnitude;
+                            
+                            if (dSqrToTarget < AOERadius)
+                            {
+                                EnemyHealth health = enemy.GetComponent<EnemyHealth>();
+                                health.TakeDamage(attackDamage);
+                            }
+                        }
+                        
                         Destroy(cast, castEndTime);
                         Destroy(aura, auraEndTime);
-                        
                     }
                 }
             }
@@ -136,13 +159,19 @@ public class PetCast : MonoBehaviour
             playerHealth.Heal(healEffect);
             
             anim.SetTrigger("Cast");
-            // TODO: buff damage waiting for weapon system
-            // PlayerShooting playerShooting = player.GetComponent<PlayerShooting>();
-            // playerShooting.setBuffDamage(buffEffect);
+            
+            
 
             // destroy after particle time
             Destroy(cast, castEndTime);
             Destroy(aura, auraEndTime);
         }
+    }
+
+    private void OnDisable()
+    {
+        CancelInvoke();
+        Destroy(permanentCast);
+        Destroy(permanentAura);
     }
 }
