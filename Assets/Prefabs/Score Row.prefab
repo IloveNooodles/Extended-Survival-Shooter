@@ -120,9 +120,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   badgeArray:
-  - {fileID: 21300000, guid: b501035f5f4d2c542beebf6275d07616, type: 3}
-  - {fileID: 21300000, guid: ca74bd1d1a649664e9472a8d9d896f84, type: 3}
-  - {fileID: 21300000, guid: ba94aa428d50fd14cb52e193a782e05d, type: 3}
+  - {fileID: 21300000, guid: 0cba809f0f52bc5499058cd6246dd599, type: 3}
+  - {fileID: 21300000, guid: 9a0cb96b43e2b3d47b6333640b880b5c, type: 3}
+  - {fileID: 21300000, guid: 8aca1857124adc642a79e71e521eec22, type: 3}
   badge: {fileID: 8873470700705609831}
   playerName: {fileID: 8873470701709271566}
   score: {fileID: 8873470700791786779}
@@ -192,7 +192,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3a2b556371c49854d8625add33a765dd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f14c3275791192a479cb8ccf9d477503, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
