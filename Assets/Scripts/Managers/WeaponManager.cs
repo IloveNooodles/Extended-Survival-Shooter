@@ -3,7 +3,7 @@
 public class WeaponManager : MonoBehaviour
 {
     [SerializeField] public GameObject[] weaponsPrefab;
-    public int currentWeaponIndex = 0;
+    int currentWeaponIndex = 0;
     public static IWeapon currentWeapon;
 
     public void Awake()
