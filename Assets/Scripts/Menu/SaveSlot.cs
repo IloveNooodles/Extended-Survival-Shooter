@@ -7,7 +7,7 @@ using TMPro;
 public class SaveSlot : MonoBehaviour
 {
     [Header("Profile")]
-    [SerializeField] private string profileId = "";
+    [SerializeField] private string profileId;
 
     [Header("Content")]
     [SerializeField] private GameObject noDataContent;
