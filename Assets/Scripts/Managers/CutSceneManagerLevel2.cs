@@ -11,6 +11,7 @@ public class CutSceneManagerLevel2 : MonoBehaviour
     public GameObject enemyManager;
     public GameObject HUD;
     public GameObject[] enemies;
+    public GameObject popupQuest;
     public StartingCutScene startingCutScene;
 
     private void Start()
@@ -40,6 +41,7 @@ public class CutSceneManagerLevel2 : MonoBehaviour
     }
 
     public void StartFirstCutScene(){
+        popupQuest.SetActive(false);
         startingCutScene.StartCutScene();
         StartCoroutine(EndCutScene());
     }

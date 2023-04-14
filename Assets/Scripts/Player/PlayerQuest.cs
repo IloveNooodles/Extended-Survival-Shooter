@@ -18,14 +18,7 @@ public class PlayerQuest : MonoBehaviour
         quest = questGiver.GiveQuestToUser();
         questGiver.UpdateQuestWindow(quest);
     }
-
-    // private void Start()
-    // { 
-    //     questGiver.SetNewQuest(0);
-    //     quest = questGiver.GiveQuestToUser();
-    //     questGiver.UpdateQuestWindow(quest);
-    // }
-
+    
     public void Continue()
     {
         PopupModal.SetActive(false);
@@ -57,9 +50,11 @@ public class PlayerQuest : MonoBehaviour
         QuestManager.CompletedQuest += 1;
         quest.isActive = false;
 
+        TimerManager.StopTimer();
+        /**/
+        
         /* Shows popup modal */
         PopupModal.SetActive(true);
-        // TimerManager.StopTimer();
         
         /* Freeze Game */
         TimerManager.PauseGame();
