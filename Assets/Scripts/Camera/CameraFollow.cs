@@ -11,7 +11,6 @@ public class CameraFollow : MonoBehaviour
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        player.transform.position.Set( 0, 0, 0);
         target = player.transform;
     }
 

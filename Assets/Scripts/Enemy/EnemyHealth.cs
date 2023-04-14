@@ -158,6 +158,6 @@ public class EnemyHealth : MonoBehaviour, IEnemy
         GoldManager.Gold += goldValue;
         playerQuest.Track(GoalType.Kill, Id, 1);
         playerQuest.Track(GoalType.Spend,  ItemName.ItemId(ItemName.Gold), goldValue);
-        Destroy(gameObject, 2f);
+        Destroy(gameObject, 2.1f);
     }
 }

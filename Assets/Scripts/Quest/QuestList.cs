@@ -20,8 +20,7 @@ public class QuestList : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        
-        InitQuestList();
+        // InitQuestList();
     }
 
     public void InitQuestList() {
@@ -51,11 +50,11 @@ public class QuestList : MonoBehaviour
         for (int i = 0; i < firstTarget.Length; i++)
         {
             string target = firstTarget[i];
-            KillQuestGoal killQuestGoal = new KillQuestGoal(EnemyName.GetEnemyId(target), target, 5);
+            KillQuestGoal killQuestGoal = new KillQuestGoal(EnemyName.GetEnemyId(target), target, 0);
             list.Add(killQuestGoal);
         }
         
-        SpendQuestGoal spentQuestGoal = new SpendQuestGoal(ItemName.ItemId(bullet), bullet, 100);
+        SpendQuestGoal spentQuestGoal = new SpendQuestGoal(ItemName.ItemId(bullet), bullet, 5);
         list.Add(spentQuestGoal);
 
         Quest addedQuest = new Quest(firstQuestTitle,
