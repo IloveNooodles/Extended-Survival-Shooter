@@ -20,8 +20,10 @@ public class QuestList : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        // InitQuestList();
+        InitQuestList();
     }
+    
+    public void Init(){}
 
     public void InitQuestList() {
 
