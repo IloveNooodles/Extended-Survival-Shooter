@@ -4289,11 +4289,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 139052483}
   mainCamera: {fileID: 963194225}
-  enemyManager: {fileID: 0}
-  EnemyFactory: {fileID: 0}
-  petManager: {fileID: 0}
+  enemyManager: {fileID: 1390720696}
+  EnemyFactory: {fileID: 1797381541}
+  petManager: {fileID: 648376977}
   enemies: []
-  playerQuest: {fileID: 0}
+  playerQuest: {fileID: 139052485}
 --- !u!1 &987615809
 GameObject:
   m_ObjectHideFlags: 0
