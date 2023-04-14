@@ -14,6 +14,9 @@ public class CutSceneManager : MonoBehaviour
     public ThirdCityCutScene thirdCityCutScene;
     public BossSpawnCutScene bossSpawnCutScene;
     public BossEndCutScene bossEndCutScene;
+    public GameObject petManager;
+
+    public GameObject HUD;
 
     void Start(){
         fpsMovement = player.GetComponent<FPSMovement>();
@@ -24,12 +27,16 @@ public class CutSceneManager : MonoBehaviour
         fpsMovement.enabled = false;
         fpsShooting.enabled = false;
         playerCamera.enabled = false;
+        petManager.SetActive(false);
+        HUD.SetActive(false);
     }
 
     public void endCutScene(){
         fpsMovement.enabled = true;
         fpsShooting.enabled = true;
         playerCamera.enabled = true;
+        HUD.SetActive(true);
+        petManager.SetActive(true);
     }
 
     public void startFirstCityCutScene(){
