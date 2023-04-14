@@ -11,6 +11,7 @@ public class DataPersistenceManager : MonoBehaviour
     private GameData gameData;
     private List<IDataPersistence> dataPersistenceObjects;
     private FileDataHandler dataHandler;
+    private string selectedProfileId;
 
     public static DataPersistenceManager instance
     {
@@ -23,9 +24,14 @@ public class DataPersistenceManager : MonoBehaviour
         if (instance != null)
         {
             Debug.LogError("Found more than one Data Persistence Manager in the scene.");
+            Destroy(this.gameObject);
+            return;
         }
 
         instance = this;
+        DontDestroyOnLoad(this.gameObject);
+        
+        this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
     }
 
     private void Start()
@@ -42,7 +48,7 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void LoadGame()
     {
-        this.gameData = dataHandler.Load();
+        this.gameData = dataHandler.Load(selectedProfileId);
 
         if (this.gameData == null)
         {
@@ -63,7 +69,7 @@ public class DataPersistenceManager : MonoBehaviour
             dataPersistenceObject.SaveData(ref gameData);
         }
 
-        dataHandler.Save(gameData);
+        dataHandler.Save(gameData, selectedProfileId);
     }
 
     private List<IDataPersistence> FindAllDataPersistenceObjects()
@@ -71,6 +77,16 @@ public class DataPersistenceManager : MonoBehaviour
         IEnumerable<IDataPersistence> dataPersistenceObjects = FindObjectsOfType<MonoBehaviour>().OfType<IDataPersistence>();
         
         return new List<IDataPersistence>(dataPersistenceObjects);
+    }
+
+    public bool HasGameData()
+    {
+        return gameData != null;
+    }
+
+    public Dictionary<string, GameData> GetAllProfilesGameData()
+    {
+        return dataHandler.LoadAllProfiles();
     }
 
     // FOR TRIAL PURPOSES ONLY

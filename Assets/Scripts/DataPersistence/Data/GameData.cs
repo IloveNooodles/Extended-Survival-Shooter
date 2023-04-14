@@ -13,6 +13,9 @@ public class GameData
     public int score;
     public int completedQuest;
 
+    public string lastSavedDate;
+    public string saveName;
+
     public GameData()
     {
         this.name = "Player";
@@ -21,5 +24,7 @@ public class GameData
         this.gold = 0;
         this.score = 0;
         this.completedQuest = 0;
+        this.lastSavedDate = DateTime.Now.ToString();
+        this.saveName = "Save Slot X";
     }
 }
