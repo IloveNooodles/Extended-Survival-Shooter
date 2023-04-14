@@ -11,13 +11,9 @@ public class DataPersistenceManager : MonoBehaviour
     private GameData gameData;
     private List<IDataPersistence> dataPersistenceObjects;
     private FileDataHandler dataHandler;
-    private string selectedProfileId = "";
+    private string selectedProfileId = "Test";
 
-    public static DataPersistenceManager instance
-    {
-        get;
-        private set;
-    }
+    public static DataPersistenceManager instance;
 
     private void Awake()
     {

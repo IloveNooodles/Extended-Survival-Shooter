@@ -7,6 +7,7 @@ public class FPSMovement : MonoBehaviour
 {
     [Header("Movement")]
     public float moveSpeed;
+    float inputMoveSpeed;
 
     public float groundDrag;
 
@@ -41,6 +42,7 @@ public class FPSMovement : MonoBehaviour
         rb.freezeRotation = true;
 
         readyToJump = true;
+        inputMoveSpeed = moveSpeed;
     }
 
     private void Update()
@@ -96,6 +98,14 @@ public class FPSMovement : MonoBehaviour
 
     private void MovePlayer()
     {
+        if(CheatManager.is2xSpeed)
+        {
+            moveSpeed = inputMoveSpeed * 2;
+        }
+        else
+        {
+            moveSpeed = inputMoveSpeed;
+        }
         // calculate movement direction
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
