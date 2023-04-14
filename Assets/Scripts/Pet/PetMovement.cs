@@ -8,9 +8,10 @@ public class PetMovement : MonoBehaviour
 {
     // Start is called before the first frame update
     public bool isAvoidingEnemy = true;
-    
+
     private NavMeshAgent nav;
     private Transform player;
+    private Transform riggedBody;
     private GameObject[] enemies;
 
     Animator anim;
@@ -18,7 +19,7 @@ public class PetMovement : MonoBehaviour
     private float thresholdPlayerDistance = 15f;
     private float thresholdEnemyDistance = 30f;
     private float offsetVector = 5f;
-    
+
 
 
     void Awake()
@@ -26,16 +27,19 @@ public class PetMovement : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         nav = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
+        //first child;
+        riggedBody = transform.GetChild(0).transform;
+        Debug.Log(riggedBody);
 
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-      
-        
+
+
 
         if (isAvoidingEnemy)
         {
@@ -45,9 +49,9 @@ public class PetMovement : MonoBehaviour
         {
             nav.SetDestination(player.position);
         }
-        
-       
-        
+
+
+
         // check if pet is moving or not
         if (nav.velocity.magnitude < 0.1f)
         {
@@ -58,7 +62,7 @@ public class PetMovement : MonoBehaviour
         {
             anim.SetBool("IsWalking", true);
         }
-        
+
     }
 
     void AvoidEnemy()
@@ -91,11 +95,20 @@ public class PetMovement : MonoBehaviour
                             ((transform.position - closestEnemy.transform.position) * offsetVector);
             // log runTo
             // log closest distance
-            
+
             if (closestDistance < thresholdEnemyDistance)
             {
                 // Look at
                 transform.LookAt(runTo);
+                riggedBody.rotation.eulerAngles.Set(riggedBody.rotation.x, transform.rotation.y, riggedBody.rotation.z);
+                if (transform.name == "Holy Tree")
+                {
+                    riggedBody.localEulerAngles = new Vector3(riggedBody.localEulerAngles.x, transform.localEulerAngles.y + 110, riggedBody.localEulerAngles.z);
+                }
+                else
+                {
+                    riggedBody.localEulerAngles = new Vector3(riggedBody.localEulerAngles.x, transform.localEulerAngles.y, riggedBody.localEulerAngles.z);
+                }
                 nav.SetDestination(runTo);
             }
             else
@@ -108,13 +121,15 @@ public class PetMovement : MonoBehaviour
         else
         {
             transform.LookAt(player.position);
+            if (transform.name == "Holy Tree")
+            {
+                riggedBody.localEulerAngles = new Vector3(riggedBody.localEulerAngles.x, transform.localEulerAngles.y + 110, riggedBody.localEulerAngles.z);
+            }
+            else
+            {
+                riggedBody.localEulerAngles = new Vector3(riggedBody.localEulerAngles.x, transform.localEulerAngles.y, riggedBody.localEulerAngles.z);
+            }
             nav.SetDestination(player.position);
         }
-        
-        
-
     }
-    
-   
-   
 }
