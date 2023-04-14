@@ -28,6 +28,7 @@ public class PopupQuestManager : MonoBehaviour
     {
         ChangeScene();
         TimerManager.ContinueGame();
+        TimerManager.StopTimer();
     }
 
     private void ChangeScene()

@@ -71,7 +71,9 @@ public class TitanHealth : MonoBehaviour
             if (leftArmHealth == startingLeftArmHealth)
             {
                 backgroundLeftArmHealthBar.gameObject.SetActive(false);
-            }else{
+            }
+            else
+            {
                 backgroundLeftArmHealthBar.gameObject.SetActive(true);
                 leftArmHealthBar.rectTransform.sizeDelta = new Vector2(leftArmHealthBarLength * leftArmHealth / startingLeftArmHealth, leftArmHealthBar.rectTransform.rect.height);
             }
@@ -95,7 +97,9 @@ public class TitanHealth : MonoBehaviour
             if (rightArmHealth == startingRightArmHealth)
             {
                 backgroundRightArmHealthBar.gameObject.SetActive(false);
-            }else{
+            }
+            else
+            {
                 backgroundRightArmHealthBar.gameObject.SetActive(true);
                 rightArmHealthBar.rectTransform.sizeDelta = new Vector2(rightArmHealthBarLength * rightArmHealth / startingRightArmHealth, rightArmHealthBar.rectTransform.rect.height);
             }
@@ -115,7 +119,8 @@ public class TitanHealth : MonoBehaviour
             return;
         }
 
-        if(isInvincible){
+        if (isInvincible)
+        {
             return;
         }
 
@@ -131,14 +136,17 @@ public class TitanHealth : MonoBehaviour
             //Jika Left Arm Health habis
             if (TitanHealth.leftArmHealth <= 0)
             {
-                if(TitanHealth.currentHealth - (int)(destroyingArmHealthPercentage * TitanHealth.startingHealth) <= 0){
+                if (TitanHealth.currentHealth - (int)(destroyingArmHealthPercentage * TitanHealth.startingHealth) <= 0)
+                {
                     amount = (int)(destroyingArmHealthPercentage * TitanHealth.startingHealth);
-                }else{
+                }
+                else
+                {
                     isInvincible = true;
                     titanAudio.TitanHurt();
                     StartCoroutine(ChangeToNoLeftArm());
                 }
-                
+
             }
         }
 
@@ -154,16 +162,23 @@ public class TitanHealth : MonoBehaviour
             //Jika Right Arm Health habis
             if (TitanHealth.rightArmHealth <= 0)
             {
-                if(TitanHealth.currentHealth - (int)(destroyingArmHealthPercentage * TitanHealth.startingHealth) <= 0){
+                if (TitanHealth.currentHealth - (int)(destroyingArmHealthPercentage * TitanHealth.startingHealth) <= 0)
+                {
                     amount = (int)(destroyingArmHealthPercentage * TitanHealth.startingHealth);
 
                 }
-                else{
+                else
+                {
                     isInvincible = true;
                     titanAudio.TitanHurt();
                     StartCoroutine(ChangeToNoRightArm());
                 }
             }
+        }
+
+        if (CheatManager.is1HitKill)
+        {
+            amount = TitanHealth.currentHealth;
         }
 
         //kurangi health
@@ -199,17 +214,20 @@ public class TitanHealth : MonoBehaviour
         yield return new WaitForSeconds(3f);
         isInvincible = false;
         TakeDamage((int)(destroyingArmHealthPercentage * TitanHealth.startingHealth), transform.position, gameObject);
-        if(TitanHealth.rightArmHealth <= 0){
+        if (TitanHealth.rightArmHealth <= 0)
+        {
             noArmTitan.transform.position = new Vector3(transform.position.x + 30, transform.position.y, transform.position.z);
             noArmTitan.SetActive(true);
-        }else{
+        }
+        else
+        {
             noLeftArmTitan.transform.position = new Vector3(transform.position.x + 30, transform.position.y, transform.position.z);
             noLeftArmTitan.SetActive(true);
         }
         gameObject.SetActive(false);
         anim.SetBool("isSomethingBeingDestroyed", false);
         anim.SetBool("isLeftArmDestroyed", true);
-        
+
     }
 
     IEnumerator ChangeToNoRightArm()
@@ -226,16 +244,19 @@ public class TitanHealth : MonoBehaviour
         yield return new WaitForSeconds(3f);
         isInvincible = false;
         TakeDamage((int)(destroyingArmHealthPercentage * TitanHealth.startingHealth), transform.position, gameObject);
-        if(TitanHealth.leftArmHealth <= 0){
+        if (TitanHealth.leftArmHealth <= 0)
+        {
             noArmTitan.transform.position = new Vector3(transform.position.x + 30, transform.position.y, transform.position.z);
             noArmTitan.SetActive(true);
-        }else{
+        }
+        else
+        {
             noRightArmTitan.transform.position = new Vector3(transform.position.x + 30, transform.position.y, transform.position.z);
             noRightArmTitan.SetActive(true);
         }
         gameObject.SetActive(false);
         anim.SetBool("isSomethingBeingDestroyed", false);
-        anim.SetBool("isRightArmDestroyed", true);  
+        anim.SetBool("isRightArmDestroyed", true);
     }
 
     void Dead()
@@ -254,7 +275,7 @@ public class TitanHealth : MonoBehaviour
         // smokeParticles.Play();
         // Destroy(this.gameObject.GetComponent<TitanHealth>());
         // Destroy(this.gameObject.GetComponent<TitanAttackAndMovement>());
-        
+
         // //Destroy all hit trigger
         // TitanHitDetector[] hitDetectors = this.gameObject.GetComponentsInChildren<TitanHitDetector>();
         // foreach (TitanHitDetector hitDetector in hitDetectors)

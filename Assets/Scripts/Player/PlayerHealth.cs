@@ -59,11 +59,15 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence
     {
         damaged = true;
 
-        //mengurangi health
-        currentHealth -= amount;
+        if(!CheatManager.isNoDamage)
+        {
+            //mengurangi health
+            currentHealth -= amount;
 
-        //Merubah tampilan dari health slider
-        healthSlider.value = currentHealth;
+            //Merubah tampilan dari health slider
+            healthSlider.value = currentHealth;
+        }
+        
 
         //Memainkan suara ketika terkena damage
         playerAudio.Play();
