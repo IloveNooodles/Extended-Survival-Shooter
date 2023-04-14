@@ -51,6 +51,7 @@ public class Level1CutScene : MonoBehaviour
         EnemyFactory.SetActive(true);
         petManager.SetActive(true);
         HUD.SetActive(true);
+        TimerManager.StartTimer();
         foreach(GameObject enemy in enemies){
             enemy.SetActive(true);
         }

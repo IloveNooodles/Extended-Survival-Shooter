@@ -16,7 +16,7 @@ public class PlayerQuest : MonoBehaviour
         questList.InitQuestList();
         questGiver.SetNewQuest(0);
         quest = questGiver.GiveQuestToUser();
-        questGiver.UpdateQuestWindow(quest);
+        questGiver.UpdateQuestWindow();
     }
     
     public void Continue()
@@ -37,7 +37,7 @@ public class PlayerQuest : MonoBehaviour
             status = status && quest.questGoal[i].GetQuestStatus();
         }
         
-        questGiver.UpdateQuestWindow(quest);
+        questGiver.UpdateQuestWindow();
         
         if (status && quest.isActive)
         {
