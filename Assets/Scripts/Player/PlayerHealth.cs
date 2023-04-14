@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
 
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : MonoBehaviour, IDataPersistence
 {
     public int startingHealth = 100;
     public int currentHealth;
@@ -115,5 +115,15 @@ public class PlayerHealth : MonoBehaviour
     {
         //meload ulang scene dengan index 0 pada build setting
         SceneManager.LoadScene(0);
+    }
+
+    public void LoadData(GameData data)
+    {
+        this.currentHealth = data.health;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.health = this.currentHealth;
     }
 }

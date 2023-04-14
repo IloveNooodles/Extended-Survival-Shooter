@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class ScoreManager : MonoBehaviour
+public class ScoreManager : MonoBehaviour, IDataPersistence
 {
     private static ScoreManager instance;
     public static int score;
@@ -28,5 +28,15 @@ public class ScoreManager : MonoBehaviour
     void Update ()
     {
         text.text = "Score: " + score;
+    }
+
+    public void LoadData(GameData data)
+    {
+        score = data.score;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.score = score;
     }
 }

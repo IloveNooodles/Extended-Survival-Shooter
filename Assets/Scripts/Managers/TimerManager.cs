@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
-public class TimerManager : MonoBehaviour
+public class TimerManager : MonoBehaviour, IDataPersistence
 {
     private static TimerManager instance;
     public static float time;
@@ -44,5 +44,15 @@ public class TimerManager : MonoBehaviour
         time += Time.deltaTime;
         TimeSpan timeSpan = TimeSpan.FromSeconds(time);
         text.text = "Time: " + timeSpan.ToString(@"mm\:ss\:fff");
+    }
+
+    public void LoadData(GameData data)
+    {
+        time = data.time;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.time = time;
     }
 }
