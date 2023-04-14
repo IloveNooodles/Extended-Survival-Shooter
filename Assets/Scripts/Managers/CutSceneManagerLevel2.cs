@@ -13,6 +13,8 @@ public class CutSceneManagerLevel2 : MonoBehaviour
     public GameObject[] enemies;
     public GameObject popupQuest;
     public StartingCutScene startingCutScene;
+    public PUBGToHouseCutscene pubgToHouseCutscene;
+    public EnterHouse enterHouseCutscene;
 
     private void Start()
     {
@@ -33,7 +35,7 @@ public class CutSceneManagerLevel2 : MonoBehaviour
     public void endCutScene(){
         player.SetActive(true);
         playerCamera.SetActive(true);
-        enemyManager.SetActive(true);
+        // enemyManager.SetActive(true);
         HUD.SetActive(true);
         foreach(GameObject enemy in enemies){
             enemy.SetActive(true);
@@ -47,7 +49,29 @@ public class CutSceneManagerLevel2 : MonoBehaviour
     }
 
     IEnumerator EndCutScene(){
-        yield return new WaitForSeconds(30f);
+        yield return new WaitForSeconds(3f);
         startingCutScene.EndCutScene();
+    }
+
+    public void StartPUBGToHouseCutScene(){
+        popupQuest.SetActive(false);
+        pubgToHouseCutscene.StartCutScene();
+        StartCoroutine(EndPUBGToHouseCutScene());
+    }
+
+    IEnumerator EndPUBGToHouseCutScene(){
+        yield return new WaitForSeconds(16f);
+        pubgToHouseCutscene.EndCutScene();
+    }
+
+    public void StartEnterHouseCutScene(){
+        popupQuest.SetActive(false);
+        enterHouseCutscene.StartCutScene();
+        StartCoroutine(EndEnterHouseCutScene());
+    }
+
+    IEnumerator EndEnterHouseCutScene(){
+        yield return new WaitForSeconds(9.6f);
+        enterHouseCutscene.EndCutScene();
     }
 }
