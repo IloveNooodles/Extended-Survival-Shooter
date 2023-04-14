@@ -5,7 +5,18 @@ public class MainMenu : MonoBehaviour
 {
         public void NewGame()
         {
+                DataPersistenceManager.instance.NewGame();
                 SceneManager.LoadScene(1);
+        }
+
+        public void LoadGame()
+        {
+                DataPersistenceManager.instance.LoadGame();
+        }
+
+        public void SaveGame()
+        {
+                DataPersistenceManager.instance.SaveGame();
         }
 
         public void Exit()

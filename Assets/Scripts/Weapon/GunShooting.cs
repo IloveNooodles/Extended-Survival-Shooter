@@ -21,11 +21,14 @@ public class GunShooting : MonoBehaviour
     [SerializeField] private GameObject gun;
     private Gun gunScript;
 
-    [SerializeField] private GameObject player;
+    private GameObject player;
+    
     private PlayerQuest pq;
     
     void Awake()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+
         //Get Gun Script
         gunScript = gun.GetComponent<Gun>();
 
@@ -128,12 +131,6 @@ public class GunShooting : MonoBehaviour
             
             if (enemyHealth)
             {
-                /* kalo udah mati biarin */
-                if (enemyHealth.IsDead())
-                {
-                    return;
-                }
-                
                 /* Lakukan Take Damage */
                 enemyHealth.TakeDamage(gunScript.damage+gunScript.buffDamage, shootHit.point);
             }

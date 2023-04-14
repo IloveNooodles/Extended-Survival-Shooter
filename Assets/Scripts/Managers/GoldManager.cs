@@ -2,11 +2,11 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GoldManager : MonoBehaviour
+public class GoldManager : MonoBehaviour, IDataPersistence
 {
     private static GoldManager _instance;
     public static int Gold;
-    [SerializeField] private Text text;
+    private Text text;
 
     private void Awake()
     {
@@ -20,10 +20,35 @@ public class GoldManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             Gold = 0;
         }
+        text = GetComponent <Text> ();
     }
 
     private void Update()
     {
         text.text = "Gold: " + Gold;
+    }
+
+    static public void addGold(int gold)
+    {
+        int newGold = Gold + gold;
+        if(newGold > Int16.MaxValue)
+        {
+            Gold = Int16.MaxValue;
+        }
+        else
+        {
+            Gold = newGold;
+        }
+        Debug.Log("Gold: " + Gold);
+    }
+    
+    public void LoadData(GameData data)
+    {
+        Gold = data.gold;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.gold = Gold;
     }
 }

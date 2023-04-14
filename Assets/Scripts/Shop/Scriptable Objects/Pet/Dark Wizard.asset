@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14550bca0d3752c4b83fd45fe7e25f15, type: 3}
+  m_Name: Dark Wizard
+  m_EditorClassIdentifier: 
+  title: Dark Wizard
+  description: A lost scholar's claimed contact with an outer god increases your
+    attack power by 10.
+  cost: 200
+  thumbnail: {fileID: 8400000, guid: b42d51c615e2bcb49b86d257b7edb2f9, type: 2}

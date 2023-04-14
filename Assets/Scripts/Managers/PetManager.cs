@@ -31,6 +31,8 @@ public class PetManager : MonoBehaviour
             pets[i].tag = "Pet";
             i++;
         }
+        
+        DontDestroyOnLoad(gameObject);
 
     }
 
@@ -91,7 +93,7 @@ public class PetManager : MonoBehaviour
         
         pets[currentPetIndex].transform.position = new Vector3(
             player.transform.position.x + x,
-            player.transform.position.y,
+            0,
             player.transform.position.z + z
         );
         

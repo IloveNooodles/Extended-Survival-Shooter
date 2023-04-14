@@ -22,7 +22,7 @@ public class EnemyHealth : MonoBehaviour, IEnemy
 
     bool isDead;
     bool isSinking;
-    
+
     public int Id { get; set; }
 
     void Awake()
@@ -34,7 +34,7 @@ public class EnemyHealth : MonoBehaviour, IEnemy
         capsuleCollider = GetComponent<CapsuleCollider>();
         player = GameObject.FindWithTag("Player");
         playerQuest = player.GetComponent<PlayerQuest>();
-        
+
         //Set current health
         currentHealth = startingHealth;
         healthBarLength = healthBar.rectTransform.rect.width;
@@ -43,7 +43,8 @@ public class EnemyHealth : MonoBehaviour, IEnemy
         if (enemyName.Contains(EnemyName.Zombunny))
         {
             Id = EnemyName.GetEnemyId(EnemyName.Zombunny);
-        } else if (enemyName.Contains(EnemyName.Zombear))
+        }
+        else if (enemyName.Contains(EnemyName.Zombear))
         {
             Id = EnemyName.GetEnemyId(EnemyName.Zombear);
         }
@@ -54,6 +55,10 @@ public class EnemyHealth : MonoBehaviour, IEnemy
         else if (enemyName.Contains(EnemyName.Titan))
         {
             Id = EnemyName.GetEnemyId(EnemyName.Titan);
+        }
+        else if (enemyName.Contains(EnemyName.Wizard))
+        {
+            Id = EnemyName.GetEnemyId(EnemyName.Wizard);
         }
 
         goldValue += Id;
@@ -78,6 +83,11 @@ public class EnemyHealth : MonoBehaviour, IEnemy
 
         //play audio
         enemyAudio.Play();
+
+        if (CheatManager.is1HitKill)
+        {
+            amount = currentHealth;
+        }
 
         //kurangi health
         currentHealth -= amount;
@@ -109,26 +119,26 @@ public class EnemyHealth : MonoBehaviour, IEnemy
 
         //play audio
         enemyAudio.Play();
-        
-        
+
+
         currentHealth -= amount;
         healthBar.rectTransform.sizeDelta = new Vector2(healthBarLength * currentHealth / startingHealth, healthBar.rectTransform.rect.height);
         //Dead jika health <= 0
         if (currentHealth <= 0)
         {
-            
             Death();
         }
+
+        Debug.Log(Id);
     }
 
     public virtual void Death()
     {
         //set isdead
         isDead = true;
-        
+
         //SetCapcollider ke trigger
         capsuleCollider.isTrigger = true;
-        playerQuest.Track(GoalType.Kill, Id, 1);
 
         //trigger play animation Dead
         anim.SetTrigger("Dead");
@@ -136,7 +146,6 @@ public class EnemyHealth : MonoBehaviour, IEnemy
         //Play Sound Dead
         enemyAudio.clip = deathClip;
         enemyAudio.Play();
-
         try
         {
             FPSEnemyManager.numberOfEnemy--;
@@ -149,13 +158,14 @@ public class EnemyHealth : MonoBehaviour, IEnemy
     {
         //disable Navmesh Component
         GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
-        
+
         //Set rigisbody ke kinematic
         GetComponent<Rigidbody>().isKinematic = true;
         isSinking = true;
         ScoreManager.score += scoreValue;
-        GoldManager.Gold += goldValue;
-          playerQuest.Track(GoalType.Spend,  ItemName.ItemId(ItemName.Gold), goldValue);
-        Destroy(gameObject, 2f);
+        GoldManager.addGold(goldValue);
+        playerQuest.Track(GoalType.Kill, Id, 1);
+        playerQuest.Track(GoalType.Spend, ItemName.ItemId(ItemName.Gold), goldValue);
+        Destroy(gameObject, 2.1f);
     }
 }

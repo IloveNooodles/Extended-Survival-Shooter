@@ -571,7 +571,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 100
-  currentHealth: 0
+  currentHealth: 100
   deathClip: {fileID: 8300000, guid: b4d6b403845d8c5418aa80c6010bead5, type: 3}
 --- !u!82 &6892173094087225076
 AudioSource:
@@ -583,7 +583,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 45697934502674f4b945dc6cf6dcd34b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 366ae43ce884ebd44b752f49052e05c6, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

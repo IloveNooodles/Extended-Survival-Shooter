@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
 
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : MonoBehaviour, IDataPersistence
 {
     public int startingHealth = 100;
     public int currentHealth;
@@ -59,11 +59,15 @@ public class PlayerHealth : MonoBehaviour
     {
         damaged = true;
 
-        //mengurangi health
-        currentHealth -= amount;
+        if(!CheatManager.isNoDamage)
+        {
+            //mengurangi health
+            currentHealth -= amount;
 
-        //Merubah tampilan dari health slider
-        healthSlider.value = currentHealth;
+            //Merubah tampilan dari health slider
+            healthSlider.value = currentHealth;
+        }
+        
 
         //Memainkan suara ketika terkena damage
         playerAudio.Play();
@@ -115,5 +119,15 @@ public class PlayerHealth : MonoBehaviour
     {
         //meload ulang scene dengan index 0 pada build setting
         SceneManager.LoadScene(0);
+    }
+
+    public void LoadData(GameData data)
+    {
+        this.currentHealth = data.health;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.health = this.currentHealth;
     }
 }
