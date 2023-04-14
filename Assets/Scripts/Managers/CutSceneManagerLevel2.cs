@@ -15,6 +15,7 @@ public class CutSceneManagerLevel2 : MonoBehaviour
     public StartingCutScene startingCutScene;
     public PUBGToHouseCutscene pubgToHouseCutscene;
     public EnterHouse enterHouseCutscene;
+    public GameObject petManager;
 
     private void Start()
     {
@@ -26,6 +27,7 @@ public class CutSceneManagerLevel2 : MonoBehaviour
         player.SetActive(false);
         playerCamera.SetActive(false);
         enemyManager.SetActive(false);
+        petManager.SetActive(false);
         HUD.SetActive(false);
         foreach(GameObject enemy in enemies){
             enemy.SetActive(false);
@@ -37,6 +39,7 @@ public class CutSceneManagerLevel2 : MonoBehaviour
         playerCamera.SetActive(true);
         // enemyManager.SetActive(true);
         HUD.SetActive(true);
+        petManager.SetActive(true);
         foreach(GameObject enemy in enemies){
             enemy.SetActive(true);
         }
