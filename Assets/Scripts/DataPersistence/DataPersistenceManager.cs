@@ -80,7 +80,7 @@ public class DataPersistenceManager : MonoBehaviour
         return dataHandler.LoadAllProfiles();
     }
 
-    private void onEnable()
+    private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
         SceneManager.sceneUnloaded += OnSceneUnloaded;
