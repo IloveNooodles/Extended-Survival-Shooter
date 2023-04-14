@@ -7,6 +7,7 @@ public class PlayerQuest : MonoBehaviour
     private QuestList questList;
     public Quest quest;
     private GameObject PopupModal;
+    static public bool isFirstSceneEndingCutScenePlayed = false;
 
     private void Awake()
     {
@@ -14,7 +15,7 @@ public class PlayerQuest : MonoBehaviour
         questGiver = GameObject.FindGameObjectWithTag("QuestGiver").GetComponent<QuestGiver>();
         questList = GameObject.FindGameObjectWithTag("QuestList").GetComponent<QuestList>();
         questList.InitQuestList();
-        questGiver.SetNewQuest(0);
+        questGiver.SetNewQuest(QuestManager.CompletedQuest);
         quest = questGiver.GiveQuestToUser();
         questGiver.UpdateQuestWindow();
     }
@@ -45,26 +46,32 @@ public class PlayerQuest : MonoBehaviour
         }
     }
     
-    private void CompleteQuest()
+    public void CompleteQuest()
     {
+        Debug.Log("Quest Completed");
         QuestManager.CompletedQuest += 1;
         quest.isActive = false;
 
         TimerManager.StopTimer();
         /**/
+
+        if(QuestManager.CompletedQuest == 1 && !isFirstSceneEndingCutScenePlayed){
+            QuestManager.CompletedQuest -= 1;
+            isFirstSceneEndingCutScenePlayed = true;
+            GameObject.Find("CutSceneManager").GetComponent<CutSceneManagerLevel2>().StartPUBGToHouseCutScene();
+            return;
+        }
+        QuestManager.UpdateQuest();
+        TimerManager.StopTimer();
         
         /* Shows popup modal */
         PopupModal.SetActive(true);
         
         /* Freeze Game */
         TimerManager.PauseGame();
-        questGiver.SetNewQuest(QuestManager.CompletedQuest);
 
         /* Reward */
         GoldManager.addGold(quest.goldReward);
-        /**/
-        
-        /* Pindah scene ada button save apa gak */
     }
 
 }

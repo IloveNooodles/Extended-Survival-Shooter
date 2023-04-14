@@ -7,7 +7,7 @@ public class QuestGiver : MonoBehaviour
 {
     private static QuestGiver instance;
     [SerializeField] private QuestList questList;
-    [SerializeField] private Quest activeQuest = new Quest();
+    private Quest activeQuest = new Quest();
     private GameObject questWindow;
     private TMP_Text title;
     private TMP_Text goal;
@@ -42,7 +42,7 @@ public class QuestGiver : MonoBehaviour
     public void UpdateQuestWindow()
     {
         if (!questWindow) return;
-        Quest quest = this.activeQuest;
+        Quest quest = activeQuest;
         title.text =  $"Quest: #{QuestManager.CompletedQuest + 1}" +
                       $"\n{quest.title}";
         description.text = $"\n{quest.description}";

@@ -30,7 +30,7 @@ public class GoldManager : MonoBehaviour, IDataPersistence
 
     static public void addGold(int gold)
     {
-        int newGold = GoldManager.Gold + gold;
+        int newGold = Gold + gold;
         if(newGold > Int16.MaxValue)
         {
             Gold = Int16.MaxValue;

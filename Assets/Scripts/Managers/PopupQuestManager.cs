@@ -16,7 +16,7 @@ public class PopupQuestManager : MonoBehaviour
     public void SaveButton()
     {
         DataPersistenceManager.instance.SaveGame();
-
+        
         player.transform.position = new Vector3(0, 0, 0);
         ChangeScene();
         TimerManager.ContinueGame();
@@ -35,7 +35,7 @@ public class PopupQuestManager : MonoBehaviour
     private void ChangeScene()
     {
         currentScene = SceneManager.GetActiveScene().buildIndex;
-        if (currentScene + 1 >= 3) return;
+        if (currentScene + 1 > 3) return;
         SceneManager.LoadScene(currentScene + 1);
     }
 }
