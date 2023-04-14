@@ -8,11 +8,11 @@ public class QuestGiver : MonoBehaviour
     private static QuestGiver instance;
     [SerializeField] private QuestList questList;
     [SerializeField] private Quest activeQuest = new Quest();
-    [SerializeField] private GameObject questWindow;
-    [SerializeField] private TMP_Text title;
-    [SerializeField] private TMP_Text goal;
-    [SerializeField] private TMP_Text reward;
-    [SerializeField] private TMP_Text description;
+    private GameObject questWindow;
+    private TMP_Text title;
+    private TMP_Text goal;
+    private TMP_Text reward;
+    private TMP_Text description;
 
     private void Awake()
     {
@@ -26,6 +26,12 @@ public class QuestGiver : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
+        questWindow = GameObject.FindGameObjectWithTag("QuestWindow");
+        TMP_Text[] a = questWindow.GetComponentsInChildren<TMP_Text>();
+        title = a[0];
+        goal = a[3];
+        description = a[1];
+        reward = a[2];
     }
 
     public void SetNewQuest(int index)
@@ -35,8 +41,8 @@ public class QuestGiver : MonoBehaviour
 
     public void UpdateQuestWindow(Quest quest)
     {
+        if (!questWindow) return;
         this.activeQuest = quest;
-        questWindow.SetActive(true);
         title.text =  $"Quest: #{QuestManager.CompletedQuest + 1}" +
                       $"\n{quest.title}";
         description.text = $"\n{quest.description}";
