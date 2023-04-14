@@ -47,13 +47,13 @@ public class QuestList : MonoBehaviour
         string gold = ItemName.Gold;
         
         /* First Quest */
-        string[] firstTarget = {EnemyName.Zombunny, EnemyName.Hellepant};
+        string[] firstTarget = {EnemyName.Zombunny};
         List<QuestGoal> list = new List<QuestGoal>();
         for (int i = 0; i < firstTarget.Length; i++)
         {
             string target = firstTarget[i];
             KillQuestGoal killQuestGoal = new KillQuestGoal(EnemyName.GetEnemyId(target), target, 0);
-            list.Add(killQuestGoal);
+            // list.Add(killQuestGoal);
         }
         
         SpendQuestGoal spentQuestGoal = new SpendQuestGoal(ItemName.ItemId(bullet), bullet, 5);
