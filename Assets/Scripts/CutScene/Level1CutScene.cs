@@ -8,6 +8,7 @@ public class Level1CutScene : MonoBehaviour
     public GameObject player;
     public GameObject mainCamera;
     public GameObject enemyManager;
+    public GameObject petManager;
     public GameObject HUD;
     public GameObject[] enemies;
 
@@ -19,6 +20,7 @@ public class Level1CutScene : MonoBehaviour
         player.SetActive(false);
         mainCamera.SetActive(false);
         enemyManager.SetActive(false);
+        petManager.SetActive(false);
         HUD.SetActive(false);
         foreach(GameObject enemy in enemies){
             enemy.SetActive(false);
@@ -36,6 +38,7 @@ public class Level1CutScene : MonoBehaviour
         mainCamera.SetActive(true);
         enemyManager.SetActive(true);
         HUD.SetActive(true);
+        petManager.SetActive(true);
         foreach(GameObject enemy in enemies){
             enemy.SetActive(true);
         }

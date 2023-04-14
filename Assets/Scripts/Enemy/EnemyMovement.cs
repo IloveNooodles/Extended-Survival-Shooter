@@ -35,18 +35,15 @@ public class EnemyMovement : MonoBehaviour
 
                 if (distanceToPlayer > distanceToPet)
                 {
-                    nav.ResetPath();
                     nav.SetDestination(PetManager.currentPet.transform.position);
                 }
                 else
                 {
-                    nav.ResetPath();
                     nav.SetDestination(player.position);
                 }
             }
             else
             {
-                nav.ResetPath();
                 nav.SetDestination(player.position);
             }
         }

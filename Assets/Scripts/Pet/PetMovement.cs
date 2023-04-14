@@ -21,7 +21,7 @@ public class PetMovement : MonoBehaviour
     
 
 
-    void Start()
+    void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         nav = GetComponent<NavMeshAgent>();
@@ -43,7 +43,6 @@ public class PetMovement : MonoBehaviour
         }
         else
         {
-            nav.ResetPath();
             nav.SetDestination(player.position);
         }
         
@@ -68,6 +67,7 @@ public class PetMovement : MonoBehaviour
         GameObject closestEnemy = null;
         float closestDistance = Mathf.Infinity;
         Vector3 currentPosition = transform.position;
+
         foreach (GameObject enemy in enemies)
         {
             if (enemy == null) continue;
@@ -94,21 +94,24 @@ public class PetMovement : MonoBehaviour
             
             if (closestDistance < thresholdEnemyDistance)
             {
-                nav.ResetPath();
+                // Look at
+                transform.LookAt(runTo);
                 nav.SetDestination(runTo);
             }
             else
             {
                 // just stop there so its avoid pet to oscillate between player and enemy
-                nav.ResetPath();
+                // transform.LookAt(transform.position);
                 nav.SetDestination(transform.position);
             }
         }
         else
         {
-            nav.ResetPath();
+            transform.LookAt(player.position);
             nav.SetDestination(player.position);
         }
+        
+        
 
     }
     

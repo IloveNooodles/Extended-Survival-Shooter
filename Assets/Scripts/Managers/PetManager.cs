@@ -93,7 +93,7 @@ public class PetManager : MonoBehaviour
         
         pets[currentPetIndex].transform.position = new Vector3(
             player.transform.position.x + x,
-            player.transform.position.y,
+            0,
             player.transform.position.z + z
         );
         
