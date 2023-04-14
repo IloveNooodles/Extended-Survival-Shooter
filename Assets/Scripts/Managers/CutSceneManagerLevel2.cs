@@ -52,7 +52,7 @@ public class CutSceneManagerLevel2 : MonoBehaviour
     }
 
     IEnumerator EndCutScene(){
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
         startingCutScene.EndCutScene();
     }
 
@@ -63,7 +63,7 @@ public class CutSceneManagerLevel2 : MonoBehaviour
     }
 
     IEnumerator EndPUBGToHouseCutScene(){
-        yield return new WaitForSeconds(16f);
+        yield return new WaitForSeconds(1f);
         pubgToHouseCutscene.EndCutScene();
     }
 
@@ -74,7 +74,7 @@ public class CutSceneManagerLevel2 : MonoBehaviour
     }
 
     IEnumerator EndEnterHouseCutScene(){
-        yield return new WaitForSeconds(9.6f);
+        yield return new WaitForSeconds(1f);
         enterHouseCutscene.EndCutScene();
     }
 }

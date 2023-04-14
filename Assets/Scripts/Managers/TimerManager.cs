@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class TimerManager : MonoBehaviour, IDataPersistence
 {
     private static TimerManager instance;
-    public static float time;
+    public static float time = 0;
     public static bool isActive;
 
     private Text text;
@@ -21,7 +21,6 @@ public class TimerManager : MonoBehaviour, IDataPersistence
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-            time = 0;
             isActive = true;
         }
         

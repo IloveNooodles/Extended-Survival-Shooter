@@ -34,6 +34,16 @@ public class QuestGiver : MonoBehaviour
         reward = a[2];
     }
 
+    private void Start()
+    {
+        questWindow = GameObject.FindGameObjectWithTag("QuestWindow");
+        TMP_Text[] a = questWindow.GetComponentsInChildren<TMP_Text>();
+        title = a[0];
+        goal = a[3];
+        description = a[1];
+        reward = a[2];
+    }
+
     public void SetNewQuest(int index)
     {
         activeQuest = questList.GetQuestByIndex(index);
