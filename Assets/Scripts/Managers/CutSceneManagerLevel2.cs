@@ -50,7 +50,7 @@ public class CutSceneManagerLevel2 : MonoBehaviour
     }
 
     IEnumerator EndCutScene(){
-        yield return new WaitForSeconds(30f);
+        yield return new WaitForSeconds(0f);
         startingCutScene.EndCutScene();
     }
 }
