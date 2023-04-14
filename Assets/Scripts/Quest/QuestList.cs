@@ -67,7 +67,7 @@ public class QuestList : MonoBehaviour
         
         /* Second Quest */
         list = new List<QuestGoal>();
-        spentQuestGoal = new SpendQuestGoal( ItemName.ItemId(gold), gold, 50);
+        spentQuestGoal = new SpendQuestGoal( ItemName.ItemId(gold), gold, 1);
         
         list.Add(spentQuestGoal);
         addedQuest = new Quest(secondQuestTitle,

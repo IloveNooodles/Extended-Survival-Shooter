@@ -6,7 +6,6 @@ using UnityEngine;
 [Serializable]
 public class GameData
 {
-    public string name;
     public int health;
     public float time;
     public int gold;
@@ -18,7 +17,6 @@ public class GameData
 
     public GameData()
     {
-        this.name = "Player";
         this.health = 100;
         this.time = 0;
         this.gold = 0;

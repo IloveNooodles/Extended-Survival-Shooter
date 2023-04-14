@@ -23,6 +23,11 @@ public class EnemyManager : MonoBehaviour
             return;
         }
 
+        //Tidak spawn enemy jika player sudahmenyelesaikan quest 2
+        if(PlayerQuest.isSecondSceneEndingCutScenePlayed == true){
+            return;
+        }
+
         //Mendapatkan nilai random
         int spawnPointIndex = Random.Range(0, spawnPoints.Length);
         int spawnEnemy = Random.Range(0, 3);

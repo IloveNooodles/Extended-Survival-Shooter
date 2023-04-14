@@ -5,12 +5,12 @@ using UnityEngine;
 public class ShotGun : MonoBehaviour, IWeapon
 {
     const int MAX_NUM_BULLET = 30;
-    public int damage = 30;
+    public int damage = 20;
     public int buffDamage = 0;
     public float attackSpeed = 1f;
     public float reloadTime = 2f;
     public float range = 10f;
-    public int spread = 5;
+    public int bulletsPerShot = 5;
 
     public string weaponName { get; set; }
     public int numberOfBullets { get; set; }
@@ -24,7 +24,7 @@ public class ShotGun : MonoBehaviour, IWeapon
     public void Attack()
     {
         Debug.Log(weaponName + " Attack");
-        numberOfBullets -= spread;
+        numberOfBullets -= bulletsPerShot;
     }
 
     public void Reload()
