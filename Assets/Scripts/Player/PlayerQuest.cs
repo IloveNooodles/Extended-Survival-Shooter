@@ -52,16 +52,13 @@ public class PlayerQuest : MonoBehaviour
         QuestManager.CompletedQuest += 1;
         quest.isActive = false;
 
-        TimerManager.StopTimer();
-        /**/
-
         if(QuestManager.CompletedQuest == 1 && !isFirstSceneEndingCutScenePlayed){
             QuestManager.CompletedQuest -= 1;
             isFirstSceneEndingCutScenePlayed = true;
             GameObject.Find("CutSceneManager").GetComponent<CutSceneManagerLevel2>().StartPUBGToHouseCutScene();
             return;
         }
-        QuestManager.UpdateQuest();
+        
         TimerManager.StopTimer();
         
         /* Shows popup modal */
