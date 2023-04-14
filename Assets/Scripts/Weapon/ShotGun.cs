@@ -9,7 +9,8 @@ public class ShotGun : MonoBehaviour, IWeapon
     public int buffDamage = 0;
     public float attackSpeed = 1f;
     public float reloadTime = 2f;
-    public float range = 50f;
+    public float range = 10f;
+    public int spread = 5;
 
     public string weaponName { get; set; }
     public int numberOfBullets { get; set; }
@@ -23,7 +24,7 @@ public class ShotGun : MonoBehaviour, IWeapon
     public void Attack()
     {
         Debug.Log(weaponName + " Attack");
-        numberOfBullets--;
+        numberOfBullets -= spread;
     }
 
     public void Reload()

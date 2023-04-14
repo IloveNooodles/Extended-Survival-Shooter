@@ -716,6 +716,7 @@ GameObject:
   - component: {fileID: 7171242941813586092}
   - component: {fileID: 3380679562977806331}
   - component: {fileID: 1819638689047789288}
+  - component: {fileID: 130066270}
   m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
@@ -785,6 +786,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'Time: '
+--- !u!114 &130066270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2779099857352906421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5dd22f11a0d40b4a495a33ea5c0081e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2821453851195985907
 GameObject:
   m_ObjectHideFlags: 0
@@ -1383,6 +1396,7 @@ GameObject:
   - component: {fileID: 6199050851214759546}
   - component: {fileID: 6199050851214759543}
   - component: {fileID: 6199050851214759540}
+  - component: {fileID: 1921861168}
   m_Layer: 5
   m_Name: Gold
   m_TagString: Untagged
@@ -1452,6 +1466,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'Gold: 0'
+--- !u!114 &1921861168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6199050851214759547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edaa106df51846c3938dc6913685771e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6199050851232258878
 GameObject:
   m_ObjectHideFlags: 0
@@ -1979,6 +2005,7 @@ GameObject:
   - component: {fileID: 566165290901347957}
   - component: {fileID: 6927839415161008944}
   - component: {fileID: 556887256940176253}
+  - component: {fileID: 1232863501}
   m_Layer: 5
   m_Name: HUD with Pet Heart Slider
   m_TagString: Untagged
@@ -2114,6 +2141,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 0}
   scoreText: {fileID: 1099503505313909951}
+--- !u!114 &1232863501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7925861864098132389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11baa92a4431494c8cc8257f7df8c265, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7949306079661318668
 GameObject:
   m_ObjectHideFlags: 0

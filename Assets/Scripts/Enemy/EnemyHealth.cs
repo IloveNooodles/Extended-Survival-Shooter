@@ -54,6 +54,8 @@ public class EnemyHealth : MonoBehaviour, IEnemy
         else if (enemyName.Contains(EnemyName.Titan))
         {
             Id = EnemyName.GetEnemyId(EnemyName.Titan);
+        } else if(enemyName.Contains(EnemyName.Wizard)){
+            Id = EnemyName.GetEnemyId(EnemyName.Wizard);
         }
 
         goldValue += Id;
@@ -116,9 +118,10 @@ public class EnemyHealth : MonoBehaviour, IEnemy
         //Dead jika health <= 0
         if (currentHealth <= 0)
         {
-            
             Death();
         }
+        
+        Debug.Log(Id);
     }
 
     public virtual void Death()
@@ -128,7 +131,6 @@ public class EnemyHealth : MonoBehaviour, IEnemy
         
         //SetCapcollider ke trigger
         capsuleCollider.isTrigger = true;
-        playerQuest.Track(GoalType.Kill, Id, 1);
 
         //trigger play animation Dead
         anim.SetTrigger("Dead");
@@ -136,7 +138,6 @@ public class EnemyHealth : MonoBehaviour, IEnemy
         //Play Sound Dead
         enemyAudio.clip = deathClip;
         enemyAudio.Play();
-
         try
         {
             FPSEnemyManager.numberOfEnemy--;
@@ -155,7 +156,8 @@ public class EnemyHealth : MonoBehaviour, IEnemy
         isSinking = true;
         ScoreManager.score += scoreValue;
         GoldManager.Gold += goldValue;
-          playerQuest.Track(GoalType.Spend,  ItemName.ItemId(ItemName.Gold), goldValue);
+        playerQuest.Track(GoalType.Kill, Id, 1);
+        playerQuest.Track(GoalType.Spend,  ItemName.ItemId(ItemName.Gold), goldValue);
         Destroy(gameObject, 2f);
     }
 }
