@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-public class QuestManager : MonoBehaviour
+public class QuestManager : MonoBehaviour, IDataPersistence
 {
     private static QuestManager instance;
     public static int CompletedQuest;
@@ -24,6 +24,16 @@ public class QuestManager : MonoBehaviour
     private void Update()
     {
         text.text = $"Quest: ({CompletedQuest}/4)";
+    }
+
+    public void LoadData(GameData data)
+    {
+        CompletedQuest = data.completedQuest;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.completedQuest = CompletedQuest;
     }
 }
 

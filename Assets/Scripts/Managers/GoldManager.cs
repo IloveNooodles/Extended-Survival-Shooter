@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GoldManager : MonoBehaviour
+public class GoldManager : MonoBehaviour, IDataPersistence
 {
     private static GoldManager _instance;
     public static int Gold;
@@ -40,5 +40,15 @@ public class GoldManager : MonoBehaviour
             Gold = newGold;
         }
         Debug.Log("Gold: " + Gold);
+    }
+    
+    public void LoadData(GameData data)
+    {
+        Gold = data.gold;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.gold = Gold;
     }
 }

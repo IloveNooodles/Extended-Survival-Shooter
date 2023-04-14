@@ -11,7 +11,7 @@ public class DataPersistenceManager : MonoBehaviour
     private GameData gameData;
     private List<IDataPersistence> dataPersistenceObjects;
     private FileDataHandler dataHandler;
-    private string selectedProfileId;
+    private string selectedProfileId = "";
 
     public static DataPersistenceManager instance
     {
@@ -69,6 +69,7 @@ public class DataPersistenceManager : MonoBehaviour
             dataPersistenceObject.SaveData(ref gameData);
         }
 
+        gameData.lastSavedDate = System.DateTime.Now.ToString();
         dataHandler.Save(gameData, selectedProfileId);
     }
 
