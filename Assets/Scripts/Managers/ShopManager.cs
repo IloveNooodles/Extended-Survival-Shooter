@@ -150,6 +150,8 @@ public class ShopManager : MonoBehaviour
     {
         player.SetActive(true);
         int lastScene = PlayerPrefs.GetInt("lastScene");
+        PlayerPrefs.DeleteKey("lastScene");
+        PlayerPrefs.SetInt("isDontPlayCutScene", 1);
         SceneManager.LoadScene(lastScene);
     }
     

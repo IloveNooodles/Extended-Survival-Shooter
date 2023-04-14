@@ -347,13 +347,14 @@ GameObject:
   m_Component:
   - component: {fileID: 188875297}
   - component: {fileID: 188875296}
+  - component: {fileID: 188875298}
   m_Layer: 0
   m_Name: PetManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &188875296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,6 +388,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &188875298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188875295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2df1c3cd4a393d42910dc7f6e8ac658, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &202522487
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4613,12 +4626,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questList: {fileID: 1534637466}
-  activeQuest:
-    isActive: 0
-    title: 
-    description: 
-    goldReward: 0
-    questGoal: []
 --- !u!4 &1758632038
 Transform:
   m_ObjectHideFlags: 0
