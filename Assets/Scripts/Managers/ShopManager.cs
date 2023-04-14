@@ -8,34 +8,50 @@ public class ShopManager : MonoBehaviour
 {
     public int golds;
     public TMP_Text goldsText;
-    public ShopItemSO[] shopItems;
+    public ShopItemSO[] petItems;
+    public ShopItemSO[] weaponItems;
     public ShopItemData[] shopItemDatas;
     // public GameObject[]
+    private GameObject petSection, weaponSection;
+    
+    TMP_Text petSectionTxt, weaponSectionTxt;
+    GameObject petSectionPanel, weaponSectionPanel;
+
+    private int currentActiveSection = 0;
+    
+    
     
     // public ShopTemplate shopPrefabs;
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < shopItemDatas.Length; i++)
-        {
-            if (i >= shopItems.Length)
-                shopItemDatas[i].gameObject.SetActive(false);
-            else
-                shopItemDatas[i].gameObject.SetActive(true);
-        }
+        petSection = GameObject.Find("Pet Section");
+        weaponSection = GameObject.Find("Weapon Section");
+        petSectionTxt = petSection.GetComponentInChildren<TMP_Text>();
+        weaponSectionTxt = weaponSection.GetComponentInChildren<TMP_Text>();
+        petSectionPanel = petSection.transform.GetChild(1).gameObject;
+        weaponSectionPanel = weaponSection.transform.GetChild(1).gameObject;
 
 
 
         goldsText.text = golds.ToString();
         
-        loadItems();
+        loadPetItems();
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    // void Update()
+    // {
+    //     if(Input.GetKeyDown(KeyCode.P))
+    //     {
+    //         loadPetItems();
+    //     }
+    //     if(Input.GetKeyDown(KeyCode.O))
+    //     {
+    //         loadWeaponItems();
+    //     }
+    //     
+    // }
 
     public void addGolds()
     {
@@ -44,14 +60,93 @@ public class ShopManager : MonoBehaviour
         
     }
 
-    public void loadItems()
+    public void loadPetItems()
     {
-        for (int i = 0; i < shopItems.Length; i++)
+        for (int i = 0; i < shopItemDatas.Length; i++)
         {
-            shopItemDatas[i].title.text = shopItems[i].title;
-            shopItemDatas[i].description.text = shopItems[i].description;
-            shopItemDatas[i].cost.text = shopItems[i].cost.ToString();
-            shopItemDatas[i].thumbnail.texture = shopItems[i].thumbnail;
+            if (i >= petItems.Length)
+                shopItemDatas[i].gameObject.SetActive(false);
+            else
+                shopItemDatas[i].gameObject.SetActive(true);
+        }
+        for (int i = 0; i < petItems.Length; i++)
+        {
+            shopItemDatas[i].title.text = petItems[i].title;
+            shopItemDatas[i].description.text = petItems[i].description;
+            shopItemDatas[i].cost.text = petItems[i].cost.ToString();
+            shopItemDatas[i].thumbnail.texture = petItems[i].thumbnail;
         }
     }
+
+    public void loadWeaponItems()
+    {
+        for (int i = 0; i < shopItemDatas.Length; i++)
+        {
+            if (i >= weaponItems.Length)
+                shopItemDatas[i].gameObject.SetActive(false);
+            else
+                shopItemDatas[i].gameObject.SetActive(true);
+        }
+        for (int i = 0; i < weaponItems.Length; i++)
+        {
+            shopItemDatas[i].title.text = weaponItems[i].title;
+            shopItemDatas[i].description.text = weaponItems[i].description;
+            shopItemDatas[i].cost.text = weaponItems[i].cost.ToString();
+            shopItemDatas[i].thumbnail.texture = weaponItems[i].thumbnail;
+        }
+        
+    }
+    
+    public void onClickPetSection()
+    {
+        if (currentActiveSection == 0)
+            return;
+        petSectionTxt.color = new Color(0.9960785f, 0.7960785f, 0.1372549f);
+        weaponSectionTxt.color = Color.white;
+        petSectionPanel.SetActive(true);
+        weaponSectionPanel.SetActive(false);
+        currentActiveSection = 0;
+        loadPetItems();
+    }
+    
+    public void onClickWeaponSection()
+    {
+        if (currentActiveSection == 1)
+            return;
+        petSectionTxt.color = Color.white;
+        weaponSectionTxt.color = new Color(0.9960785f, 0.7960785f, 0.1372549f);
+        petSectionPanel.SetActive(false);
+        weaponSectionPanel.SetActive(true);
+        currentActiveSection = 1;
+        loadWeaponItems();
+    }
+    
+    public void onPointerEnterPetSection()
+    {        
+        if (currentActiveSection == 0)
+            return;
+        petSectionTxt.color = new Color(0.9960785f, 0.7960785f, 0.1372549f);
+    }
+    
+    public void onPointerExitPetSection()
+    {
+        if (currentActiveSection == 0)
+            return;
+        petSectionTxt.color = Color.white;
+    }
+    
+    public void onPointerEnterWeaponSection()
+    {
+        if (currentActiveSection == 1)
+            return;
+        weaponSectionTxt.color = new Color(0.9960785f, 0.7960785f, 0.1372549f);
+    }
+    
+    public void onPointerExitWeaponSection()
+    {
+        if (currentActiveSection == 1)
+            return;
+        weaponSectionTxt.color = Color.white;
+    }
+    
 }

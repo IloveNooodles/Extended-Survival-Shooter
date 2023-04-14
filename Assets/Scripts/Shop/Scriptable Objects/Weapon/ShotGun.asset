@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 14550bca0d3752c4b83fd45fe7e25f15, type: 3}
-  m_Name: Dark Wizard
+  m_Name: ShotGun
   m_EditorClassIdentifier: 
-  title: Dark Wizard
-  description: The lost scholar claimed to have had contact with an outer god, your
-    attack power increases by 10.
+  title: ShotGun
+  description: ShotGun Description
   cost: 200
-  thumbnail: {fileID: 8400000, guid: b42d51c615e2bcb49b86d257b7edb2f9, type: 2}
+  thumbnail: {fileID: 8400000, guid: ae351c7362cf8aa44848e48ad9e010d0, type: 2}

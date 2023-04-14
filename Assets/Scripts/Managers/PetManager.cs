@@ -31,6 +31,8 @@ public class PetManager : MonoBehaviour
             pets[i].tag = "Pet";
             i++;
         }
+        
+        DontDestroyOnLoad(gameObject);
 
     }
 
