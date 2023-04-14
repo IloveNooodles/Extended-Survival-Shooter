@@ -7,7 +7,7 @@ public class TimerManager : MonoBehaviour, IDataPersistence
 {
     private static TimerManager instance;
     public static float time;
-    private bool isActive;
+    public static bool isActive;
 
     private Text text;
 
@@ -28,12 +28,22 @@ public class TimerManager : MonoBehaviour, IDataPersistence
         text = GetComponent<Text>();
     }
 
-    public void stopTimer()
+    public static void PauseGame()
     {
-        isActive = false;
+        Time.timeScale = 0;
     }
 
-    public void startTimer()
+    public static void ContinueGame()
+    {
+        Time.timeScale = 1;
+    }
+    
+    public static void StopTimer()
+    {
+         isActive = false;
+    }
+
+    public static void StartTimer()
     {
         isActive = true;
     }

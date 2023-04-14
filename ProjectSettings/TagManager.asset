@@ -9,6 +9,11 @@ TagManager:
   - Titan
   - Spawnpoint
   - Pet
+  - QuestComplete
+  - QuestGiver
+  - QuestList
+  - HUD
+  - QuestWindow
   layers:
   - Default
   - TransparentFX
