@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18388541, g: 0.22895762, b: 0.30269003, a: 1}
+  m_IndirectSpecularColor: {r: 0.18388513, g: 0.22895736, b: 0.3026894, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -382,7 +382,6 @@ MonoBehaviour:
   - {fileID: 2073537862}
   - {fileID: 856577600}
   - {fileID: 1890035856}
-  currentWeaponIndex: 0
 --- !u!4 &96770911 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4991164271044210749, guid: e59fa01228da9f245a68095f88d209e2, type: 3}
@@ -619,7 +618,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b08d0ddb75748f5858b6ff3444d6fc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gold: 0
 --- !u!114 &139052485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3669,6 +3667,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  buffDamage: 0
   attackSpeed: 1
 --- !u!1 &868442568
 GameObject:
@@ -3994,7 +3993,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 151b55541cabf1542a1508592e01e770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 139052492}
   smoothing: 5
 --- !u!1 &974617390
 GameObject:
@@ -7173,7 +7171,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  buffDamage: 0
   attackSpeed: 1
+  reloadTime: 2
+  range: 100
 --- !u!1 &1918121961
 GameObject:
   m_ObjectHideFlags: 0
@@ -7467,6 +7468,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 91753544}
     m_Modifications:
+    - target: {fileID: 6220670547269937742, guid: 0e537880e0bc87e44be381a156e63bd8, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 139052483}
     - target: {fileID: 8087204901033334537, guid: 0e537880e0bc87e44be381a156e63bd8, type: 3}
       propertyPath: m_Name
       value: ShotGun
@@ -7527,20 +7532,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8087204901033334537, guid: 0e537880e0bc87e44be381a156e63bd8, type: 3}
   m_PrefabInstance: {fileID: 2073537860}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2073537863
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2073537862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e3ac6842f222164da0f2d4da0e6f1b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 30
-  attackSpeed: 1
 --- !u!1 &2074696205
 GameObject:
   m_ObjectHideFlags: 0
