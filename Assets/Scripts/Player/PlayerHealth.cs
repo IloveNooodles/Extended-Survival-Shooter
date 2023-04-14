@@ -11,10 +11,10 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence
     public int startingHealth = 100;
     public int currentHealth;
     public Slider healthSlider;
-    public Image damageImage;
+    // public Image damageImage;
     public AudioClip deathClip;
     public float flashSpeed = 5f;
-    public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
+    // public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
 
 
     Animator anim;
@@ -39,16 +39,16 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence
     void Update()
     {
         //Jika terkena damaage
-        if (damaged)
-        {
-            // Merubah warna gambar menjadi value dari flashColour
-            damageImage.color = flashColour;
-        }
-        else
-        {
-            //Fade out damage image
-            damageImage.color = Color.Lerp(damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
-        }
+        // if (damaged)
+        // {
+        //     // Merubah warna gambar menjadi value dari flashColour
+        //     damageImage.color = flashColour;
+        // }
+        // else
+        // {
+        //     //Fade out damage image
+        //     damageImage.color = Color.Lerp(damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
+        // }
 
         //Set damage to false
         damaged = false;

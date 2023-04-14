@@ -30,6 +30,7 @@ public class ShopManager : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         player.SetActive(false);
+        PetManager.SetAllNonActive();
     }
     void Start()
     {

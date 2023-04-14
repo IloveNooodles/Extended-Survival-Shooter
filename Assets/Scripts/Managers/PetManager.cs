@@ -45,6 +45,14 @@ public class PetManager : MonoBehaviour
             // summon();
         }
     }
+    
+    public static void SetAllNonActive()
+    {
+        foreach (var pet in pets)
+        {
+            pet.SetActive(false);
+        }
+    }
 
     private void summon()
     {

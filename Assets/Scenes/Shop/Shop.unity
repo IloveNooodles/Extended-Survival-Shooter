@@ -1677,6 +1677,18 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 5449890234961591825, guid: a36ed396f5911664da6afcccaa41793d, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5449890234961591825, guid: a36ed396f5911664da6afcccaa41793d, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5449890234961591825, guid: a36ed396f5911664da6afcccaa41793d, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5466744723129017773, guid: a36ed396f5911664da6afcccaa41793d, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
