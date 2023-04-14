@@ -21,6 +21,11 @@ public class QuestManager : MonoBehaviour, IDataPersistence
         text = GetComponent <Text> ();
     }
 
+    public static void UpdateQuest()
+    {
+        CompletedQuest += 1;
+    }
+    
     private void Update()
     {
         text.text = $"Quest: ({CompletedQuest}/4)";

@@ -39,10 +39,10 @@ public class QuestGiver : MonoBehaviour
         activeQuest = questList.GetQuestByIndex(index);
     }
 
-    public void UpdateQuestWindow(Quest quest)
+    public void UpdateQuestWindow()
     {
         if (!questWindow) return;
-        this.activeQuest = quest;
+        Quest quest = this.activeQuest;
         title.text =  $"Quest: #{QuestManager.CompletedQuest + 1}" +
                       $"\n{quest.title}";
         description.text = $"\n{quest.description}";

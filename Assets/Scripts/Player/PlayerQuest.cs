@@ -16,9 +16,14 @@ public class PlayerQuest : MonoBehaviour
         questList.InitQuestList();
         questGiver.SetNewQuest(0);
         quest = questGiver.GiveQuestToUser();
-        questGiver.UpdateQuestWindow(quest);
+        questGiver.UpdateQuestWindow();
     }
-    
+
+    public void Start()
+    {
+        questGiver.UpdateQuestWindow();
+    }
+
     public void Continue()
     {
         PopupModal.SetActive(false);
@@ -37,7 +42,7 @@ public class PlayerQuest : MonoBehaviour
             status = status && quest.questGoal[i].GetQuestStatus();
         }
         
-        questGiver.UpdateQuestWindow(quest);
+        questGiver.UpdateQuestWindow();
         
         if (status && quest.isActive)
         {
@@ -47,23 +52,21 @@ public class PlayerQuest : MonoBehaviour
     
     private void CompleteQuest()
     {
-        QuestManager.CompletedQuest += 1;
-        quest.isActive = false;
-
-        TimerManager.StopTimer();
-        /**/
+        QuestManager.UpdateQuest();
         
         /* Shows popup modal */
         PopupModal.SetActive(true);
         
         /* Freeze Game */
-        TimerManager.PauseGame();
         questGiver.SetNewQuest(QuestManager.CompletedQuest);
+        // questGiver.UpdateQuestWindow();
 
         /* Reward */
         GoldManager.Gold += quest.goldReward;
-        
         /* Pindah scene ada button save apa gak */
+        
+        TimerManager.StopTimer();
+        TimerManager.PauseGame();
     }
 
 }
