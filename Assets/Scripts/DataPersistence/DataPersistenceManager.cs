@@ -87,8 +87,8 @@ public class DataPersistenceManager : MonoBehaviour
     }
 
     // FOR TRIAL PURPOSES ONLY
-    private void OnApplicationQuit()
-    {
-        SaveGame();
-    }
+    // private void OnApplicationQuit()
+    // {
+    //     SaveGame();
+    // }
 }
