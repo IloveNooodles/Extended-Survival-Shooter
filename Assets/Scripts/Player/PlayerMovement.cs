@@ -49,7 +49,14 @@ public class PlayerMovement : MonoBehaviour
         movement.Set(h, 0f, v);
 
         //Menormalisasi nilai vector agar total panjang dari vector adalah 1
-        movement = movement.normalized * (speed * Time.deltaTime);
+        if(CheatManager.is2xSpeed)
+        {
+            movement = movement.normalized * (speed * 2 * Time.deltaTime);
+        }
+        else
+        {
+            movement = movement.normalized * (speed * Time.deltaTime);
+        }
 
         //Move to position
         playerRigidbody.MovePosition(transform.position + movement);

@@ -27,4 +27,18 @@ public class GoldManager : MonoBehaviour
     {
         text.text = "Gold: " + Gold;
     }
+
+    static public void addGold(int gold)
+    {
+        int newGold = GoldManager.Gold + gold;
+        if(newGold > Int16.MaxValue)
+        {
+            Gold = Int16.MaxValue;
+        }
+        else
+        {
+            Gold = newGold;
+        }
+        Debug.Log("Gold: " + Gold);
+    }
 }

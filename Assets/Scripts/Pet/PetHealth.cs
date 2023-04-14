@@ -52,10 +52,13 @@ public class PetHealth : MonoBehaviour
         // damaged = true;
 
         //mengurangi health
-        currentHealth -= amount;
+        if(!CheatManager.isFullHPPet){
+            currentHealth -= amount;
 
-        //Merubah tampilan dari health slider
-        healthSlider.value = currentHealth;
+            //Merubah tampilan dari health slider
+            healthSlider.value = currentHealth;
+        }
+
 
         //Memainkan suara ketika terkena damage
         petAudio.Play();
@@ -65,6 +68,14 @@ public class PetHealth : MonoBehaviour
         {
             StartCoroutine(Death());
         }
+    }
+
+    public void killPet()
+    {
+        currentHealth -= 0;
+        healthSlider.value = currentHealth;
+        petAudio.Play();
+        StartCoroutine(Death());
     }
     
 

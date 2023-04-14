@@ -66,7 +66,7 @@ public class PlayerQuest : MonoBehaviour
         questGiver.SetNewQuest(QuestManager.CompletedQuest);
 
         /* Reward */
-        GoldManager.Gold += quest.goldReward;
+        GoldManager.addGold(quest.goldReward);
         
         /* Pindah scene ada button save apa gak */
     }
