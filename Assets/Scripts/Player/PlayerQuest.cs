@@ -8,6 +8,7 @@ public class PlayerQuest : MonoBehaviour
     public Quest quest;
     private GameObject PopupModal;
     static public bool isFirstSceneEndingCutScenePlayed = false;
+    static public bool isSecondSceneEndingCutScenePlayed = false;
 
     private void Awake()
     {
@@ -56,6 +57,12 @@ public class PlayerQuest : MonoBehaviour
             QuestManager.CompletedQuest -= 1;
             isFirstSceneEndingCutScenePlayed = true;
             GameObject.Find("CutSceneManager").GetComponent<CutSceneManagerLevel2>().StartPUBGToHouseCutScene();
+            return;
+        }
+
+        if(QuestManager.CompletedQuest == 2 && !isSecondSceneEndingCutScenePlayed){
+            QuestManager.CompletedQuest -= 1;
+            isSecondSceneEndingCutScenePlayed = true;
             return;
         }
         
