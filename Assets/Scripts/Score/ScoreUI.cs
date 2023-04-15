@@ -13,7 +13,6 @@ public class ScoreUI : MonoBehaviour
         // HOW TO ADD SCORES
         // scoreboardManager.AddScore(new Score("Player 1", 100));
 
-        print(scoreboardManager.GetHighScores());
         var scores = scoreboardManager.GetHighScores().ToArray();
         
         for (int i = 0; i < scores.Length; i++)
