@@ -5,7 +5,7 @@ public class FPSShooting : MonoBehaviour
     public int damagePerShot = 20;
     public float timeBetweenBullets = 0.15f;
     public float range = 100f;
-    public Transform target;
+    Transform target;
 
     float timer;
     Ray shootRay = new Ray();
@@ -23,6 +23,7 @@ public class FPSShooting : MonoBehaviour
     {
         //GetMask
         shootableMask = LayerMask.GetMask("Shootable");
+        // target = GameObject.FindGameObjectWithTag("PlayerCam").transform;
 
         //Mendapatkan Reference component
         gunParticles = GetComponent<ParticleSystem>();
@@ -31,6 +32,10 @@ public class FPSShooting : MonoBehaviour
         gunLight = GetComponent<Light>();
     }
 
+    void Start()
+    {
+        target = GameObject.FindGameObjectWithTag("PlayerCam").transform;
+    }
 
     void Update()
     {
@@ -100,7 +105,9 @@ public class FPSShooting : MonoBehaviour
             if (shootHit.collider.tag == "Environment")
             {
                 shootHit.collider.GetComponent<EnvironmentHealth>().TakeDamage(damagePerShot, shootHit.point);
-            }else if(shootHit.collider.tag == "Titan"){
+            }
+            else if (shootHit.collider.tag == "Titan")
+            {
                 Debug.Log("Titan");
                 shootHit.collider.GetComponent<TitanHealthPart>().TakeDamage(damagePerShot, shootHit.point, shootHit.collider.gameObject);
             }

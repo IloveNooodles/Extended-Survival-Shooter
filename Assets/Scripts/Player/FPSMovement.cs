@@ -6,14 +6,14 @@ using TMPro;
 public class FPSMovement : MonoBehaviour
 {
     [Header("Movement")]
-    public float moveSpeed;
+    public float moveSpeed = 5;
     float inputMoveSpeed;
 
-    public float groundDrag;
+    public float groundDrag = 5;
 
-    public float jumpForce;
-    public float jumpCooldown;
-    public float airMultiplier;
+    public float jumpForce = 5;
+    public float jumpCooldown = 0.25f;
+    public float airMultiplier = 2;
     bool readyToJump;
 
     [HideInInspector] public float walkSpeed;
@@ -27,7 +27,7 @@ public class FPSMovement : MonoBehaviour
     public Collider floorCollider;
     bool grounded;
 
-    public Transform orientation;
+    Transform orientation;
 
     float horizontalInput;
     float verticalInput;
@@ -40,6 +40,7 @@ public class FPSMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+        orientation = transform;
 
         readyToJump = true;
         inputMoveSpeed = moveSpeed;

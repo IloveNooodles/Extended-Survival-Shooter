@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class CutSceneManager : MonoBehaviour
 {
 
-    public GameObject player;
+    GameObject player;
     FPSMovement fpsMovement;
     FPSShooting fpsShooting;
     public Camera playerCamera;
@@ -17,14 +17,19 @@ public class CutSceneManager : MonoBehaviour
     public BossEndCutScene bossEndCutScene;
     public GameObject petManager;
 
-    public GameObject HUD;
+    GameObject HUD;
 
-    void Start(){
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
         fpsMovement = player.GetComponent<FPSMovement>();
+        HUD = GameObject.FindGameObjectWithTag("HUD");
         fpsShooting = player.GetComponentInChildren<FPSShooting>();
     }
 
-    public void startCutScene(){
+    public void startCutScene()
+    {
+        HUD = GameObject.FindGameObjectWithTag("HUD");
         fpsMovement.enabled = false;
         fpsShooting.enabled = false;
         playerCamera.enabled = false;
@@ -32,7 +37,8 @@ public class CutSceneManager : MonoBehaviour
         HUD.SetActive(false);
     }
 
-    public void endCutScene(){
+    public void endCutScene()
+    {
         fpsMovement.enabled = true;
         fpsShooting.enabled = true;
         playerCamera.enabled = true;
@@ -40,53 +46,68 @@ public class CutSceneManager : MonoBehaviour
         petManager.SetActive(true);
     }
 
-    public void startFirstCityCutScene(){
+    public void startFirstCityCutScene()
+    {
         firstCityCutScene.startCutScene();
         StartCoroutine(endFirstCityCutScene());
     }
 
-    IEnumerator endFirstCityCutScene(){
-        yield return new WaitForSeconds(18.85f);
+    IEnumerator endFirstCityCutScene()
+    {
+        yield return new WaitForSeconds(5f);
+        // yield return new WaitForSeconds(18.85f);
         firstCityCutScene.endCutScene();
     }
 
-    public void startSecondCityCutScene(){
+    public void startSecondCityCutScene()
+    {
         secondCityCutScene.startCutScene();
         StartCoroutine(endSecondCityCutScene());
     }
 
-    IEnumerator endSecondCityCutScene(){
-        yield return new WaitForSeconds(21.5f);
+    IEnumerator endSecondCityCutScene()
+    {
+        yield return new WaitForSeconds(0f);
+        // yield return new WaitForSeconds(21.5f);
         secondCityCutScene.endCutScene();
     }
 
-    public void startThirdCityCutScene(){
+    public void startThirdCityCutScene()
+    {
         thirdCityCutScene.startCutScene();
         StartCoroutine(endThirdCityCutScene());
     }
 
-    IEnumerator endThirdCityCutScene(){
-        yield return new WaitForSeconds(17);
+    IEnumerator endThirdCityCutScene()
+    {
+        yield return new WaitForSeconds(0);
+        // yield return new WaitForSeconds(17);
         thirdCityCutScene.endCutScene();
     }
 
-    public void startBossSpawnCutScene(){
+    public void startBossSpawnCutScene()
+    {
         bossSpawnCutScene.startCutScene();
         StartCoroutine(endBossSpawnCutScene());
     }
 
-    IEnumerator endBossSpawnCutScene(){
-        yield return new WaitForSeconds(15);
+    IEnumerator endBossSpawnCutScene()
+    {
+        yield return new WaitForSeconds(0);
+        // yield return new WaitForSeconds(15);
         bossSpawnCutScene.endCutScene();
     }
 
-    public void startBossEndCutScene(){
+    public void startBossEndCutScene()
+    {
         bossEndCutScene.startCutScene();
         StartCoroutine(endBossEndCutScene());
     }
 
-    IEnumerator endBossEndCutScene(){
-        yield return new WaitForSeconds(24.5f);
+    IEnumerator endBossEndCutScene()
+    {
+        yield return new WaitForSeconds(0f);
+        // yield return new WaitForSeconds(24.5f);
         bossEndCutScene.endCutScene();
         SceneManager.LoadScene(5);
     }
