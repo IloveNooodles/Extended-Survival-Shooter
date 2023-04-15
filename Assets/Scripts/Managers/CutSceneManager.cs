@@ -116,8 +116,8 @@ public class CutSceneManager : MonoBehaviour
 
     IEnumerator endBossEndCutScene()
     {
-        yield return new WaitForSeconds(0f);
-        // yield return new WaitForSeconds(24.5f);
+        // yield return new WaitForSeconds(0f);
+        yield return new WaitForSeconds(24.5f);
         playerQuest.Track(GoalType.Spend, ItemName.ItemId(ItemName.Eren), 1);
         bossEndCutScene.endCutScene();
         SceneManager.LoadScene(5);

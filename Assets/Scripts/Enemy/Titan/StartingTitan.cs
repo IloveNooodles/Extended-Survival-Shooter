@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StartingTitan : MonoBehaviour
 {
-    public GameObject player;
+    GameObject player;
     public GameObject smokeLocation;
     public GameObject fightingTitan;
     public TitanAudio titanAudio;
@@ -15,6 +15,7 @@ public class StartingTitan : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         anim = GetComponent<Animator>();
         smoke = smokeLocation.GetComponent<ParticleSystem>();
         jump();

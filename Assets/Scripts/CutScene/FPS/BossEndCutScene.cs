@@ -8,7 +8,7 @@ public class BossEndCutScene : MonoBehaviour
     public CutSceneManager cutSceneManager;
     public GameObject[] houses;
     public GameObject boss;
-    public GameObject player;
+    GameObject player;
     bool isCutScenePlaying = false;
 
     public GameObject noArmCutScene;
@@ -20,6 +20,7 @@ public class BossEndCutScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         noArmCutScene.SetActive(false);
         noLeftArmCutScene.SetActive(false);
         noRightArmCutScene.SetActive(false);
@@ -27,6 +28,7 @@ public class BossEndCutScene : MonoBehaviour
     }
     public void startCutScene()
     {
+        Debug.Log("Cut Scene Started");
         cutSceneManager.startCutScene();
         foreach (GameObject house in houses)
         {

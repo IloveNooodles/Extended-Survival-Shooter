@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17637402, g: 0.22075196, b: 0.30307084, a: 1}
+  m_IndirectSpecularColor: {r: 0.17637376, g: 0.22075155, b: 0.30307016, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 01c56650f8b100f41a42d94b103e3944, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: f22360bb82d805749ac9578492d02db8, type: 2}
 --- !u!1001 &7142076
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -558,7 +558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1bbc66b679c18149ab4c48be59a5955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titanAudio: {fileID: 0}
+  titanAudio: {fileID: 1370328655}
   haveLeftArm: 0
   haveRightArm: 0
   attackDamage: 10
@@ -586,28 +586,6 @@ MonoBehaviour:
   hitParticles: {fileID: 1607494571}
   smokeParticles: {fileID: 247347880}
   cutSceneManager: {fileID: 951689091}
---- !u!195 &18900220
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 18900216}
-  m_Enabled: 0
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!95 &18900221
 Animator:
   serializedVersion: 5
@@ -634,6 +612,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6e7027cc2f5ba9348a8dbdbcc13cc3b3, type: 3}
   m_PrefabInstance: {fileID: 1319174317}
   m_PrefabAsset: {fileID: 0}
+--- !u!195 &18900223
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18900216}
+  m_Enabled: 0
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1001 &21231365
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4965,7 +4965,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9198836662618533110, guid: 606b917d528ce0a4787a9617804195b5, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 606b917d528ce0a4787a9617804195b5, type: 3}
@@ -6766,6 +6766,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f8a5d41723b4544fb038463d0cb0c50, type: 3}
+--- !u!1 &221975746 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7958625727565534842, guid: 6f8a5d41723b4544fb038463d0cb0c50, type: 3}
+  m_PrefabInstance: {fileID: 221975745}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &224667697 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1368041853407119406, guid: eb5591c7250aebc4eb4e9c3e7f8f3651, type: 3}
@@ -19718,7 +19723,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 345989106}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &345989110
 Camera:
   m_ObjectHideFlags: 0
@@ -31810,7 +31815,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 833559299}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &833559303
 Camera:
   m_ObjectHideFlags: 0
@@ -43396,7 +43401,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6002c7a0d894d874d8fa0ec2f3c92f4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   smokeLocation: {fileID: 247347878}
   fightingTitan: {fileID: 919132148383997098}
   titanAudio: {fileID: 1370328655}
@@ -45280,7 +45284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 6523109884681104331}
-  popupQuest: {fileID: 0}
+  popupQuest: {fileID: 221975746}
   firstCityCutScene: {fileID: 1692050138}
   secondCityCutScene: {fileID: 1851770833}
   thirdCityCutScene: {fileID: 1256703377}
@@ -47984,7 +47988,7 @@ MonoBehaviour:
   backgroundLeftArmHealthBar: {fileID: 1540151759}
   backgroundRightArmHealthBar: {fileID: 0}
   hitParticles: {fileID: 1607494571}
-  smokeParticles: {fileID: 0}
+  smokeParticles: {fileID: 247347880}
   cutSceneManager: {fileID: 951689091}
 --- !u!195 &1074414455
 NavMeshAgent:
@@ -71436,7 +71440,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9198836662618533110, guid: 606b917d528ce0a4787a9617804195b5, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 606b917d528ce0a4787a9617804195b5, type: 3}
@@ -77590,11 +77594,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc95d5de2a103a34481e1ba144cc71de, type: 3}
---- !u!1 &1623488883 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3638958571830380604, guid: fc95d5de2a103a34481e1ba144cc71de, type: 3}
-  m_PrefabInstance: {fileID: 1623488882}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1624404051 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: ef39ae7291c751249b296f00bf6fb042, type: 3}
@@ -83742,7 +83741,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1697046515}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1697046519
 Camera:
   m_ObjectHideFlags: 0
@@ -90563,7 +90562,6 @@ MonoBehaviour:
   - {fileID: 1042451822}
   - {fileID: 463232274}
   boss: {fileID: 1812803843}
-  player: {fileID: 1623488883}
   noArmCutScene: {fileID: 70856044}
   noLeftArmCutScene: {fileID: 53469287}
   noRightArmCutScene: {fileID: 924615612}
@@ -93140,7 +93138,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9198836662618533110, guid: 606b917d528ce0a4787a9617804195b5, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 606b917d528ce0a4787a9617804195b5, type: 3}
@@ -101080,7 +101078,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2011450997}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &2011451001
 Camera:
   m_ObjectHideFlags: 0
