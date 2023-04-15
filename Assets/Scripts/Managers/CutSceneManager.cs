@@ -110,6 +110,7 @@ public class CutSceneManager : MonoBehaviour
 
     public void startBossEndCutScene()
     {
+        TimerManager.StopTimer();
         bossEndCutScene.startCutScene();
         StartCoroutine(endBossEndCutScene());
     }
@@ -121,6 +122,7 @@ public class CutSceneManager : MonoBehaviour
         playerQuest.Track(GoalType.Spend, ItemName.ItemId(ItemName.Eren), 1);
         bossEndCutScene.endCutScene();
         PlayerPrefs.SetFloat("Time", TimerManager.time);
+        HUD.SetActive(false);
         SceneManager.LoadScene(5);
     }
 }

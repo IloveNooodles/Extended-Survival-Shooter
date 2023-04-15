@@ -23,13 +23,11 @@ public class Gun : MonoBehaviour, IWeapon
 
     public void Attack()
     {
-        Debug.Log(weaponName + " Attack");
         numberOfBullets--;
     }
 
     public void Reload()
     {
-        Debug.Log(weaponName + " Reload");
         numberOfBullets = 30;
     }
 
