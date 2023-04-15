@@ -63,6 +63,7 @@ public class Level1EndingCutScene : MonoBehaviour
 
     IEnumerator endCutScene(){
         yield return new WaitForSeconds(5f);
+        HUD.SetActive(true);
         playerQuest.CompleteQuest();
     }
 }

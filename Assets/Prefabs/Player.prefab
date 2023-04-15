@@ -5988,6 +5988,10 @@ PrefabInstance:
       propertyPath: damage
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 1789450590203346247, guid: c4f54ea6a56db574988224271397f90b, type: 3}
+      propertyPath: attackSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 1789450590867082089, guid: c4f54ea6a56db574988224271397f90b, type: 3}
       propertyPath: gun
       value: 
