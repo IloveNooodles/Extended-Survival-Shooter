@@ -20,7 +20,18 @@ Library yang digunakan, di antaranya adalah:
 - **Timeline**, untuk pengaturan animasi pada game
 
 ## **Screenshot**
-Lorem ipsum dolor sit amet
+- Main Menu
+![Main Menu](/Screenshot/MainMenu.jpg)
+- Save Load
+![Load Game](/Screenshot/LoadGame.jpg)
+![Save Game](/Screenshot/SaveGame.jpg)
+- Story Mode
+![CutScene](/Screenshot/CutScene.jpg)
+![Gameplay](/Screenshot/Gameplay.jpg)
+- Score Board
+![Scoreboard](/Screenshot/Scoreboard.jpg)
+- Shopkeeper
+- Credits
 
 ## **Pembagian Kerja**
 | Nama | NIM | Tugas | Persiapan (Jam) | Pengerjaan (Jam) |
