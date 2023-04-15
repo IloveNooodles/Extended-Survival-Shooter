@@ -40,15 +40,15 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence
     void Update()
     {
         //Jika terkena damaage
-        // if (damaged)
-        // {
-        //     damageImage.color = flashColour;
-        // }
-        // else
-        // {
-        //     //Fade out damage image
-        //     damageImage.color = Color.Lerp(damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
-        // }
+        if (damaged)
+        {
+            damageImage.color = flashColour;
+        }
+        else
+        {
+            //Fade out damage image
+            damageImage.color = Color.Lerp(damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
+        }
 
         //Set damage to false
         damaged = false;
@@ -110,8 +110,8 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence
 
         //mematikan script player movement
         playerMovement.enabled = false;
-
-        // playerShooting.enabled = false;
+        Gameover.instance.ShowGameOverScreen();
+        Gameover.isGameOver = true;
     }
 
 
