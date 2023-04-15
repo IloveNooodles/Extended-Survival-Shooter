@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     Transform playerTransform;
     int floorMask;
     float camRayLength = 100f;
+    
+    
 
     private void Awake()
     {

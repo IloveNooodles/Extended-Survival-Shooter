@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Sword
   m_EditorClassIdentifier: 
   title: Sword
-  description: Sword description
-  cost: 300
+  description: 'Your skill and precision with a blade will determine your success
+    in battle. (Attack power: 15)'
+  cost: 150
   thumbnail: {fileID: 8400000, guid: 9892aed6f3497874a81b215d19be73e4, type: 2}

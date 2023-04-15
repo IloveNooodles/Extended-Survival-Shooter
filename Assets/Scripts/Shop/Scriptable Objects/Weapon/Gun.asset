@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Gun
   m_EditorClassIdentifier: 
   title: Gun
-  description: Default Weapon
+  description: 'You must navigate through enemy territory and take down your foes
+    with expert marksmanship. (Attack power: 20)'
   cost: 0
   thumbnail: {fileID: 8400000, guid: 2fac4331c50d3d34abdad84547ccd2d0, type: 2}

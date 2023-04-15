@@ -195,29 +195,46 @@ public class ShopManager : MonoBehaviour
     {
         player.SetActive(true);
         int lastScene = PlayerPrefs.GetInt("lastScene");
-        PlayerPrefs.DeleteKey("lastScene");
-        int currentScene = SceneManager.GetActiveScene().buildIndex;
-        PlayerPrefs.SetInt("lastScene", currentScene);
-        // SceneManager.LoadScene(lastScene, LoadSceneMode.Additive);
-        SceneManager.UnloadSceneAsync(4);
+        PlayerPrefs.SetInt("lastScene", SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(lastScene);
+        
     }
 
     public void BuyButton(int itemIdx)
     {
-        PetManager.isPetBought[itemIdx] = true;
-        PetManager.currentPetIndex = itemIdx;
+        if (currentActiveSection == 0)
+        {
+            PetManager.isPetBought[itemIdx] = true;
+            PetManager.currentPetIndex = itemIdx;
 
-        GoldManager.Gold -= petItems[itemIdx].cost;
-        golds = GoldManager.Gold;
-        goldsText.text = golds.ToString();
+            GoldManager.Gold -= petItems[itemIdx].cost;
+            golds = GoldManager.Gold;
+            goldsText.text = golds.ToString();
 
-        loadPetItems();
+            loadPetItems();
+        }
+        else
+        {
+            
+            
+            GoldManager.Gold -= weaponItems[itemIdx].cost;
+            golds = GoldManager.Gold;
+            goldsText.text = golds.ToString();
+            loadWeaponItems();
+        }
     }
 
     public void EquipButton(int itemIdx)
     {
-        PetManager.currentPetIndex = itemIdx;
-        loadPetItems();
+        if (currentActiveSection == 0)
+        {
+            PetManager.currentPetIndex = itemIdx;
+            loadPetItems();
+        }
+        else
+        {
+            loadWeaponItems();
+        }
     }
 
     public void UnequipButton(int itemIdx)
