@@ -16,6 +16,7 @@ public class MainMenu : MonoBehaviour
 
         public void SaveGame()
         {
+                DataPersistenceManager.instance.NewGame();
                 DataPersistenceManager.instance.SaveGame();
         }
 

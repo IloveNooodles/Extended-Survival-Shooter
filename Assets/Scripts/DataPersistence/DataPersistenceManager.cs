@@ -12,7 +12,7 @@ public class DataPersistenceManager : MonoBehaviour
     private GameData gameData;
     private List<IDataPersistence> dataPersistenceObjects;
     private FileDataHandler dataHandler;
-    private string selectedProfileId = "Test";
+    private string selectedProfileId;
 
     public static DataPersistenceManager instance;
 
@@ -100,6 +100,11 @@ public class DataPersistenceManager : MonoBehaviour
     public void OnSceneUnloaded(Scene scene)
     {
         SaveGame();
+    }
+
+    public void ChangeSelectedProfileId(string profileId)
+    {
+        this.selectedProfileId = profileId;
     }
 
     // FOR TRIAL PURPOSES ONLY
