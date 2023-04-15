@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerQuest : MonoBehaviour
 {
@@ -74,11 +75,12 @@ public class PlayerQuest : MonoBehaviour
             PopupModal.SetActive(true);
         } catch {}
         
-        /* Freeze Game */
-        TimerManager.PauseGame();
-
         /* Reward */
         GoldManager.addGold(quest.goldReward);
+        questGiver.SetNewQuest(QuestManager.CompletedQuest);
+        quest = questGiver.GiveQuestToUser();
+        
+        /* Freeze Game */
+        TimerManager.PauseGame();
     }
-
 }

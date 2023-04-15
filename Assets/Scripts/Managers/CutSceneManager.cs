@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CutSceneManager : MonoBehaviour
 {
@@ -85,7 +86,8 @@ public class CutSceneManager : MonoBehaviour
     }
 
     IEnumerator endBossEndCutScene(){
-        yield return new WaitForSeconds(26.6f);
+        yield return new WaitForSeconds(24.5f);
         bossEndCutScene.endCutScene();
+        SceneManager.LoadScene(5);
     }
 }
