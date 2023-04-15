@@ -18,6 +18,11 @@ TagManager:
   - PlayerHeartSlider
   - PlayerCam
   - PetHeartSlider
+  - ShopKeeperSpawner
+  - ShopKeeper
+  - InfoPanel
+  - Info
+  - ShopManager
   layers:
   - Default
   - TransparentFX

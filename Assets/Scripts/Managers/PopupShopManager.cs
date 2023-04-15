@@ -16,6 +16,7 @@ public class PopupShopManager : MonoBehaviour
     public void OpenShopButton()
     {
         // player.SetActive(false);
+        // Debug.Log("OpenShopButton");
         currentScene = SceneManager.GetActiveScene().buildIndex;
         PlayerPrefs.SetInt("lastScene", currentScene);
         SceneManager.LoadScene(4);

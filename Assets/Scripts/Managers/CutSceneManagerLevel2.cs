@@ -17,11 +17,14 @@ public class CutSceneManagerLevel2 : MonoBehaviour
     public EnterHouse enterHouseCutscene;
     public GameObject petManager;
 
+    private ShopKeeperManager shopKeeper;
+
     private int prevBuildIndex;
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         HUD = GameObject.FindGameObjectWithTag("HUD");
+        shopKeeper = GameObject.FindGameObjectWithTag("ShopKeeperSpawner").GetComponent<ShopKeeperManager>();
         // prevBuildIndex = PlayerPrefs.GetInt("lastScene");
         StartFirstCutScene();
     }
@@ -70,6 +73,8 @@ public class CutSceneManagerLevel2 : MonoBehaviour
     IEnumerator EndPUBGToHouseCutScene(){
         yield return new WaitForSeconds(0f);
         // yield return new WaitForSeconds(10f);
+        shopKeeper.Spawn();
+        TimerManager.StopTimer();
         pubgToHouseCutscene.EndCutScene();
     }
 

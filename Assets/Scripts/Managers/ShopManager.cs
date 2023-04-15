@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class ShopManager : MonoBehaviour
 {
-    public int golds;
+    private int golds;
     public TMP_Text goldsText;
     public ShopItemSO[] petItems;
     public ShopItemSO[] weaponItems;
@@ -33,6 +33,9 @@ public class ShopManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         player.SetActive(false);
         PetManager.SetAllNonActive();
+        Debug.Log(GoldManager.Gold);
+        golds = GoldManager.Gold;
+        goldsText.text = GoldManager.Gold.ToString();
     }
 
     void Start()
@@ -44,22 +47,13 @@ public class ShopManager : MonoBehaviour
         petSectionPanel = petSection.transform.GetChild(1).gameObject;
         weaponSectionPanel = weaponSection.transform.GetChild(1).gameObject;
 
-
-        goldsText.text = GoldManager.Gold.ToString();
+       
 
 
         loadPetItems();
     }
 
-
-    public void addGolds()
-    {
-        golds += 100;
-        goldsText.text = golds.ToString();
-        GoldManager.addGold(100);
-        loadPetItems();
-    }
-
+    
 
     public void loadPetItems()
     {

@@ -5182,8 +5182,8 @@ CapsuleCollider:
   m_GameObject: {fileID: 7332926057040135775}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.03
+  m_Enabled: 0
+  m_Radius: 0.01
   m_Height: 0.1
   m_Direction: 1
   m_Center: {x: 0, y: 0.02, z: 0}
@@ -7181,7 +7181,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1.18
-  m_Center: {x: 0.00000047683716, y: 0.0050499435, z: 0}
+  m_Center: {x: 0.00000047683716, y: 0, z: 0}
 --- !u!114 &5398191969067982195
 MonoBehaviour:
   m_ObjectHideFlags: 0
