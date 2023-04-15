@@ -67,10 +67,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae684a6cc5967eb4eb976820020d370e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 15
   buffDamage: 0
   attackSpeed: 1
-  range: 20
 --- !u!1 &1564948163048502379
 GameObject:
   m_ObjectHideFlags: 0

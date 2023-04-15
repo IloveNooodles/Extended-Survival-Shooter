@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bow : MonoBehaviour, IWeapon
 {
     const int MAX_NUM_BULLET = 30;
-    public int damage = 10;
+    public int damage = 30;
     public int buffDamage = 0;
     public float attackSpeed = 1f;
     

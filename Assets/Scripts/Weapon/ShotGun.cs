@@ -5,7 +5,7 @@ using UnityEngine;
 public class ShotGun : MonoBehaviour, IWeapon
 {
     const int MAX_NUM_BULLET = 30;
-    public int damage = 20;
+    public int damage = 30;
     public int buffDamage = 0;
     public float attackSpeed = 1f;
     public float reloadTime = 2f;
