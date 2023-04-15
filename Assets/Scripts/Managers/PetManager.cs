@@ -205,12 +205,12 @@ public class PetManager : MonoBehaviour, IDataPersistence
     public void LoadData(GameData data)
     {
         currentPetIndex = data.pet;
-        petHealth[currentPetIndex] = data.petHealth;
+        petHealth[currentPetIndex].currentHealth = data.petHealth;
     }
 
     public void SaveData(ref GameData data)
     {
         data.pet = currentPetIndex;
-        data.petHealth = petHealth[currentPetIndex];
+        data.petHealth = petHealth[currentPetIndex].currentHealth;
     }
 }
