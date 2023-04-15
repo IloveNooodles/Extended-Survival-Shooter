@@ -5,15 +5,17 @@ using UnityEngine.UI;
 public class PetManager : MonoBehaviour
 {
     [SerializeField] public GameObject[] petsPrefab;
-    public int currentPetIndex = 0;
+    public static int currentPetIndex = 4;
 
     public GameObject summoningMagic;
 
     private static GameObject[] pets;
     public static GameObject currentPet;
-    Slider petHeartSlider;
+    private static Slider petHeartSlider;
 
     private GameObject player;
+
+    public static bool[] isPetBought;
     
 
     void Awake()
@@ -21,22 +23,26 @@ public class PetManager : MonoBehaviour
         
         player = GameObject.FindWithTag("Player");
         petHeartSlider = GameObject.Find("PetHeartSlider").GetComponent<Slider>();
-        pets = new GameObject[petsPrefab.Length];
-        int i = 0;
-        
-        petHeartSlider.gameObject.SetActive(true);
-        foreach (var pet in petsPrefab)
-        {
-            if (pets[i] != null)
+        if(pets == null || pets.Length == 0 || pets[0] == null){
+            
+            pets = new GameObject[petsPrefab.Length];
+            isPetBought = new bool[pets.Length];
+            int i = 0;
+            
+            petHeartSlider.gameObject.SetActive(true);
+            foreach (var pet in petsPrefab)
             {
-                continue;
+                if (pets[i] != null)
+                {
+                    continue;
+                }
+                pets[i] = Instantiate(pet);
+                pets[i].tag = "Pet";
+                isPetBought[i] = false;
+                i++;
             }
-            pets[i] = Instantiate(pet);
-            pets[i].tag = "Pet";
-            i++;
         }
-        
-        if(pets[currentPetIndex]!=null){
+        if(currentPetIndex <= pets.Length && pets[currentPetIndex]!=null){
             placePet();
 
             pets[currentPetIndex].SetActive(true);
@@ -48,9 +54,12 @@ public class PetManager : MonoBehaviour
     
     public static void SetAllNonActive()
     {
-        foreach (var pet in pets)
+        if (pets != null && pets.Length > 0 && pets[0] != null)
         {
-            pet.SetActive(false);
+            foreach (var pet in pets)
+            {
+                pet.SetActive(false);
+            }
         }
     }
 

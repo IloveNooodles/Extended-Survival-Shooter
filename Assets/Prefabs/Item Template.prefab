@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &96199883019112013
 RectTransform:
   m_ObjectHideFlags: 0
@@ -96,7 +96,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5647087849665117551
 RectTransform:
   m_ObjectHideFlags: 0
@@ -199,7 +199,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6544764281105497984}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5614161674473295657}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1391381890393311907
 GameObject:
   m_ObjectHideFlags: 0
@@ -837,7 +849,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6930574307048477891
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1312,6 +1324,10 @@ MonoBehaviour:
   description: {fileID: 5614161674088124405}
   cost: {fileID: 55385402645640934}
   thumbnail: {fileID: 1444027671775146409}
+  equippedText: {fileID: 205072684770801779}
+  buyButton: {fileID: 5200222435306713887}
+  equipButton: {fileID: 3358319042794928302}
+  unequipButton: {fileID: 2992097004286746742}
 --- !u!1 &6875136039760538642
 GameObject:
   m_ObjectHideFlags: 0
