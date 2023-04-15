@@ -21,14 +21,7 @@ public class PlayerQuest : MonoBehaviour
         quest = questGiver.GiveQuestToUser();
         questGiver.UpdateQuestWindow();
     }
-    
-    public void Continue()
-    {
-        PopupModal.SetActive(false);
-        TimerManager.ContinueGame();
-        
-    }
-    
+
     public void Track(GoalType goalType, int id, int amount)
     {
         bool status = true;
