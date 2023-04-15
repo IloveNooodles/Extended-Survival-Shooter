@@ -80,7 +80,7 @@ public class CutSceneManagerLevel2 : MonoBehaviour
     }
 
     IEnumerator EndEnterHouseCutScene(){
-        yield return new WaitForSeconds(0f);
+        yield return new WaitForSeconds(3f);
         enterHouseCutscene.EndCutScene();
     }
 }

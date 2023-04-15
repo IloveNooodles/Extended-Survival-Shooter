@@ -43,6 +43,7 @@ public class EnterHouse : MonoBehaviour
     {
         gameObject.SetActive(false);
         cutSceneManager.endCutScene();
+        
         PlayerQuest.CompleteQuest();
     }
 }
