@@ -11,10 +11,10 @@ public class ScoreUI : MonoBehaviour
     void Start()
     {
         // HOW TO ADD SCORES
-        scoreboardManager.AddScore(new Score("Bryan", 100));
-        scoreboardManager.AddScore(new Score("Firizky", 2300));
-        scoreboardManager.AddScore(new Score("Gare", 50));
-        scoreboardManager.AddScore(new Score("Diky", 1240));
+        // scoreboardManager.AddScore(new Score("Bryan", 100));
+        // scoreboardManager.AddScore(new Score("Firizky", 2300));
+        // scoreboardManager.AddScore(new Score("Gare", 50));
+        // scoreboardManager.AddScore(new Score("Diky", 1240));
 
         var scores = scoreboardManager.GetHighScores().ToArray();
         
