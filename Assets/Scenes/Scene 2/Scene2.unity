@@ -4123,6 +4123,7 @@ MonoBehaviour:
   - {fileID: 1006289765}
   - {fileID: 663372398}
   - {fileID: 6760006}
+  endingCutScene: {fileID: 985743969}
 --- !u!1 &1000050887
 GameObject:
   m_ObjectHideFlags: 0
