@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,7 @@ public class CheatManager : MonoBehaviour
 {
     private static CheatManager _instance;
     GameObject player;
+    PlayerQuest playerQuest;
     PlayerMovement playerMovement;
     FPSMovement fpsMovement;
 
@@ -32,6 +34,7 @@ public class CheatManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         player = GameObject.FindGameObjectWithTag("Player");
+        playerQuest = player.GetComponent<PlayerQuest>();
         playerMovement = player.GetComponent<PlayerMovement>();
         fpsMovement = player.GetComponent<FPSMovement>();
     }
@@ -49,17 +52,17 @@ public class CheatManager : MonoBehaviour
     void ToggleCheatConsole()
     {
         showCheatConsole = !showCheatConsole;
-        if (playerMovement != null)
+        if (playerMovement != null && QuestManager.CompletedQuest < 3)
         {
-            playerMovement.enabled = !playerMovement.enabled;
+            playerMovement.enabled = !showCheatConsole;
         }
-        if (fpsMovement != null)
+        if (fpsMovement != null && QuestManager.CompletedQuest >= 3)
         {
-            fpsMovement.enabled = !fpsMovement.enabled;
+            fpsMovement.enabled = !showCheatConsole;
         }
     }
 
-    void OnGUI()
+    async void OnGUI()
     {
         if (!showCheatConsole)
         {
@@ -116,6 +119,24 @@ public class CheatManager : MonoBehaviour
                         catch (System.Exception)
                         {
                         }
+                        break;
+                    case "bypassquest":
+                        playerQuest.CompleteQuest();
+                        break;
+                    case "bypassquest1":
+                        playerQuest.CompleteQuest();
+                        player.transform.position = new Vector3(24, 0, 27);
+                        break;
+                    case "bypassquest2":
+                        playerQuest.CompleteQuest();
+                        player.transform.position = new Vector3(22, 0, 15);
+                        break;
+                    case "bypassquest3":
+                        player.transform.position = new Vector3(350, 1, -45);
+                        break;
+                    case "bypassquest4":
+                        player.transform.position = new Vector3(428, 1, -25);
+                        is1HitKill = true;
                         break;
                     default:
                         break;

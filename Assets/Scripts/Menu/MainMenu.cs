@@ -3,16 +3,27 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+        GameObject scoreboard;
+        GameObject mainMenu;
+        ScoreboardManager scoreboardManager;
+
         void Awake()
         {
+                mainMenu = GameObject.FindWithTag("MainMenu");
+                scoreboard = GameObject.FindWithTag("Scoreboard");
+                scoreboard.SetActive(false);
+        
                 string toScoreboard = PlayerPrefs.GetString("toScoreboard", "false");
+                Debug.Log("Time: " + PlayerPrefs.GetFloat("Time", 0f));
+                Debug.Log("Tsssiis: " + PlayerPrefs.GetString("toScoreboard", "false"));
+                Debug.Log(toScoreboard);
 
                 if (toScoreboard == "true")
                 {
-                        GameObject scoreboard = GameObject.FindWithTag("Scoreboard");
-                        ScoreboardManager scoreboardManager = scoreboard.GetComponent<ScoreboardManager>();
-                        scoreboardManager.AddScore(new Score(PlayerPrefs.GetString("PlayerName", "Player"), (int)PlayerPrefs.GetFloat("Time", 0f)));
+                        mainMenu.SetActive(false);
                         scoreboard.SetActive(true);
+                        scoreboardManager = scoreboard.GetComponentInChildren<ScoreboardManager>();
+                        scoreboardManager.AddScore(new Score(PlayerPrefs.GetString("PlayerName", "Player"), (int)PlayerPrefs.GetFloat("Time", 0f)));
                 }
 
                 PlayerPrefs.DeleteKey("toScoreboard");

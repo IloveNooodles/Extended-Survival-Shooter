@@ -15,12 +15,13 @@ public class ScoreboardManager : MonoBehaviour
 
     public IEnumerable<Score> GetHighScores()
     {
-        return scoreData.scores.OrderByDescending(s => s.score);
+        return scoreData.scores.OrderBy(s => s.score);
     }
 
     public void AddScore(Score score)
     {
         scoreData.scores.Add(score);
+        SaveScore();
     }
 
     public void SaveScore()

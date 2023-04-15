@@ -26,6 +26,7 @@ TagManager:
   - Gameover
   - Scoreboard
   - Floor
+  - MainMenu
   layers:
   - Default
   - TransparentFX

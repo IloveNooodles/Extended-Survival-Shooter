@@ -23,13 +23,13 @@ public class ShotGun : MonoBehaviour, IWeapon
 
     public void Attack()
     {
-        Debug.Log(weaponName + " Attack");
+        // Debug.Log(weaponName + " Attack");
         numberOfBullets -= bulletsPerShot;
     }
 
     public void Reload()
     {
-        Debug.Log(weaponName + " Reload");
+        // Debug.Log(weaponName + " Reload");
         numberOfBullets = 30;
     }
 
