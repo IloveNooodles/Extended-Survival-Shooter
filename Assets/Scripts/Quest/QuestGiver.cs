@@ -54,6 +54,7 @@ public class QuestGiver : MonoBehaviour
         {
             questList.InitQuestList();
             SetNewQuest(QuestManager.CompletedQuest);
+            GiveQuestToUser();
         }
         Quest quest = activeQuest;
         title.text =  $"Quest: #{QuestManager.CompletedQuest + 1}" +
