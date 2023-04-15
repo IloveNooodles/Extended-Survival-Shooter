@@ -18,13 +18,17 @@ public class ShopKeeperManager : MonoBehaviour
         // {
         //     Spawn();
         // }
-        
     }
 
     public void Spawn()
     {
-        GameObject shopkeeper = Instantiate(shopKeeperPrefab, shopKeeperSpawnPoint.position, shopKeeperSpawnPoint.rotation);
-        shopkeeper.tag = "ShopKeeper";
-        shopkeeper.gameObject.SetActive(true);
+        GameObject shopKeeperInScene = GameObject.FindWithTag("ShopKeeper");
+        if (shopKeeperInScene == null)
+        {
+            GameObject shopkeeper = Instantiate(shopKeeperPrefab, shopKeeperSpawnPoint.position,
+                shopKeeperSpawnPoint.rotation);
+            shopkeeper.tag = "ShopKeeper";
+            shopkeeper.gameObject.SetActive(true);
+        }
     }
 }

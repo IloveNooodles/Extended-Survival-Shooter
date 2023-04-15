@@ -40,7 +40,7 @@ public class Level1EndingCutScene : MonoBehaviour
         }
     }
 
-    void StartCutScene()
+    public void StartCutScene()
     {
         //Disable all GameObjects
         player.SetActive(false);

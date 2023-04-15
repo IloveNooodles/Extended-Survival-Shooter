@@ -17,6 +17,10 @@ public class Level1CutScene : MonoBehaviour
 
     PlayableDirector cutScene;
     private int prevBuildIndex;
+
+    private ShopKeeperManager shopKeeper;
+
+    public Level1EndingCutScene endingCutScene; 
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -51,7 +55,17 @@ public class Level1CutScene : MonoBehaviour
             cutScene.Play();
             StartCoroutine(endCutScene());
         }
-        PlayerPrefs.DeleteAll();
+        else
+        {
+            popupQuest.SetActive(false);
+            questGiver.UpdateQuestWindow();
+            shopKeeper = GameObject.FindGameObjectWithTag("ShopKeeperSpawner").GetComponent<ShopKeeperManager>();
+            shopKeeper.Spawn();
+            
+            endingCutScene.StartCutScene();
+            Destroy(gameObject);
+        }
+        PlayerPrefs.DeleteKey("lastScene");
     }
 
     IEnumerator endCutScene(){

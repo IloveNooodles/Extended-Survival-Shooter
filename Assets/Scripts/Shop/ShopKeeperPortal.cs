@@ -8,6 +8,7 @@ public class ShopKeeperPortal : MonoBehaviour
 {
     bool playerInsidePortal = false;
     private GameObject player;
+    private bool isOpenShop = false;
     
     private void Awake()
     {
@@ -16,19 +17,16 @@ public class ShopKeeperPortal : MonoBehaviour
 
     private void Update()
     {
-        if (playerInsidePortal)
+        if (playerInsidePortal && !isOpenShop)
         {
             if(Input.GetKeyDown(KeyCode.E))
             {
-                // player.SetActive(false);
-                // nonactivate all enemies
-                // Debug.Log("OpenShopButton");                 
-                
-                
-                
+
                 int currentScene = SceneManager.GetActiveScene().buildIndex;
                 PlayerPrefs.SetInt("lastScene", currentScene);
                 SceneManager.LoadScene(4);
+                isOpenShop = true;
+
             }
         }
     }

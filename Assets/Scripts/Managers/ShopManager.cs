@@ -30,7 +30,7 @@ public class ShopManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindWithTag("Player");
         player.SetActive(false);
         PetManager.SetAllNonActive();
         Debug.Log(GoldManager.Gold);

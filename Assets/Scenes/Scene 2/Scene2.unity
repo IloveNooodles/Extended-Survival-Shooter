@@ -3008,6 +3008,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: ShopKeeperSpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 3278454629047772286, guid: cdfa970df26c2d14caae77f629f4a6f8, type: 3}
+      propertyPath: shopKeeperPrefab
+      value: 
+      objectReference: {fileID: 7332926057040135775, guid: 11af180958406804f877ef899cd4daf0, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdfa970df26c2d14caae77f629f4a6f8, type: 3}
 --- !u!1 &769188578
