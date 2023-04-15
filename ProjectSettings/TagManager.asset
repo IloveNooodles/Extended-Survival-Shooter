@@ -23,6 +23,7 @@ TagManager:
   - InfoPanel
   - Info
   - ShopManager
+  - Gameover
   layers:
   - Default
   - TransparentFX
