@@ -6,10 +6,10 @@ using UnityEngine;
 public class CutSceneManagerLevel2 : MonoBehaviour
 {
 
-    public GameObject player;
+    private GameObject player;
     public GameObject playerCamera;
     public GameObject enemyManager;
-    public GameObject HUD;
+    private GameObject HUD;
     public GameObject[] enemies;
     public GameObject popupQuest;
     public StartingCutScene startingCutScene;
@@ -17,8 +17,12 @@ public class CutSceneManagerLevel2 : MonoBehaviour
     public EnterHouse enterHouseCutscene;
     public GameObject petManager;
 
-    private void Start()
+    private int prevBuildIndex;
+    private void Awake()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+        HUD = GameObject.FindGameObjectWithTag("HUD");
+        // prevBuildIndex = PlayerPrefs.GetInt("lastScene");
         StartFirstCutScene();
     }
 
@@ -35,8 +39,8 @@ public class CutSceneManagerLevel2 : MonoBehaviour
     }
 
     public void endCutScene(){
-        player.SetActive(true);
         playerCamera.SetActive(true);
+        player.SetActive(true);
         // enemyManager.SetActive(true);
         HUD.SetActive(true);
         petManager.SetActive(true);
@@ -53,6 +57,7 @@ public class CutSceneManagerLevel2 : MonoBehaviour
 
     IEnumerator EndCutScene(){
         yield return new WaitForSeconds(0f);
+        // yield return new WaitForSeconds(30f);
         startingCutScene.EndCutScene();
     }
 
@@ -64,6 +69,7 @@ public class CutSceneManagerLevel2 : MonoBehaviour
 
     IEnumerator EndPUBGToHouseCutScene(){
         yield return new WaitForSeconds(0f);
+        // yield return new WaitForSeconds(10f);
         pubgToHouseCutscene.EndCutScene();
     }
 
@@ -73,8 +79,10 @@ public class CutSceneManagerLevel2 : MonoBehaviour
         StartCoroutine(EndEnterHouseCutScene());
     }
 
-    IEnumerator EndEnterHouseCutScene(){
-        yield return new WaitForSeconds(3f);
+    IEnumerator EndEnterHouseCutScene()
+    {
+        yield return new WaitForSeconds(0f);
+        // yield return new WaitForSeconds(10f);
         enterHouseCutscene.EndCutScene();
     }
 }
