@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class SaveSlot : MonoBehaviour
@@ -21,6 +22,8 @@ public class SaveSlot : MonoBehaviour
         {
             noDataContent.SetActive(true);
             hasDataContent.SetActive(false);
+
+            GetComponent<Button>().interactable = false;
         }
         else
         {
@@ -29,6 +32,8 @@ public class SaveSlot : MonoBehaviour
 
             saveNameText.text = data.saveName;
             saveDateText.text = data.lastSavedDate;
+
+            GetComponent<Button>().interactable = true;
         }
     }
 

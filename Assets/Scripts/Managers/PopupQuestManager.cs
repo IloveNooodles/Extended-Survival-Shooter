@@ -13,17 +13,8 @@ public class PopupQuestManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    public void SaveButton()
+    public void ContinueQuest()
     {        
-        player.transform.position = new Vector3(0, 0, 0);
-        ChangeScene();
-        TimerManager.ContinueGame();
-        TimerManager.StopTimer();
-    }
-    
-
-    public void UnsaveButton()
-    {
         player.transform.position = new Vector3(0, 0, 0);
         ChangeScene();
         TimerManager.ContinueGame();
