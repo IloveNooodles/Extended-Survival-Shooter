@@ -5889,6 +5889,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 767922016965950813, guid: 6f8a5d41723b4544fb038463d0cb0c50, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ContinueQuest
+      objectReference: {fileID: 0}
     - target: {fileID: 7958625727565534842, guid: 6f8a5d41723b4544fb038463d0cb0c50, type: 3}
       propertyPath: m_Name
       value: Popup Quest Complete
