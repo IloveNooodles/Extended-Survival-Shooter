@@ -16,33 +16,42 @@ public class Level1CutScene : MonoBehaviour
     private QuestGiver questGiver;
 
     PlayableDirector cutScene;
+    private int prevBuildIndex;
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         HUD = GameObject.FindGameObjectWithTag("HUD");
         popupQuest = GameObject.FindGameObjectWithTag("QuestComplete");
         questGiver = GameObject.FindGameObjectWithTag("QuestGiver").GetComponent<QuestGiver>();
+        
+        
     }
     
     // Start is called before the first frame update
     void Start()
     {
         //Disable all GameObjects
-        player.SetActive(false);
-        mainCamera.SetActive(false);
-        EnemyFactory.SetActive(false);
-        enemyManager.SetActive(false);
-        HUD.SetActive(false);
-        petManager.SetActive(false);
-        popupQuest.SetActive(false);
-        foreach(GameObject enemy in enemies){
-            enemy.SetActive(false);
-        }
+        prevBuildIndex = PlayerPrefs.GetInt("lastScene");
+        if (prevBuildIndex != 4)
+        {
+            
+            player.SetActive(false);
+            mainCamera.SetActive(false);
+            EnemyFactory.SetActive(false);
+            enemyManager.SetActive(false);
+            HUD.SetActive(false);
+            petManager.SetActive(false);
+            popupQuest.SetActive(false);
+            foreach(GameObject enemy in enemies){
+                enemy.SetActive(false);
+            }
 
-        //Play CutScene
-        cutScene = GetComponent<PlayableDirector>();
-        cutScene.Play();
-        StartCoroutine(endCutScene());
+            //Play CutScene
+            cutScene = GetComponent<PlayableDirector>();
+            cutScene.Play();
+            StartCoroutine(endCutScene());
+        }
+        PlayerPrefs.DeleteAll();
     }
 
     IEnumerator endCutScene(){

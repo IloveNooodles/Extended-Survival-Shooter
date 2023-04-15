@@ -41,10 +41,11 @@ public class QuestGoal
     private void Complete()
     {
         isCompleted = true;
+        
     }
-    
-    
-    
+
+
+
     /*
      * Track the quest
      * Override for each the quest goal

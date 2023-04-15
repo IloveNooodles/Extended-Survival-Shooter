@@ -1,6 +1,7 @@
 ﻿using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class QuestGiver : MonoBehaviour
@@ -65,7 +66,9 @@ public class QuestGiver : MonoBehaviour
         {
             goalText +=
                 $"{quest.questGoal[i].objective} {quest.questGoal[i].currentAmount.ToString()}/{quest.questGoal[i].requiredAmount.ToString()}\n";
+            
         }
+
 
         goal.text = goalText;
         reward.text = "Reward" +

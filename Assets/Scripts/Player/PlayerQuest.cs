@@ -31,6 +31,15 @@ public class PlayerQuest : MonoBehaviour
             quest.questGoal[i].IsCompleted();
             quest.questGoal[i].TrackQuest(goalType, id, amount);
             status = status && quest.questGoal[i].GetQuestStatus();
+            if (SceneManager.GetActiveScene().buildIndex == 2)
+            {
+                if (quest.questGoal[i].currentAmount >= quest.questGoal[i].requiredAmount)
+                {
+                    ShopKeeperManager shopKeeper = GameObject.FindGameObjectWithTag("ShopKeeperSpawner")
+                        .GetComponent<ShopKeeperManager>();
+                    shopKeeper.Spawn();
+                }
+            }
         }
         
         questGiver.UpdateQuestWindow();
@@ -40,6 +49,7 @@ public class PlayerQuest : MonoBehaviour
             CompleteQuest();
         }
     }
+    
 
     public void UpdateSelfQuest()
     {
@@ -50,7 +60,9 @@ public class PlayerQuest : MonoBehaviour
     {
         questGiver.UpdateQuestWindow();
     }
-    
+
+
+
     public void CompleteQuest()
     {
         Debug.Log("Quest Completed");
