@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class ShopManager : MonoBehaviour
 {
@@ -18,11 +19,19 @@ public class ShopManager : MonoBehaviour
     GameObject petSectionPanel, weaponSectionPanel;
 
     private int currentActiveSection = 0;
+
+    private GameObject player;
     
     
     
     // public ShopTemplate shopPrefabs;
     // Start is called before the first frame update
+    void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        player.SetActive(false);
+        PetManager.SetAllNonActive();
+    }
     void Start()
     {
         petSection = GameObject.Find("Pet Section");
@@ -36,22 +45,11 @@ public class ShopManager : MonoBehaviour
 
         goldsText.text = golds.ToString();
         
+        
+        
         loadPetItems();
     }
-
-    // Update is called once per frame
-    // void Update()
-    // {
-    //     if(Input.GetKeyDown(KeyCode.P))
-    //     {
-    //         loadPetItems();
-    //     }
-    //     if(Input.GetKeyDown(KeyCode.O))
-    //     {
-    //         loadWeaponItems();
-    //     }
-    //     
-    // }
+    
 
     public void addGolds()
     {
@@ -147,6 +145,15 @@ public class ShopManager : MonoBehaviour
         if (currentActiveSection == 1)
             return;
         weaponSectionTxt.color = Color.white;
+    }
+
+    public void CloseShopButton()
+    {
+        player.SetActive(true);
+        int lastScene = PlayerPrefs.GetInt("lastScene");
+        PlayerPrefs.DeleteKey("lastScene");
+        PlayerPrefs.SetInt("isDontPlayCutScene", 1);
+        SceneManager.LoadScene(lastScene);
     }
     
 }

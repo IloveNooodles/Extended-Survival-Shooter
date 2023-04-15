@@ -69,7 +69,10 @@ public class PlayerQuest : MonoBehaviour
         TimerManager.StopTimer();
         
         /* Shows popup modal */
-        PopupModal.SetActive(true);
+        try
+        {
+            PopupModal.SetActive(true);
+        } catch {}
         
         /* Freeze Game */
         TimerManager.PauseGame();

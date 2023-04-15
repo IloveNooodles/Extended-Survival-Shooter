@@ -41,7 +41,20 @@ public class QuestGiver : MonoBehaviour
 
     public void UpdateQuestWindow()
     {
-        if (!questWindow) return;
+        if (!questWindow)
+        {
+            questWindow = GameObject.FindGameObjectWithTag("QuestWindow");
+            TMP_Text[] a = questWindow.GetComponentsInChildren<TMP_Text>();
+            title = a[0];
+            goal = a[3];
+            description = a[1];
+            reward = a[2];
+        }
+        if (activeQuest.title == "")
+        {
+            questList.InitQuestList();
+            SetNewQuest(QuestManager.CompletedQuest);
+        }
         Quest quest = activeQuest;
         title.text =  $"Quest: #{QuestManager.CompletedQuest + 1}" +
                       $"\n{quest.title}";

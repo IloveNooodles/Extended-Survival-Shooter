@@ -19,6 +19,7 @@ public class CameraFollow : MonoBehaviour
         //Mendapatkan offset antara target dan camera
         offset = transform.position - target.position;
     }
+    
     private void FixedUpdate()
     {
         //Menapatkan posisi untuk camera

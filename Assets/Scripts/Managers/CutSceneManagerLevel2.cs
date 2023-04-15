@@ -19,7 +19,13 @@ public class CutSceneManagerLevel2 : MonoBehaviour
 
     private void Start()
     {
-        StartFirstCutScene();
+        int isPlayCutScene = 1 - PlayerPrefs.GetInt("isDontPlayCutScene") ;
+        if(isPlayCutScene == 1){
+            StartFirstCutScene();
+        } else {
+            popupQuest.SetActive(false);
+            endCutScene();
+        }
     }
 
     public void startCutScene()
@@ -52,7 +58,7 @@ public class CutSceneManagerLevel2 : MonoBehaviour
     }
 
     IEnumerator EndCutScene(){
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(0f);
         startingCutScene.EndCutScene();
     }
 

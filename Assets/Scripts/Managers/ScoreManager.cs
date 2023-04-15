@@ -5,7 +5,7 @@ using System.Collections;
 public class ScoreManager : MonoBehaviour, IDataPersistence
 {
     private static ScoreManager instance;
-    public static int score;
+    public static int score = 0;
     
     Text text;
     void Awake ()
@@ -18,7 +18,6 @@ public class ScoreManager : MonoBehaviour, IDataPersistence
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-            score = 0;
         }
         
         text = GetComponent <Text> ();
