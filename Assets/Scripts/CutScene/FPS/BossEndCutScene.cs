@@ -25,26 +25,35 @@ public class BossEndCutScene : MonoBehaviour
         noRightArmCutScene.SetActive(false);
         bothArmsCutScene.SetActive(false);
     }
-    public void startCutScene(){
+    public void startCutScene()
+    {
         cutSceneManager.startCutScene();
-        foreach(GameObject house in houses){
+        foreach (GameObject house in houses)
+        {
             house.SetActive(false);
         }
         boss.SetActive(false);
         player.SetActive(false);
-        if(TitanHealth.leftArmHealth <= 0 && TitanHealth.rightArmHealth <= 0){
+        if (TitanHealth.leftArmHealth <= 0 && TitanHealth.rightArmHealth <= 0)
+        {
             noArmCutScene.SetActive(true);
             endingCutScene = noArmCutScene.GetComponent<PlayableDirector>();
             endingCutScene.Play();
-        }else if(TitanHealth.leftArmHealth <= 0){
+        }
+        else if (TitanHealth.leftArmHealth <= 0)
+        {
             noLeftArmCutScene.SetActive(true);
             endingCutScene = noLeftArmCutScene.GetComponent<PlayableDirector>();
             endingCutScene.Play();
-        }else if(TitanHealth.rightArmHealth <= 0){
+        }
+        else if (TitanHealth.rightArmHealth <= 0)
+        {
             noRightArmCutScene.SetActive(true);
             endingCutScene = noRightArmCutScene.GetComponent<PlayableDirector>();
             endingCutScene.Play();
-        }else{
+        }
+        else
+        {
             bothArmsCutScene.SetActive(true);
             endingCutScene = bothArmsCutScene.GetComponent<PlayableDirector>();
             endingCutScene.Play();

@@ -8,14 +8,13 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour, IDataPersistence
 {
-    public int startingHealth = 100;
+    public int startingHealth = 300;
     public int currentHealth;
     public Slider healthSlider;
-    // public Image damageImage;
+    public Image damageImage;
     public AudioClip deathClip;
     public float flashSpeed = 5f;
-    // public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
-
+    public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
 
     Animator anim;
     AudioSource playerAudio;
@@ -30,6 +29,8 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence
         anim = GetComponent<Animator>();
         playerAudio = GetComponent<AudioSource>();
         playerMovement = GetComponent<PlayerMovement>();
+        healthSlider = GameObject.FindGameObjectWithTag("PlayerHeartSlider").GetComponent<Slider>();
+        damageImage = GameObject.FindGameObjectWithTag("PlayerDamageImage").GetComponent<Image>();
 
         // playerShooting = GetComponentInChildren <PlayerShooting> ();
         currentHealth = startingHealth;
@@ -41,7 +42,6 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence
         //Jika terkena damaage
         // if (damaged)
         // {
-        //     // Merubah warna gambar menjadi value dari flashColour
         //     damageImage.color = flashColour;
         // }
         // else

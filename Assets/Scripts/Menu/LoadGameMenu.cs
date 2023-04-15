@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LoadGameMenu : MonoBehaviour
 {
@@ -14,6 +15,12 @@ public class LoadGameMenu : MonoBehaviour
     private void Start()
     {
         ActivateMenu();
+    }
+
+    public void OnSaveSlotClicked(SaveSlot saveSlot)
+    {
+        DataPersistenceManager.instance.ChangeSelectedProfileId(saveSlot.GetProfileId());
+        DataPersistenceManager.instance.SaveGame();
     }
 
     public void ActivateMenu()

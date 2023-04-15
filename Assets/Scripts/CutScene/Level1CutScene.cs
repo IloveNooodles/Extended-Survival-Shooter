@@ -13,6 +13,7 @@ public class Level1CutScene : MonoBehaviour
     private GameObject popupQuest;
     public GameObject petManager;
     public GameObject[] enemies;
+    private QuestGiver questGiver;
 
     PlayableDirector cutScene;
     private void Awake()
@@ -20,6 +21,7 @@ public class Level1CutScene : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         HUD = GameObject.FindGameObjectWithTag("HUD");
         popupQuest = GameObject.FindGameObjectWithTag("QuestComplete");
+        questGiver = GameObject.FindGameObjectWithTag("QuestGiver").GetComponent<QuestGiver>();
     }
     
     // Start is called before the first frame update
@@ -55,6 +57,7 @@ public class Level1CutScene : MonoBehaviour
         foreach(GameObject enemy in enemies){
             enemy.SetActive(true);
         }
+        questGiver.UpdateQuestWindow();
         Destroy(gameObject);
     }
 }
