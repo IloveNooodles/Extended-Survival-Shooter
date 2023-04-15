@@ -33,14 +33,9 @@ public class TitanHealth : MonoBehaviour
     bool isDead = false;
     bool isInvincible = false;
 
-    private GameObject player;
-    private PlayerQuest playerQuest;
-
     // Start is called before the first frame update
     void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        playerQuest = player.GetComponent<PlayerQuest>();
         anim = GetComponent<Animator>();
         nav = GetComponent<UnityEngine.AI.NavMeshAgent>();
         titanAttackAndMovement = GetComponent<TitanAttackAndMovement>();
@@ -286,6 +281,5 @@ public class TitanHealth : MonoBehaviour
         {
             Destroy(hitDetector);
         }
-        playerQuest.Track(GoalType.Kill, EnemyName.GetEnemyId(EnemyName.Titan), 1);
     }
 }
