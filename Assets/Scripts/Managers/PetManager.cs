@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PetManager : MonoBehaviour
+public class PetManager : MonoBehaviour, IDataPersistence
 {
     [SerializeField] public GameObject[] petsPrefab;
     public static int currentPetIndex = 4;
@@ -200,5 +200,17 @@ public class PetManager : MonoBehaviour
         pets[currentPetIndex].SetActive(true);
         currentPet = pets[currentPetIndex];
         summon();
+    }
+
+    public void LoadData(GameData data)
+    {
+        currentPetIndex = data.pet;
+        petHealth[currentPetIndex] = data.petHealth;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.pet = currentPetIndex;
+        data.petHealth = petHealth[currentPetIndex];
     }
 }

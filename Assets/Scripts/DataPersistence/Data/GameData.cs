@@ -11,6 +11,10 @@ public class GameData
     public int gold;
     public int score;
     public int completedQuest;
+    public int weapon;
+
+    public int pet;
+    public int petHealth;
 
     public string lastSavedDate;
     public string saveName;
@@ -22,6 +26,9 @@ public class GameData
         this.gold = 0;
         this.score = 0;
         this.completedQuest = 0;
+        this.pet = 0;
+        this.petHealth = 100;
+        this.weapon = 0;
         this.lastSavedDate = DateTime.Now.ToString();
         this.saveName = "Save Slot X";
     }
