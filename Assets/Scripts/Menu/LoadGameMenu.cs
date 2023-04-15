@@ -20,6 +20,17 @@ public class LoadGameMenu : MonoBehaviour
     public void OnSaveSlotClicked(SaveSlot saveSlot)
     {
         DataPersistenceManager.instance.ChangeSelectedProfileId(saveSlot.GetProfileId());
+    }
+
+    public void OnLoadSlotClicked(SaveSlot saveSlot)
+    {
+        DataPersistenceManager.instance.ChangeSelectedProfileId(saveSlot.GetProfileId());
+        DataPersistenceManager.instance.LoadGame();
+    }
+
+    public void OnSaveSubmitClicked()
+    {
+        DataPersistenceManager.instance.SetSaveName(PlayerPrefs.GetString("SaveGame", "Save Slot X"));
         DataPersistenceManager.instance.SaveGame();
     }
 
