@@ -24,6 +24,7 @@ TagManager:
   - Info
   - ShopManager
   - Gameover
+  - Scoreboard
   layers:
   - Default
   - TransparentFX

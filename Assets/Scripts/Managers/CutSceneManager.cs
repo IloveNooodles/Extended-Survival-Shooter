@@ -120,6 +120,7 @@ public class CutSceneManager : MonoBehaviour
         yield return new WaitForSeconds(24.5f);
         playerQuest.Track(GoalType.Spend, ItemName.ItemId(ItemName.Eren), 1);
         bossEndCutScene.endCutScene();
+        PlayerPrefs.SetFloat("Time", TimerManager.time);
         SceneManager.LoadScene(5);
     }
 }
