@@ -9,7 +9,7 @@ public class PetManager : MonoBehaviour
 
     public GameObject summoningMagic;
 
-    private GameObject[] pets;
+    private static GameObject[] pets;
     public static GameObject currentPet;
     Slider petHeartSlider;
 
@@ -27,13 +27,31 @@ public class PetManager : MonoBehaviour
         petHeartSlider.gameObject.SetActive(true);
         foreach (var pet in petsPrefab)
         {
+            if (pets[i] != null)
+            {
+                continue;
+            }
             pets[i] = Instantiate(pet);
             pets[i].tag = "Pet";
             i++;
         }
         
-        DontDestroyOnLoad(gameObject);
+        if(pets[currentPetIndex]!=null){
+            placePet();
 
+            pets[currentPetIndex].SetActive(true);
+            currentPet = pets[currentPetIndex];
+
+            // summon();
+        }
+    }
+    
+    public static void SetAllNonActive()
+    {
+        foreach (var pet in pets)
+        {
+            pet.SetActive(false);
+        }
     }
 
     private void summon()
