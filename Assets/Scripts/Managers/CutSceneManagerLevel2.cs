@@ -39,7 +39,7 @@ public class CutSceneManagerLevel2 : MonoBehaviour
         }
         
         // delete player prefs
-        PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteKey("lastScene");
     }
 
     public void startCutScene()
