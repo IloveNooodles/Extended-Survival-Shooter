@@ -28,6 +28,11 @@ public class LoadGameMenu : MonoBehaviour
         DataPersistenceManager.instance.LoadGame();
     }
 
+    public void LoadSubmitClicked()
+    {
+        DataPersistenceManager.instance.ChangeScene();
+    }
+    
     public void OnSaveSubmitClicked()
     {
         DataPersistenceManager.instance.SetSaveName(PlayerPrefs.GetString("SaveGame", "Save Slot X"));

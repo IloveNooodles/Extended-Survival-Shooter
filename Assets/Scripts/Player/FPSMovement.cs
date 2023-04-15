@@ -14,7 +14,7 @@ public class FPSMovement : MonoBehaviour
     public float jumpForce = 5;
     public float jumpCooldown = 0.25f;
     public float airMultiplier = 2;
-    bool readyToJump;
+    bool readyToJump = true;
 
     [HideInInspector] public float walkSpeed;
     [HideInInspector] public float sprintSpeed;
@@ -24,8 +24,7 @@ public class FPSMovement : MonoBehaviour
 
     [Header("Ground Check")]
     public float playerHeight;
-    public Collider floorCollider;
-    bool grounded;
+    bool grounded = true;
 
     Transform orientation;
 
@@ -39,6 +38,7 @@ public class FPSMovement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        rb.constraints = RigidbodyConstraints.None;
         rb.freezeRotation = true;
         orientation = transform;
 
@@ -60,9 +60,9 @@ public class FPSMovement : MonoBehaviour
             rb.drag = 0;
     }
 
-    void OnCollisionStay(Collision collision)
+    void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider == floorCollider)
+        if (collision.gameObject.layer == 6 && !grounded)
         {
             grounded = true;
         }
@@ -70,7 +70,7 @@ public class FPSMovement : MonoBehaviour
 
     void OnCollisionExit(Collision collision)
     {
-        if (collision.collider == floorCollider)
+        if (collision.gameObject.layer == 6 && grounded)
         {
             grounded = false;
         }

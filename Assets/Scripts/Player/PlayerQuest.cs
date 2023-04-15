@@ -6,6 +6,7 @@ public class PlayerQuest : MonoBehaviour
 {
     private QuestGiver questGiver;
     private QuestList questList;
+    private int questNumber;
     public Quest quest;
     private GameObject PopupModal;
     static public bool isFirstSceneEndingCutScenePlayed = false;
@@ -17,7 +18,8 @@ public class PlayerQuest : MonoBehaviour
         questGiver = GameObject.FindGameObjectWithTag("QuestGiver").GetComponent<QuestGiver>();
         questList = GameObject.FindGameObjectWithTag("QuestList").GetComponent<QuestList>();
         questList.InitQuestList();
-        questGiver.SetNewQuest(QuestManager.CompletedQuest);
+        questNumber = QuestManager.CompletedQuest;
+        questGiver.SetNewQuest(questNumber);
         quest = questGiver.GiveQuestToUser();
         questGiver.UpdateQuestWindow();
     }
@@ -51,6 +53,17 @@ public class PlayerQuest : MonoBehaviour
     }
     
 
+    private void Update()
+    {
+        /* Check if not same */
+        if (questNumber != QuestManager.CompletedQuest)
+        {
+            questNumber = QuestManager.CompletedQuest;
+            questGiver.SetNewQuest(QuestManager.CompletedQuest);
+            quest = questGiver.GiveQuestToUser();
+        }
+    }
+
     public void UpdateSelfQuest()
     {
         quest = questGiver.GiveQuestToUser();
@@ -67,10 +80,12 @@ public class PlayerQuest : MonoBehaviour
     {
         Debug.Log("Quest Completed");
         QuestManager.CompletedQuest += 1;
+        questNumber = QuestManager.CompletedQuest;
         quest.isActive = false;
 
         if(QuestManager.CompletedQuest == 1 && !isFirstSceneEndingCutScenePlayed){
             QuestManager.CompletedQuest -= 1;
+            questNumber = QuestManager.CompletedQuest;
             isFirstSceneEndingCutScenePlayed = true;
             GameObject.Find("CutSceneManager").GetComponent<CutSceneManagerLevel2>().StartPUBGToHouseCutScene();
             return;
@@ -78,6 +93,7 @@ public class PlayerQuest : MonoBehaviour
 
         if(QuestManager.CompletedQuest == 2 && !isSecondSceneEndingCutScenePlayed){
             QuestManager.CompletedQuest -= 1;
+            questNumber = QuestManager.CompletedQuest;
             isSecondSceneEndingCutScenePlayed = true;
             return;
         }
@@ -95,7 +111,7 @@ public class PlayerQuest : MonoBehaviour
                 PopupModal.SetActive(true);
             }
         } catch {}
-        
+
         /* Reward */
         GoldManager.addGold(quest.goldReward);
         questGiver.SetNewQuest(QuestManager.CompletedQuest);

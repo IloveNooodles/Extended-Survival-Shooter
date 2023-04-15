@@ -23,6 +23,9 @@ TagManager:
   - InfoPanel
   - Info
   - ShopManager
+  - Gameover
+  - Scoreboard
+  - Floor
   layers:
   - Default
   - TransparentFX

@@ -9,6 +9,7 @@ public class SaveSlot : MonoBehaviour
 {
     [Header("Profile")]
     [SerializeField] private string profileId;
+    [SerializeField] private bool isPreventClick;
 
     [Header("Content")]
     [SerializeField] private GameObject noDataContent;
@@ -23,7 +24,14 @@ public class SaveSlot : MonoBehaviour
             noDataContent.SetActive(true);
             hasDataContent.SetActive(false);
 
-            GetComponent<Button>().interactable = false;
+            if (isPreventClick)
+            {
+                GetComponent<Button>().interactable = false;
+            }
+            else 
+            {
+                GetComponent<Button>().interactable = true;
+            }
         }
         else
         {

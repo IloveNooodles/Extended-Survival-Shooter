@@ -70,11 +70,11 @@ public class TitanAttackAndMovement : MonoBehaviour
             }
             else if (randomAttack == 1)
             {
-                LeftFootAttack();
+                RightArmAttack();
             }
             else if (randomAttack == 2)
             {
-                RightArmAttack();
+                LeftFootAttack();
             }
             else if (randomAttack == 3)
             {
