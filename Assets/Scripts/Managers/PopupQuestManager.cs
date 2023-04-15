@@ -14,7 +14,7 @@ public class PopupQuestManager : MonoBehaviour
     }
 
     public void ContinueQuest()
-    {        
+    {   
         player.transform.position = new Vector3(0, 0, 0);
         ChangeScene();
         TimerManager.ContinueGame();

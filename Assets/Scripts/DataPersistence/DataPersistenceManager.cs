@@ -86,7 +86,7 @@ public class DataPersistenceManager : MonoBehaviour
 
     private List<IDataPersistence> FindAllDataPersistenceObjects()
     {
-        IEnumerable<IDataPersistence> dataPersistenceObjects = FindObjectsOfType<MonoBehaviour>().OfType<IDataPersistence>();
+        IEnumerable<IDataPersistence> dataPersistenceObjects = FindObjectsOfType<MonoBehaviour>(true).OfType<IDataPersistence>();
         
         return new List<IDataPersistence>(dataPersistenceObjects);
     }
@@ -116,6 +116,7 @@ public class DataPersistenceManager : MonoBehaviour
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         this.dataPersistenceObjects = FindAllDataPersistenceObjects();
+        Debug.Log("OnSceneLoaded: " + scene.name + " " + mode + " " + dataPersistenceObjects.Count + " data persistence objects found.");
         LoadGame();
     }
 
