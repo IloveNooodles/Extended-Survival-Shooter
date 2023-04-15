@@ -41,6 +41,11 @@ public class PlayerQuest : MonoBehaviour
         }
     }
 
+    public void UpdateSelfQuest()
+    {
+        quest = questGiver.GiveQuestToUser();
+    }
+    
     public void UpdateQuestBoard()
     {
         questGiver.UpdateQuestWindow();
