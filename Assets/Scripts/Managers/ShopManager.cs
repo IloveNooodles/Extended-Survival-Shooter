@@ -198,7 +198,8 @@ public class ShopManager : MonoBehaviour
         PlayerPrefs.DeleteKey("lastScene");
         int currentScene = SceneManager.GetActiveScene().buildIndex;
         PlayerPrefs.SetInt("lastScene", currentScene);
-        SceneManager.LoadScene(lastScene);
+        // SceneManager.LoadScene(lastScene, LoadSceneMode.Additive);
+        SceneManager.UnloadSceneAsync(4);
     }
 
     public void BuyButton(int itemIdx)

@@ -7,7 +7,7 @@ public class CutSceneManagerLevel2 : MonoBehaviour
 {
 
     private GameObject player;
-    public GameObject playerCamera;
+    private GameObject playerCamera;
     public GameObject enemyManager;
     private GameObject HUD;
     public GameObject[] enemies;
@@ -24,6 +24,7 @@ public class CutSceneManagerLevel2 : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         HUD = GameObject.FindGameObjectWithTag("HUD");
+        playerCamera = GameObject.FindGameObjectWithTag("MainCamera");
         shopKeeper = GameObject.FindGameObjectWithTag("ShopKeeperSpawner").GetComponent<ShopKeeperManager>();
         // prevBuildIndex = PlayerPrefs.GetInt("lastScene");
         StartFirstCutScene();
@@ -32,13 +33,13 @@ public class CutSceneManagerLevel2 : MonoBehaviour
     public void startCutScene()
     {
         player.SetActive(false);
-        playerCamera.SetActive(false);
         enemyManager.SetActive(false);
         petManager.SetActive(false);
         HUD.SetActive(false);
         foreach(GameObject enemy in enemies){
             enemy.SetActive(false);
         }
+        playerCamera.SetActive(false);
     }
 
     public void endCutScene(){
@@ -59,7 +60,7 @@ public class CutSceneManagerLevel2 : MonoBehaviour
     }
 
     IEnumerator EndCutScene(){
-        yield return new WaitForSeconds(0f);
+        yield return new WaitForSeconds(3f);
         // yield return new WaitForSeconds(30f);
         startingCutScene.EndCutScene();
     }
@@ -71,11 +72,11 @@ public class CutSceneManagerLevel2 : MonoBehaviour
     }
 
     IEnumerator EndPUBGToHouseCutScene(){
-        yield return new WaitForSeconds(0f);
+        yield return new WaitForSeconds(3f);
         // yield return new WaitForSeconds(10f);
+        pubgToHouseCutscene.EndCutScene();
         shopKeeper.Spawn();
         TimerManager.StopTimer();
-        pubgToHouseCutscene.EndCutScene();
     }
 
     public void StartEnterHouseCutScene(){
@@ -86,7 +87,7 @@ public class CutSceneManagerLevel2 : MonoBehaviour
 
     IEnumerator EndEnterHouseCutScene()
     {
-        yield return new WaitForSeconds(0f);
+        yield return new WaitForSeconds(3f);
         // yield return new WaitForSeconds(10f);
         enterHouseCutscene.EndCutScene();
     }

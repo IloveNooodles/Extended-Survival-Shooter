@@ -13,11 +13,12 @@ public class ShopKeeperManager : MonoBehaviour
 
     public void Awake()
     {
-        int lastScene = PlayerPrefs.GetInt("lastScene");
-        if (lastScene == 4)
-        {
-            Spawn();
-        }
+        // int lastScene = PlayerPrefs.GetInt("lastScene");
+        // if (lastScene == 4)
+        // {
+        //     Spawn();
+        // }
+        
     }
 
     public void Spawn()

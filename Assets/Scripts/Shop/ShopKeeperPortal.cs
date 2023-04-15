@@ -7,6 +7,12 @@ using UnityEngine.SceneManagement;
 public class ShopKeeperPortal : MonoBehaviour
 {
     bool playerInsidePortal = false;
+    private GameObject player;
+    
+    private void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
 
     private void Update()
     {
@@ -14,9 +20,10 @@ public class ShopKeeperPortal : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.E))
             {
+                // player.SetActive(false);
                 int currentScene = SceneManager.GetActiveScene().buildIndex;
                 PlayerPrefs.SetInt("lastScene", currentScene);
-                SceneManager.LoadScene(4);
+                SceneManager.LoadScene(4, LoadSceneMode.Additive);
             }
         }
     }
