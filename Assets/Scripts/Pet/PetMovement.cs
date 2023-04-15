@@ -29,7 +29,7 @@ public class PetMovement : MonoBehaviour
         anim = GetComponent<Animator>();
         //first child;
         riggedBody = transform.GetChild(0).transform;
-        Debug.Log(riggedBody);
+        // Debug.Log(riggedBody);
 
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
 

@@ -21,9 +21,14 @@ public class ShopKeeperPortal : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.E))
             {
                 // player.SetActive(false);
+                // nonactivate all enemies
+                // Debug.Log("OpenShopButton");                 
+                
+                
+                
                 int currentScene = SceneManager.GetActiveScene().buildIndex;
                 PlayerPrefs.SetInt("lastScene", currentScene);
-                SceneManager.LoadScene(4, LoadSceneMode.Additive);
+                SceneManager.LoadScene(4);
             }
         }
     }

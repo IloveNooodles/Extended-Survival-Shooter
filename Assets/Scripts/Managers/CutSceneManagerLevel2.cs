@@ -26,8 +26,20 @@ public class CutSceneManagerLevel2 : MonoBehaviour
         HUD = GameObject.FindGameObjectWithTag("HUD");
         playerCamera = GameObject.FindGameObjectWithTag("MainCamera");
         shopKeeper = GameObject.FindGameObjectWithTag("ShopKeeperSpawner").GetComponent<ShopKeeperManager>();
-        // prevBuildIndex = PlayerPrefs.GetInt("lastScene");
-        StartFirstCutScene();
+        prevBuildIndex = PlayerPrefs.GetInt("lastScene");
+
+        if (prevBuildIndex != 4)
+        {
+            StartFirstCutScene();
+        }
+        else
+        {
+            shopKeeper.Spawn();
+            StartEnterHouseCutScene();
+        }
+        
+        // delete player prefs
+        PlayerPrefs.DeleteAll();
     }
 
     public void startCutScene()

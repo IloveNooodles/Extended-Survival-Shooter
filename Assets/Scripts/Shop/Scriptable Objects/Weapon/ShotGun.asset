@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ShotGun
   m_EditorClassIdentifier: 
   title: ShotGun
-  description: ShotGun Description
-  cost: 200
+  description: 'Your trusty shotgun will be your best friend as you blast your way
+    through hordes of bandits and outlaws. (Attack power: 30)'
+  cost: 300
   thumbnail: {fileID: 8400000, guid: ae351c7362cf8aa44848e48ad9e010d0, type: 2}
