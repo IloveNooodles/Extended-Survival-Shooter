@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Sword : MonoBehaviour, IWeapon
 {
-    public int damage = 5;
+    public int damage = 15;
     public int buffDamage = 0;
     public float attackSpeed = 1f;
 

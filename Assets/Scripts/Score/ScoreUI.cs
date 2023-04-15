@@ -10,11 +10,8 @@ public class ScoreUI : MonoBehaviour
 
     void Start()
     {
-        scoreboardManager.AddScore(new Score("Player 1", 100));
-        scoreboardManager.AddScore(new Score("Player 3", 400));
-        scoreboardManager.AddScore(new Score("Player 5", 10340));
-        scoreboardManager.AddScore(new Score("Aakwoawk", 100));
-
+        // HOW TO ADD SCORES
+        // scoreboardManager.AddScore(new Score("Player 1", 100));
 
         print(scoreboardManager.GetHighScores());
         var scores = scoreboardManager.GetHighScores().ToArray();

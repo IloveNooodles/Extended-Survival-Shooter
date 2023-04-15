@@ -5159,7 +5159,6 @@ MonoBehaviour:
   gunAudio: {fileID: 2057349589}
   gunReloadAudio: {fileID: 2057349591}
   shotGun: {fileID: 8087204901033334537}
-  player: {fileID: 0}
   bullet: {fileID: 6993618678893041529}
 --- !u!1 &65464440800431901
 GameObject:
@@ -5687,7 +5686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e3ac6842f222164da0f2d4da0e6f1b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
+  damage: 30
   buffDamage: 0
   attackSpeed: 1
   reloadTime: 2

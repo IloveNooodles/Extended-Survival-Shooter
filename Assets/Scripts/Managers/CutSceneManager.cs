@@ -12,6 +12,7 @@ public class CutSceneManager : MonoBehaviour
     GameObject HUD;
     public Camera playerCamera;
     public GameObject popupQuest;
+    private PlayerQuest playerQuest;
     public FirstCityCutScene firstCityCutScene;
     public SecondCityCutScene secondCityCutScene;
     public ThirdCityCutScene thirdCityCutScene;
@@ -23,6 +24,7 @@ public class CutSceneManager : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        playerQuest = player.GetComponent<PlayerQuest>();
         fpsMovement = player.GetComponent<FPSMovement>();
         popupQuest = GameObject.FindGameObjectWithTag("QuestComplete");
         HUD = GameObject.FindGameObjectWithTag("HUD");
@@ -60,6 +62,7 @@ public class CutSceneManager : MonoBehaviour
     {
         yield return new WaitForSeconds(5f);
         // yield return new WaitForSeconds(18.85f);
+        playerQuest.UpdateSelfQuest();
         TimerManager.StartTimer();
         firstCityCutScene.endCutScene();
     }
@@ -87,6 +90,7 @@ public class CutSceneManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0);
         // yield return new WaitForSeconds(17);
+        playerQuest.Track(GoalType.Spend, ItemName.ItemId(ItemName.Eren), 1);
         thirdCityCutScene.endCutScene();
     }
 
@@ -100,6 +104,7 @@ public class CutSceneManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0);
         // yield return new WaitForSeconds(15);
+        playerQuest.UpdateQuestBoard();
         bossSpawnCutScene.endCutScene();
     }
 
@@ -113,6 +118,7 @@ public class CutSceneManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0f);
         // yield return new WaitForSeconds(24.5f);
+        playerQuest.Track(GoalType.Spend, ItemName.ItemId(ItemName.Eren), 1);
         bossEndCutScene.endCutScene();
         SceneManager.LoadScene(5);
     }

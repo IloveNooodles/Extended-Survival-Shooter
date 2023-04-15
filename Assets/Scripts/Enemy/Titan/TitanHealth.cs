@@ -33,7 +33,6 @@ public class TitanHealth : MonoBehaviour
     bool isDead = false;
     bool isInvincible = false;
 
-
     // Start is called before the first frame update
     void Awake()
     {
@@ -259,28 +258,28 @@ public class TitanHealth : MonoBehaviour
         anim.SetBool("isRightArmDestroyed", true);
     }
 
-    void Dead()
+    public void Dead()
     {
         cutSceneManager.startBossEndCutScene();
-        // isInvincible = true;
-        // nav.enabled = false;
-        // anim.SetBool("isDead", true);
-        // anim.SetTrigger("Dead");
-        // titanAudio.TitanHurt();
-        // isDead = true;
+        isInvincible = true;
+        nav.enabled = false;
+        anim.SetBool("isDead", true);
+        anim.SetTrigger("Dead");
+        titanAudio.TitanHurt();
+        isDead = true;
         // yield return new WaitForSeconds(5f);
-        // smokeParticles.transform.position = new Vector3(transform.position.x + 20, transform.position.y, transform.position.z);
-        // smokeParticles.transform.rotation = new Quaternion(0, 0, 0, 0);
-        // titanAudio.Landing();
-        // smokeParticles.Play();
-        // Destroy(this.gameObject.GetComponent<TitanHealth>());
-        // Destroy(this.gameObject.GetComponent<TitanAttackAndMovement>());
+        smokeParticles.transform.position = new Vector3(transform.position.x + 20, transform.position.y, transform.position.z);
+        smokeParticles.transform.rotation = new Quaternion(0, 0, 0, 0);
+        titanAudio.Landing();
+        smokeParticles.Play();
+        Destroy(this.gameObject.GetComponent<TitanHealth>());
+        Destroy(this.gameObject.GetComponent<TitanAttackAndMovement>());
 
-        // //Destroy all hit trigger
-        // TitanHitDetector[] hitDetectors = this.gameObject.GetComponentsInChildren<TitanHitDetector>();
-        // foreach (TitanHitDetector hitDetector in hitDetectors)
-        // {
-        //     Destroy(hitDetector);
-        // }
+        //Destroy all hit trigger
+        TitanHitDetector[] hitDetectors = this.gameObject.GetComponentsInChildren<TitanHitDetector>();
+        foreach (TitanHitDetector hitDetector in hitDetectors)
+        {
+            Destroy(hitDetector);
+        }
     }
 }

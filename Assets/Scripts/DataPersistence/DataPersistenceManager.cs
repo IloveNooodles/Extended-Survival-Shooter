@@ -61,15 +61,15 @@ public class DataPersistenceManager : MonoBehaviour
         }
         else if (sceneToLoad == 2)
         {
-            SceneManager.LoadScene("FPS");
+            SceneManager.LoadScene(3);
         }
         else if (sceneToLoad == 3)
         {
-            SceneManager.LoadScene("FPS");
+            SceneManager.LoadScene(3);
         }
         else
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(5);
         }
     }
 

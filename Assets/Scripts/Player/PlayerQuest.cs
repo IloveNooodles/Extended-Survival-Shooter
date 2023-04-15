@@ -40,6 +40,16 @@ public class PlayerQuest : MonoBehaviour
             CompleteQuest();
         }
     }
+
+    public void UpdateSelfQuest()
+    {
+        quest = questGiver.GiveQuestToUser();
+    }
+    
+    public void UpdateQuestBoard()
+    {
+        questGiver.UpdateQuestWindow();
+    }
     
     public void CompleteQuest()
     {
@@ -59,21 +69,30 @@ public class PlayerQuest : MonoBehaviour
             isSecondSceneEndingCutScenePlayed = true;
             return;
         }
-        
-        TimerManager.StopTimer();
-        
+
+        if (QuestManager.CompletedQuest < 3 || QuestManager.CompletedQuest == 4)
+        {
+            TimerManager.StopTimer();
+        }
+
         /* Shows popup modal */
         try
         {
-            PopupModal.SetActive(true);
+            if (QuestManager.CompletedQuest < 3)
+            {
+                PopupModal.SetActive(true);
+            }
         } catch {}
         
         /* Reward */
         GoldManager.addGold(quest.goldReward);
         questGiver.SetNewQuest(QuestManager.CompletedQuest);
         quest = questGiver.GiveQuestToUser();
-        
+
         /* Freeze Game */
-        TimerManager.PauseGame();
+        if (QuestManager.CompletedQuest < 3)
+        {
+            TimerManager.PauseGame();
+        }
     }
 }

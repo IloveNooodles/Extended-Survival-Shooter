@@ -99,9 +99,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a5c937f935857a41ae5624b8ca75a25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 20
   buffDamage: 0
-  attackSpeed: 1
+  attackSpeed: 0.5
   reloadTime: 2
   range: 100
 --- !u!1 &1789450590867082095
@@ -5362,4 +5362,3 @@ MonoBehaviour:
   gunAudio: {fileID: 1789450590867082086}
   gunReloadAudio: {fileID: 1789450590867082090}
   gun: {fileID: 0}
-  player: {fileID: 0}

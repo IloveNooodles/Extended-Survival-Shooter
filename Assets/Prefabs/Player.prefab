@@ -5846,56 +5846,62 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4576210483085425502, guid: cdc3b1ac9c93c67418b1373d98c0e794, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99378693
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4576210483085425502, guid: cdc3b1ac9c93c67418b1373d98c0e794, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.07412499
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4576210483085425502, guid: cdc3b1ac9c93c67418b1373d98c0e794, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.08279423
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4576210483085425502, guid: cdc3b1ac9c93c67418b1373d98c0e794, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0061754887
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4576210483085425502, guid: cdc3b1ac9c93c67418b1373d98c0e794, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -8.531
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4576210483085425502, guid: cdc3b1ac9c93c67418b1373d98c0e794, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -9.525
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4576210483085425502, guid: cdc3b1ac9c93c67418b1373d98c0e794, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5634897559617601964, guid: cdc3b1ac9c93c67418b1373d98c0e794, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5634897559617601964, guid: cdc3b1ac9c93c67418b1373d98c0e794, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735391419063646717, guid: cdc3b1ac9c93c67418b1373d98c0e794, type: 3}
+      propertyPath: powerMeter
+      value: 
+      objectReference: {fileID: 1665343674430632917}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdc3b1ac9c93c67418b1373d98c0e794, type: 3}
+--- !u!114 &1665343674430632917 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1665343674377036384, guid: cdc3b1ac9c93c67418b1373d98c0e794, type: 3}
+  m_PrefabInstance: {fileID: 55464373}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3803896389931872337 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3803896389978153444, guid: cdc3b1ac9c93c67418b1373d98c0e794, type: 3}
   m_PrefabInstance: {fileID: 55464373}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &28287790
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3803896389931872337}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c589730492d2d6140884be54b25e2b5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 10
-  buffDamage: 0
-  attackSpeed: 1
-  reloadTime: 2
-  range: 100
 --- !u!4 &4576210483106278123 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4576210483085425502, guid: cdc3b1ac9c93c67418b1373d98c0e794, type: 3}
@@ -5963,24 +5969,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8087204901033334537, guid: 0e537880e0bc87e44be381a156e63bd8, type: 3}
   m_PrefabInstance: {fileID: 635526516}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &654356461
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8087204900397812349}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e3ac6842f222164da0f2d4da0e6f1b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 30
-  buffDamage: 0
-  attackSpeed: 1
-  reloadTime: 2
-  range: 50
-  bulletsPerShot: 5
 --- !u!4 &8894704572748189895 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8894704573362703795, guid: 0e537880e0bc87e44be381a156e63bd8, type: 3}
@@ -6135,21 +6123,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1357178448123925527, guid: dc57a612a72f25847875f350db8facd3, type: 3}
   m_PrefabInstance: {fileID: 2015191890}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2063372751
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1357178449061705541}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae684a6cc5967eb4eb976820020d370e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 10
-  buffDamage: 0
-  attackSpeed: 1
 --- !u!4 &1846047275043991039 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1846047274909453997, guid: dc57a612a72f25847875f350db8facd3, type: 3}
