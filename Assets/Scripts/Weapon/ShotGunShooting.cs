@@ -23,7 +23,7 @@ public class ShotGunShooting : MonoBehaviour
     private GameObject[] bullets;
     private LineRenderer[] gunlines;
 
-    [SerializeField] private GameObject player;
+    private GameObject player;
     private PlayerQuest pq;
 
     [SerializeField] private GameObject bullet;
@@ -34,6 +34,7 @@ public class ShotGunShooting : MonoBehaviour
         gunScript = shotGun.GetComponent<ShotGun>();
 
         /* Get player quest */
+        player = GameObject.FindGameObjectWithTag("Player");
         pq = player.GetComponent<PlayerQuest>();
 
         //GetMask

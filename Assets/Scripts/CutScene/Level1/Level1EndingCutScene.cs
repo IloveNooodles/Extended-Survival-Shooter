@@ -23,7 +23,7 @@ public class Level1EndingCutScene : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         HUD = GameObject.FindGameObjectWithTag("HUD");
         popupQuest = GameObject.FindGameObjectWithTag("QuestComplete");
-    
+
         cutSceneCamera = transform.GetChild(0).gameObject;
         playerObject = transform.GetChild(1).gameObject;
     }
@@ -33,7 +33,8 @@ public class Level1EndingCutScene : MonoBehaviour
         Debug.Log("Triggered");
         if (other.gameObject.tag == "Player")
         {
-            if(PlayerQuest.isSecondSceneEndingCutScenePlayed == true){
+            if (PlayerQuest.isSecondSceneEndingCutScenePlayed == true)
+            {
                 StartCutScene();
             }
         }
@@ -49,7 +50,8 @@ public class Level1EndingCutScene : MonoBehaviour
         HUD.SetActive(false);
         petManager.SetActive(false);
         popupQuest.SetActive(false);
-        foreach(GameObject enemy in enemies){
+        foreach (GameObject enemy in enemies)
+        {
             enemy.SetActive(false);
         }
 
@@ -61,9 +63,11 @@ public class Level1EndingCutScene : MonoBehaviour
         StartCoroutine(endCutScene());
     }
 
-    IEnumerator endCutScene(){
+    IEnumerator endCutScene()
+    {
         yield return new WaitForSeconds(5f);
         HUD.SetActive(true);
         playerQuest.CompleteQuest();
+        yield return new WaitForSeconds(1f);
     }
 }
