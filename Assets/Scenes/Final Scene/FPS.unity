@@ -77590,6 +77590,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc95d5de2a103a34481e1ba144cc71de, type: 3}
+--- !u!1 &1623488883 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3638958571830380604, guid: fc95d5de2a103a34481e1ba144cc71de, type: 3}
+  m_PrefabInstance: {fileID: 1623488882}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1624404051 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: ef39ae7291c751249b296f00bf6fb042, type: 3}
@@ -90558,7 +90563,7 @@ MonoBehaviour:
   - {fileID: 1042451822}
   - {fileID: 463232274}
   boss: {fileID: 1812803843}
-  player: {fileID: 0}
+  player: {fileID: 1623488883}
   noArmCutScene: {fileID: 70856044}
   noLeftArmCutScene: {fileID: 53469287}
   noRightArmCutScene: {fileID: 924615612}
