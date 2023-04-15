@@ -23,7 +23,7 @@ public class PetHealth : MonoBehaviour
 
     void Awake()
     {
-        healthSlider = GameObject.Find("PetHeartSlider").GetComponent<Slider>();
+        healthSlider = GameObject.FindWithTag("PetHeartSlider").GetComponent<Slider>();
          //Mendapatkan refernce komponen
         anim = GetComponent<Animator>();
         petAudio = GetComponent<AudioSource>();

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18279709, g: 0.22850122, b: 0.3070176, a: 1}
+  m_IndirectSpecularColor: {r: 0.17637402, g: 0.22075196, b: 0.30307084, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -42743,6 +42743,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 6523109884681104331}
+  popupQuest: {fileID: 0}
   firstCityCutScene: {fileID: 1692050138}
   secondCityCutScene: {fileID: 1851770833}
   thirdCityCutScene: {fileID: 1256703377}
@@ -48903,6 +48904,10 @@ PrefabInstance:
       propertyPath: playerHealth
       value: 
       objectReference: {fileID: 1525743338}
+    - target: {fileID: 668584493980996414, guid: a36ed396f5911664da6afcccaa41793d, type: 3}
+      propertyPath: m_TagString
+      value: PetHeartSlider
+      objectReference: {fileID: 0}
     - target: {fileID: 3207695955063799132, guid: a36ed396f5911664da6afcccaa41793d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

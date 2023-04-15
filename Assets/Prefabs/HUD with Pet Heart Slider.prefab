@@ -526,7 +526,7 @@ GameObject:
   - component: {fileID: 5751394185226201894}
   m_Layer: 5
   m_Name: PetHeartSlider
-  m_TagString: Untagged
+  m_TagString: PetHeartSlider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8

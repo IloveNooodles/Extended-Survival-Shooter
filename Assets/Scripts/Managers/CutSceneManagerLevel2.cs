@@ -41,7 +41,7 @@ public class CutSceneManagerLevel2 : MonoBehaviour
     public void endCutScene(){
         playerCamera.SetActive(true);
         player.SetActive(true);
-        // enemyManager.SetActive(true);
+        enemyManager.SetActive(true);
         HUD.SetActive(true);
         petManager.SetActive(true);
         foreach(GameObject enemy in enemies){

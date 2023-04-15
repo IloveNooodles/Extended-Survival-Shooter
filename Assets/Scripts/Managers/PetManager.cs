@@ -11,7 +11,7 @@ public class PetManager : MonoBehaviour
 
     private static GameObject[] pets;
     public static GameObject currentPet;
-    private static Slider petHeartSlider;
+    private static GameObject petHeartSlider;
 
     private GameObject player;
 
@@ -23,15 +23,20 @@ public class PetManager : MonoBehaviour
     void Awake()
     {
         player = GameObject.FindWithTag("Player");
-        petHeartSlider = GameObject.Find("PetHeartSlider").GetComponent<Slider>();
+        petHeartSlider = GameObject.FindWithTag("PetHeartSlider");
+
         if(pets == null || pets.Length == 0 || pets[0] == null){
             
             pets = new GameObject[petsPrefab.Length];
             isPetBought = new bool[pets.Length];
             int i = 0;
             petHealth = new PetHealth[pets.Length];
+
+            if (petHeartSlider != null)
+            {
+                petHeartSlider.SetActive(true);
+            }
             
-            petHeartSlider.gameObject.SetActive(true);
             foreach (var pet in petsPrefab)
             {
                 if (pets[i] != null)
@@ -58,8 +63,8 @@ public class PetManager : MonoBehaviour
 
             pets[currentPetIndex].SetActive(true);
             currentPet = pets[currentPetIndex];
-            petHeartSlider.gameObject.SetActive(true);
-            petHeartSlider.value = petHealth[currentPetIndex].currentHealth;
+            petHeartSlider.SetActive(true);
+            petHeartSlider.GetComponent<Slider>().value = petHealth[currentPetIndex].currentHealth;
 
             // summon();
         }
@@ -103,14 +108,14 @@ public class PetManager : MonoBehaviour
 
         if (currentPetIndex > pets.Length - 1)
         {
-            petHeartSlider.gameObject.SetActive(false);   
+            petHeartSlider.SetActive(false);   
             return;
         }
         
         if (pets[currentPetIndex].gameObject.GetComponent<PetHealth>().currentHealth <= 0)
         {
             // pet is dead
-            petHeartSlider.gameObject.SetActive(false);
+            petHeartSlider.SetActive(false);
             return;
         }
         
@@ -175,19 +180,19 @@ public class PetManager : MonoBehaviour
         currentPetIndex = index;
         if (index > pets.Length - 1)
         {
-            petHeartSlider.gameObject.SetActive(false);
+            petHeartSlider.SetActive(false);
             return;
         }
 
         if (pets[currentPetIndex].gameObject.GetComponent<PetHealth>().currentHealth <= 0)
         {
             // pet is dead
-            petHeartSlider.gameObject.SetActive(false);
+            petHeartSlider.SetActive(false);
             return;
         }
         
-        petHeartSlider.gameObject.SetActive(true);
-        petHeartSlider.value = petHealth[currentPetIndex].currentHealth;
+        petHeartSlider.SetActive(true);
+        petHeartSlider.GetComponent<Slider>().value = petHealth[currentPetIndex].currentHealth;
         
         placePet();
         pets[currentPetIndex].SetActive(true);
