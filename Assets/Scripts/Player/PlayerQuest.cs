@@ -65,7 +65,7 @@ public class PlayerQuest : MonoBehaviour
             return;
         }
 
-        if (QuestManager.CompletedQuest < 3)
+        if (QuestManager.CompletedQuest < 3 || QuestManager.CompletedQuest == 4)
         {
             TimerManager.StopTimer();
         }
