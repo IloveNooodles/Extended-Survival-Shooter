@@ -22,7 +22,6 @@ public class PetManager : MonoBehaviour
 
     void Awake()
     {
-        
         player = GameObject.FindWithTag("Player");
         petHeartSlider = GameObject.Find("PetHeartSlider").GetComponent<Slider>();
         if(pets == null || pets.Length == 0 || pets[0] == null){
