@@ -27,7 +27,7 @@ public class BowShooting : MonoBehaviour
     private bool reloadKeyPressed = false;
     float currentPower = 0;
     float maxPower = 1;
-    float chargeSpeed = 0.2f;
+    float chargeSpeed = 0.5f;
     float powerMeterLength;
 
     void Awake()
@@ -61,7 +61,7 @@ public class BowShooting : MonoBehaviour
         }
 
         //Check if player is pulling
-        if (Input.GetMouseButton(1) && !isPulling && !isShooting && !isReloading)
+        if (Input.GetMouseButton(1) && !isPulling && !isShooting && !isReloading && bowScript.numberOfBullets > 0 && timer >= bowScript.attackSpeed)
         {
             isPulling = true;
             bowPullAudio.Play();
