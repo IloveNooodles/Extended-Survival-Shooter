@@ -57,6 +57,7 @@ public class CutSceneManager : MonoBehaviour
     {
         yield return new WaitForSeconds(5f);
         // yield return new WaitForSeconds(18.85f);
+        TimerManager.StartTimer();
         firstCityCutScene.endCutScene();
     }
 
