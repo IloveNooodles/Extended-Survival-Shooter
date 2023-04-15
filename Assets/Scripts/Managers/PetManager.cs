@@ -17,6 +17,8 @@ public class PetManager : MonoBehaviour
 
     public static bool[] isPetBought;
     
+    private static PetHealth[] petHealth;
+    
 
     void Awake()
     {
@@ -28,6 +30,7 @@ public class PetManager : MonoBehaviour
             pets = new GameObject[petsPrefab.Length];
             isPetBought = new bool[pets.Length];
             int i = 0;
+            petHealth = new PetHealth[pets.Length];
             
             petHeartSlider.gameObject.SetActive(true);
             foreach (var pet in petsPrefab)
@@ -39,14 +42,25 @@ public class PetManager : MonoBehaviour
                 pets[i] = Instantiate(pet);
                 pets[i].tag = "Pet";
                 isPetBought[i] = false;
+                petHealth[i] = pets[i].GetComponent<PetHealth>();
                 i++;
             }
         }
-        if(currentPetIndex <= pets.Length && pets[currentPetIndex]!=null){
+        if(currentPetIndex <= pets.Length && pets[currentPetIndex]!=null)
+        {
+            int i = 0;
+            foreach (var pet in pets)
+            {
+                pet.GetComponent<PetHealth>().currentHealth = petHealth[i].currentHealth;
+                i++;
+            }
+            
             placePet();
 
             pets[currentPetIndex].SetActive(true);
             currentPet = pets[currentPetIndex];
+            petHeartSlider.gameObject.SetActive(true);
+            petHeartSlider.value = petHealth[currentPetIndex].currentHealth;
 
             // summon();
         }
@@ -174,6 +188,7 @@ public class PetManager : MonoBehaviour
         }
         
         petHeartSlider.gameObject.SetActive(true);
+        petHeartSlider.value = petHealth[currentPetIndex].currentHealth;
         
         placePet();
         pets[currentPetIndex].SetActive(true);
