@@ -845,7 +845,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 409160, guid: ad67cddd729fb4342be2063a3f5ad7cc, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 409160, guid: ad67cddd729fb4342be2063a3f5ad7cc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2857,7 +2857,6 @@ MonoBehaviour:
   - {fileID: 6009072081499313079, guid: 24dc6e499972cb844b67ce5d74d68c62, type: 3}
   - {fileID: 8236489351022783963, guid: a6a59845691c6754daf92a748af486e8, type: 3}
   - {fileID: 5178324001599658391, guid: fb68a6ad1a8d14e468cf4b3293de849f, type: 3}
-  currentPetIndex: 0
   summoningMagic: {fileID: 7224080319389676918, guid: 4b1523f7867617c49ad767706d546dc9, type: 3}
 --- !u!4 &648376979
 Transform:
@@ -6759,6 +6758,10 @@ PrefabInstance:
       propertyPath: questGiver
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1553238811521005513, guid: fc95d5de2a103a34481e1ba144cc71de, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3638958571830380604, guid: fc95d5de2a103a34481e1ba144cc71de, type: 3}
       propertyPath: m_Name
       value: Player (1)
@@ -6870,6 +6873,10 @@ PrefabInstance:
     - target: {fileID: 3638958571830875220, guid: fc95d5de2a103a34481e1ba144cc71de, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3638958572841906660, guid: fc95d5de2a103a34481e1ba144cc71de, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3638958573345111843, guid: fc95d5de2a103a34481e1ba144cc71de, type: 3}
       propertyPath: damageImage
@@ -7953,7 +7960,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1817858304
 GameObject:

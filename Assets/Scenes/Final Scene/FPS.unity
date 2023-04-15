@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17637402, g: 0.22075196, b: 0.30307084, a: 1}
+  m_IndirectSpecularColor: {r: 0.17637376, g: 0.22075155, b: 0.30307016, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3913,7 +3913,6 @@ MonoBehaviour:
   - {fileID: 6009072081499313079, guid: 24dc6e499972cb844b67ce5d74d68c62, type: 3}
   - {fileID: 8236489351022783963, guid: a6a59845691c6754daf92a748af486e8, type: 3}
   - {fileID: 5178324001599658391, guid: fb68a6ad1a8d14e468cf4b3293de849f, type: 3}
-  currentPetIndex: 0
   summoningMagic: {fileID: 7224080319389676918, guid: 4b1523f7867617c49ad767706d546dc9, type: 3}
 --- !u!4 &143007017
 Transform:
@@ -47608,7 +47607,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d36b112a362e7cc4a8eda34ad70c0aad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraPosition: {fileID: 1174282025}
 --- !u!1 &1174527380
 GameObject:
   m_ObjectHideFlags: 0
@@ -61500,11 +61498,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!4 &1353934336 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6523109885498019274, guid: 7713e1973bb919843ad1a70751281c23, type: 3}
-  m_PrefabInstance: {fileID: 6523109884681104330}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1356826097
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -65503,6 +65496,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3638958571830380604, guid: fc95d5de2a103a34481e1ba144cc71de, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 3638958571830875138, guid: fc95d5de2a103a34481e1ba144cc71de, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -65588,12 +65585,6 @@ MonoBehaviour:
   jumpKey: 32
   playerHeight: 1
   floorCollider: {fileID: 1713069450}
-  orientation: {fileID: 1525743338}
---- !u!4 &1525743338 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3638958571830875138, guid: fc95d5de2a103a34481e1ba144cc71de, type: 3}
-  m_PrefabInstance: {fileID: 1525743335}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1531727028
 GameObject:
   m_ObjectHideFlags: 0
@@ -101717,7 +101708,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3638958572003255986
 Transform:
   m_ObjectHideFlags: 0
@@ -106906,7 +106897,6 @@ MonoBehaviour:
   damagePerShot: 20
   timeBetweenBullets: 0.15
   range: 100
-  target: {fileID: 1353934336}
 --- !u!114 &3638958573172723137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107074,7 +107064,6 @@ MonoBehaviour:
   jumpKey: 32
   playerHeight: 1
   floorCollider: {fileID: 1713069450}
-  orientation: {fileID: 3638958572003256032}
 --- !u!4 &3718891113444283942
 Transform:
   m_ObjectHideFlags: 0
@@ -109178,6 +109167,10 @@ PrefabInstance:
       propertyPath: orientation
       value: 
       objectReference: {fileID: 3638958572003256032}
+    - target: {fileID: 6523109885498019381, guid: 7713e1973bb919843ad1a70751281c23, type: 3}
+      propertyPath: m_TagString
+      value: PlayerCam
+      objectReference: {fileID: 0}
     - target: {fileID: 6523109885842875464, guid: 7713e1973bb919843ad1a70751281c23, type: 3}
       propertyPath: cameraPosition
       value: 

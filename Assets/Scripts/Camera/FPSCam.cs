@@ -4,13 +4,14 @@ public class FPSCam : MonoBehaviour
     public float mouseSensitivityX = 1f;
     public float mouseSensitivityY = 1f;
 
-    public Transform orientation;
+    Transform orientation;
 
     float xRotation = 0f;
     float yRotation = 0f;
 
     private void Start()
     {
+        orientation = GameObject.FindGameObjectWithTag("Player").transform;
         Cursor.lockState = CursorLockMode.Locked;
     }
 

@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class CutSceneManager : MonoBehaviour
 {
 
-    public GameObject player;
+    GameObject player;
     FPSMovement fpsMovement;
     FPSShooting fpsShooting;
     public Camera playerCamera;
@@ -20,6 +20,7 @@ public class CutSceneManager : MonoBehaviour
     public GameObject HUD;
 
     void Start(){
+        player = GameObject.FindGameObjectWithTag("Player");
         fpsMovement = player.GetComponent<FPSMovement>();
         fpsShooting = player.GetComponentInChildren<FPSShooting>();
     }
@@ -46,7 +47,8 @@ public class CutSceneManager : MonoBehaviour
     }
 
     IEnumerator endFirstCityCutScene(){
-        yield return new WaitForSeconds(18.85f);
+        yield return new WaitForSeconds(0f);
+        // yield return new WaitForSeconds(18.85f);
         firstCityCutScene.endCutScene();
     }
 
@@ -56,7 +58,8 @@ public class CutSceneManager : MonoBehaviour
     }
 
     IEnumerator endSecondCityCutScene(){
-        yield return new WaitForSeconds(21.5f);
+        yield return new WaitForSeconds(0f);
+        // yield return new WaitForSeconds(21.5f);
         secondCityCutScene.endCutScene();
     }
 
@@ -66,7 +69,8 @@ public class CutSceneManager : MonoBehaviour
     }
 
     IEnumerator endThirdCityCutScene(){
-        yield return new WaitForSeconds(17);
+        yield return new WaitForSeconds(0);
+        // yield return new WaitForSeconds(17);
         thirdCityCutScene.endCutScene();
     }
 
@@ -76,7 +80,8 @@ public class CutSceneManager : MonoBehaviour
     }
 
     IEnumerator endBossSpawnCutScene(){
-        yield return new WaitForSeconds(15);
+        yield return new WaitForSeconds(0);
+        // yield return new WaitForSeconds(15);
         bossSpawnCutScene.endCutScene();
     }
 
@@ -86,7 +91,8 @@ public class CutSceneManager : MonoBehaviour
     }
 
     IEnumerator endBossEndCutScene(){
-        yield return new WaitForSeconds(24.5f);
+        yield return new WaitForSeconds(0f);
+        // yield return new WaitForSeconds(24.5f);
         bossEndCutScene.endCutScene();
         SceneManager.LoadScene(5);
     }

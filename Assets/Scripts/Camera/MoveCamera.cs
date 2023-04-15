@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class MoveCamera : MonoBehaviour
 {
-    public Transform cameraPosition;
+    Transform cameraPosition;
     // Start is called before the first frame update
     void Start()
     {
-        
+        cameraPosition = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).transform;
     }
 
     // Update is called once per frame

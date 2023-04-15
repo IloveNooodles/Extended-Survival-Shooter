@@ -16,6 +16,7 @@ TagManager:
   - QuestWindow
   - PlayerDamageImage
   - PlayerHeartSlider
+  - PlayerCam
   layers:
   - Default
   - TransparentFX
