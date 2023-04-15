@@ -24,6 +24,7 @@ TagManager:
   - Info
   - ShopManager
   - Gameover
+  - Floor
   layers:
   - Default
   - TransparentFX
