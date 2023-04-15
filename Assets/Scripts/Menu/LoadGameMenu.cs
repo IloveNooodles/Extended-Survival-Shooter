@@ -20,7 +20,7 @@ public class LoadGameMenu : MonoBehaviour
     public void OnSaveSlotClicked(SaveSlot saveSlot)
     {
         DataPersistenceManager.instance.ChangeSelectedProfileId(saveSlot.GetProfileId());
-        Debug.Log("akwoa");
+        DataPersistenceManager.instance.SaveGame();
     }
 
     public void ActivateMenu()
