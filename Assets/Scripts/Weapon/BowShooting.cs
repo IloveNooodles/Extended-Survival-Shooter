@@ -61,14 +61,14 @@ public class BowShooting : MonoBehaviour
         }
 
         //Check if player is pulling
-        if (Input.GetMouseButton(0) && !isPulling && !isShooting && !isReloading)
+        if (Input.GetMouseButton(1) && !isPulling && !isShooting && !isReloading)
         {
             isPulling = true;
             bowPullAudio.Play();
         }
 
         //Check if player is shooting
-        if (Input.GetMouseButtonUp(0) && isPulling && !isShooting && !isReloading)
+        if (Input.GetMouseButtonUp(1) && isPulling && !isShooting && !isReloading)
         {
             isPulling = false;
             isShooting = true;
