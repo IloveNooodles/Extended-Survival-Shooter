@@ -29,7 +29,6 @@ public class CutSceneManager : MonoBehaviour
 
     public void startCutScene()
     {
-        HUD = GameObject.FindGameObjectWithTag("HUD");
         fpsMovement.enabled = false;
         fpsShooting.enabled = false;
         playerCamera.enabled = false;
@@ -49,6 +48,8 @@ public class CutSceneManager : MonoBehaviour
     public void startFirstCityCutScene()
     {
         firstCityCutScene.startCutScene();
+        GunShooting gunShooting = player.GetComponentInChildren<GunShooting>();
+        gunShooting.enabled = false;
         StartCoroutine(endFirstCityCutScene());
     }
 

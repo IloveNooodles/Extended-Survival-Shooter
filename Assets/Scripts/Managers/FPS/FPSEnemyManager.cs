@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class FPSEnemyManager : MonoBehaviour
 {
-    public PlayerHealth playerHealth;
+    PlayerHealth playerHealth;
     public Transform[] firstCitySpawnPoints;
     public Transform[] secondCitySpawnPoints;
     public Transform[] thirdCitySpawnPoints;
@@ -20,6 +20,7 @@ public class FPSEnemyManager : MonoBehaviour
 
     void Start()
     {
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
     }
 
     void Update()

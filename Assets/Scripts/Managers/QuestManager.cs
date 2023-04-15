@@ -3,7 +3,7 @@ using UnityEngine.UI;
 public class QuestManager : MonoBehaviour, IDataPersistence
 {
     private static QuestManager instance;
-    public static int CompletedQuest = 1;
+    public static int CompletedQuest = 0;
     private Text text;
 
     private void Awake()
