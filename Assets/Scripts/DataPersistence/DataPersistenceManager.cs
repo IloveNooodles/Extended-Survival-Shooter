@@ -12,7 +12,7 @@ public class DataPersistenceManager : MonoBehaviour
     private GameData gameData;
     private List<IDataPersistence> dataPersistenceObjects;
     private FileDataHandler dataHandler;
-    private string selectedProfileId = "Test";
+    private string selectedProfileId;
 
     public static DataPersistenceManager instance;
 
@@ -20,7 +20,6 @@ public class DataPersistenceManager : MonoBehaviour
     {
         if (instance != null)
         {
-            Debug.LogError("Found more than one Data Persistence Manager in the scene.");
             Destroy(this.gameObject);
             return;
         }
@@ -80,7 +79,7 @@ public class DataPersistenceManager : MonoBehaviour
         return dataHandler.LoadAllProfiles();
     }
 
-    private void onEnable()
+    private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
         SceneManager.sceneUnloaded += OnSceneUnloaded;
@@ -101,6 +100,11 @@ public class DataPersistenceManager : MonoBehaviour
     public void OnSceneUnloaded(Scene scene)
     {
         SaveGame();
+    }
+
+    public void ChangeSelectedProfileId(string profileId)
+    {
+        this.selectedProfileId = profileId;
     }
 
     // FOR TRIAL PURPOSES ONLY

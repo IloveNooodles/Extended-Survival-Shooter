@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class GoldManager : MonoBehaviour, IDataPersistence
 {
     private static GoldManager _instance;
-    public static int Gold;
+    public static int Gold = 0;
     private Text text;
 
     private void Awake()
@@ -18,7 +18,6 @@ public class GoldManager : MonoBehaviour, IDataPersistence
         {
             _instance = this;
             DontDestroyOnLoad(gameObject);
-            Gold = 0;
         }
         text = GetComponent <Text> ();
     }
