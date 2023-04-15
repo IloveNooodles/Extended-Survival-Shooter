@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18388513, g: 0.22895736, b: 0.3026894, a: 1}
+  m_IndirectSpecularColor: {r: 0.18388541, g: 0.22895762, b: 0.30269003, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -14177,7 +14177,7 @@ PrefabInstance:
     - target: {fileID: 2534130214793429618, guid: 45481059e26aeef42b5ba6401024a605, type: 3}
       propertyPath: playerHealth
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1560159625}
     - target: {fileID: 2534130214793429618, guid: 45481059e26aeef42b5ba6401024a605, type: 3}
       propertyPath: spawnPoints.Array.data[0]
       value: 

@@ -2465,7 +2465,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6645028841996791265, guid: cbf8baa88bddb8d47b6a11f95f577579, type: 3}
       propertyPath: m_Name
-      value: Load
+      value: Load Button
       objectReference: {fileID: 0}
     - target: {fileID: 6645028841996791276, guid: cbf8baa88bddb8d47b6a11f95f577579, type: 3}
       propertyPath: m_Sprite

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class WeaponManager : MonoBehaviour
+public class WeaponManager : MonoBehaviour, IDataPersistence
 {
     [SerializeField] public GameObject[] weaponsPrefab;
     int currentWeaponIndex = 0;
@@ -64,5 +64,15 @@ public class WeaponManager : MonoBehaviour
         if (currentWeapon.weaponName == "Sword") return; // Sword doesn't have bullets
         currentWeapon.Reload();
         NumberOfBulletsManager.numberOfBullets = currentWeapon.numberOfBullets;
+    }
+
+    public void LoadData(GameData data)
+    {
+        currentWeaponIndex = data.weapon;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.weapon = currentWeaponIndex;
     }
 }
