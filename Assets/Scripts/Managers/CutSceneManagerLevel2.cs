@@ -72,7 +72,7 @@ public class CutSceneManagerLevel2 : MonoBehaviour
     }
 
     IEnumerator EndCutScene(){
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(0f);
         // yield return new WaitForSeconds(30f);
         startingCutScene.EndCutScene();
     }
@@ -84,7 +84,7 @@ public class CutSceneManagerLevel2 : MonoBehaviour
     }
 
     IEnumerator EndPUBGToHouseCutScene(){
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(0f);
         // yield return new WaitForSeconds(10f);
         pubgToHouseCutscene.EndCutScene();
         shopKeeper.Spawn();
@@ -99,7 +99,7 @@ public class CutSceneManagerLevel2 : MonoBehaviour
 
     IEnumerator EndEnterHouseCutScene()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(0f);
         // yield return new WaitForSeconds(10f);
         enterHouseCutscene.EndCutScene();
     }

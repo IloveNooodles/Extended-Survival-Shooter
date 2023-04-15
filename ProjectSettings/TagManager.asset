@@ -27,6 +27,7 @@ TagManager:
   - Scoreboard
   - Floor
   - MainMenu
+  - PetManager
   layers:
   - Default
   - TransparentFX

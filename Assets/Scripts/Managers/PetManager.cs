@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class PetManager : MonoBehaviour, IDataPersistence
 {
     [SerializeField] public GameObject[] petsPrefab;
-    public static int currentPetIndex = 4;
+    public static int currentPetIndex = 1;
 
     public GameObject summoningMagic;
 

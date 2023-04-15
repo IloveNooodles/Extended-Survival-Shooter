@@ -38,30 +38,45 @@ public class PetMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
-
-        if (isAvoidingEnemy)
+        // Debug.Log("isOnNavMesh: " + nav.isOnNavMesh);
+        if(nav.isOnNavMesh)
         {
-            AvoidEnemy();
+            if (isAvoidingEnemy)
+            {
+                AvoidEnemy();
+            }
+            else
+            {
+                nav.SetDestination(player.position);
+            }
+            
+            if (nav.velocity.magnitude < 0.1f)
+            {
+                // change animation to idle
+                anim.SetBool("IsWalking", false);
+            }
+            else
+            {
+                anim.SetBool("IsWalking", true);
+            }
+
         }
         else
         {
-            nav.SetDestination(player.position);
+            Vector3 initial = new Vector3(3.349f,0,-19.61f);
+            NavMeshHit hit;
+            Vector3 randomPoint = initial + Random.insideUnitSphere * 1f;
+            Vector3 finalPosition = Vector3.zero;
+            if (NavMesh.SamplePosition(randomPoint, out hit, 1f, NavMesh.AllAreas))
+            {
+                finalPosition = hit.position;
+            }
+            nav.Warp(finalPosition);
+            // transform.position = finalPosition;
         }
-
-
-
-        // check if pet is moving or not
-        if (nav.velocity.magnitude < 0.1f)
-        {
-            // change animation to idle
-            anim.SetBool("IsWalking", false);
-        }
-        else
-        {
-            anim.SetBool("IsWalking", true);
-        }
+        
+        
+        
 
     }
 

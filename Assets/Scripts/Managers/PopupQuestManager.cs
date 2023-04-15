@@ -7,10 +7,12 @@ public class PopupQuestManager : MonoBehaviour
 {
     private int currentScene;
     private GameObject player;
+    private GameObject petManager;
 
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        // petManager = GameObject.FindGameObjectWithTag("PetManager");
     }
 
     public void ContinueQuest()
@@ -26,7 +28,9 @@ public class PopupQuestManager : MonoBehaviour
         currentScene = SceneManager.GetActiveScene().buildIndex;
         if (currentScene + 1 > 3) return;
         if (currentScene == 2){
+            
             player.SetActive(true);
+            // petManager.SetActive(false);
             player.transform.position = new Vector3(-14.5f,0,-18.7999992f);
             PlayerMovement movement = player.GetComponent<PlayerMovement>();
             FPSMovement fpsMovement = player.GetComponent<FPSMovement>();

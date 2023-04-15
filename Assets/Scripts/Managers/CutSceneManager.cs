@@ -29,14 +29,15 @@ public class CutSceneManager : MonoBehaviour
         popupQuest = GameObject.FindGameObjectWithTag("QuestComplete");
         HUD = GameObject.FindGameObjectWithTag("HUD");
         fpsShooting = player.GetComponentInChildren<FPSShooting>();
+        // petManager = GameObject.FindGameObjectWithTag("PetManager");
     }
 
     public void startCutScene()
     {
+        petManager.SetActive(false);
         fpsMovement.enabled = false;
         fpsShooting.enabled = false;
         playerCamera.enabled = false;
-        petManager.SetActive(false);
         HUD.SetActive(false);
         popupQuest.SetActive(false);
     }
@@ -60,7 +61,7 @@ public class CutSceneManager : MonoBehaviour
 
     IEnumerator endFirstCityCutScene()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(0f);
         // yield return new WaitForSeconds(18.85f);
         playerQuest.UpdateSelfQuest();
         TimerManager.StartTimer();
