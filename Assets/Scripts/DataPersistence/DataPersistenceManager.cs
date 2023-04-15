@@ -49,7 +49,32 @@ public class DataPersistenceManager : MonoBehaviour
         {
             dataPersistenceObject.LoadData(gameData);
         }
+        // int sceneToLoad = gameData.completedQuest;
+        // if (sceneToLoad == 0)
+        // {
+        //     SceneManager.LoadScene(1);
+        // }
+        // else if (sceneToLoad == 1)
+        // {
+        //     SceneManager.LoadScene(2);
+        // }
+        // else if (sceneToLoad == 2)
+        // {
+        //     SceneManager.LoadScene(3);
+        // }
+        // else if (sceneToLoad == 3)
+        // {
+        //     SceneManager.LoadScene(3);
+        // }
+        // else
+        // {
+        //     SceneManager.LoadScene(5);
+        // }
+    }
 
+    public void ChangeScene()
+    {
+        if (gameData == null) return;
         int sceneToLoad = gameData.completedQuest;
         if (sceneToLoad == 0)
         {
