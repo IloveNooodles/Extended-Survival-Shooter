@@ -43,15 +43,15 @@ public class PlayerQuest : MonoBehaviour
                 }
             }
         }
-        
+
         questGiver.UpdateQuestWindow();
-        
+
         if (status && quest.isActive)
         {
             CompleteQuest();
         }
     }
-    
+
 
     private void Update()
     {
@@ -68,7 +68,7 @@ public class PlayerQuest : MonoBehaviour
     {
         quest = questGiver.GiveQuestToUser();
     }
-    
+
     public void UpdateQuestBoard()
     {
         questGiver.UpdateQuestWindow();
@@ -83,18 +83,24 @@ public class PlayerQuest : MonoBehaviour
         questNumber = QuestManager.CompletedQuest;
         quest.isActive = false;
 
-        if(QuestManager.CompletedQuest == 1 && !isFirstSceneEndingCutScenePlayed){
+        if (QuestManager.CompletedQuest == 1 && !isFirstSceneEndingCutScenePlayed)
+        {
             QuestManager.CompletedQuest -= 1;
             questNumber = QuestManager.CompletedQuest;
             isFirstSceneEndingCutScenePlayed = true;
             GameObject.Find("CutSceneManager").GetComponent<CutSceneManagerLevel2>().StartPUBGToHouseCutScene();
+            /* Reward */
+            GoldManager.addGold(quest.goldReward);
             return;
         }
 
-        if(QuestManager.CompletedQuest == 2 && !isSecondSceneEndingCutScenePlayed){
+        if (QuestManager.CompletedQuest == 2 && !isSecondSceneEndingCutScenePlayed)
+        {
             QuestManager.CompletedQuest -= 1;
             questNumber = QuestManager.CompletedQuest;
             isSecondSceneEndingCutScenePlayed = true;
+            /* Reward */
+            GoldManager.addGold(quest.goldReward);
             return;
         }
 
@@ -110,10 +116,14 @@ public class PlayerQuest : MonoBehaviour
             {
                 PopupModal.SetActive(true);
             }
-        } catch {}
+        }
+        catch { }
 
-        /* Reward */
-        GoldManager.addGold(quest.goldReward);
+        if (isFirstSceneEndingCutScenePlayed && isSecondSceneEndingCutScenePlayed)
+        {
+            /* Reward */
+            GoldManager.addGold(quest.goldReward);
+        }
         questGiver.SetNewQuest(QuestManager.CompletedQuest);
         quest = questGiver.GiveQuestToUser();
 

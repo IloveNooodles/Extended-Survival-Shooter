@@ -3,13 +3,14 @@ using UnityEngine.UI;
 
 public class GameOverManager : MonoBehaviour
 {
-    public PlayerHealth playerHealth;
+    PlayerHealth playerHealth;
 
     Animator anim;
     [SerializeField] private Text scoreText;
 
     void Awake()
     {
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
         anim = GetComponent<Animator>();
     }
 

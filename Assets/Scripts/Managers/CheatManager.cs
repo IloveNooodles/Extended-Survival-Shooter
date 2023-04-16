@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CheatManager : MonoBehaviour
 {
@@ -52,12 +53,14 @@ public class CheatManager : MonoBehaviour
     void ToggleCheatConsole()
     {
         showCheatConsole = !showCheatConsole;
-        if (playerMovement != null && QuestManager.CompletedQuest < 3)
+        if (playerMovement != null && SceneManager.GetActiveScene().buildIndex != 3)
         {
+            fpsMovement.enabled = false;
             playerMovement.enabled = !showCheatConsole;
         }
-        if (fpsMovement != null && QuestManager.CompletedQuest >= 3)
+        if (fpsMovement != null && SceneManager.GetActiveScene().buildIndex == 3)
         {
+            playerMovement.enabled = false;
             fpsMovement.enabled = !showCheatConsole;
         }
     }

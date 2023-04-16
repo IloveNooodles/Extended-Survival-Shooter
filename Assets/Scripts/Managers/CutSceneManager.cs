@@ -19,7 +19,10 @@ public class CutSceneManager : MonoBehaviour
     public BossSpawnCutScene bossSpawnCutScene;
     public BossEndCutScene bossEndCutScene;
     public GameObject petManager;
-
+    GameObject gunBarrelEnd;
+    GameObject gun;
+    GameObject weaponManager;
+    PlayerQuest playerQuestScript;
 
     void Start()
     {
@@ -28,8 +31,15 @@ public class CutSceneManager : MonoBehaviour
         fpsMovement = player.GetComponent<FPSMovement>();
         popupQuest = GameObject.FindGameObjectWithTag("QuestComplete");
         HUD = GameObject.FindGameObjectWithTag("HUD");
-        fpsShooting = player.GetComponentInChildren<FPSShooting>();
-        // petManager = GameObject.FindGameObjectWithTag("PetManager");
+        playerQuestScript = player.GetComponent<PlayerQuest>();
+
+        gunBarrelEnd = player.transform.GetChild(1).gameObject;
+        gun = player.transform.GetChild(2).gameObject;
+        weaponManager = player.transform.GetChild(4).gameObject;
+        fpsShooting = gunBarrelEnd.GetComponent<FPSShooting>();
+        fpsShooting.enabled = true;
+
+        petManager = GameObject.FindGameObjectWithTag("PetManager");
     }
 
     public void startCutScene()
@@ -66,6 +76,10 @@ public class CutSceneManager : MonoBehaviour
         playerQuest.UpdateSelfQuest();
         TimerManager.StartTimer();
         firstCityCutScene.endCutScene();
+        gunBarrelEnd.SetActive(true);
+        gun.SetActive(true);
+        weaponManager.SetActive(false);
+        playerQuestScript.UpdateQuestBoard();
     }
 
     public void startSecondCityCutScene()
@@ -123,7 +137,7 @@ public class CutSceneManager : MonoBehaviour
         PlayerPrefs.SetFloat("Time", TimerManager.time);
         playerQuest.Track(GoalType.Spend, ItemName.ItemId(ItemName.Eren), 1);
         bossEndCutScene.endCutScene();
-        
+
         HUD.SetActive(false);
         SceneManager.LoadScene(5);
     }

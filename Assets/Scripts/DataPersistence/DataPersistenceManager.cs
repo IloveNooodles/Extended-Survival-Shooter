@@ -70,6 +70,7 @@ public class DataPersistenceManager : MonoBehaviour
         // {
         //     SceneManager.LoadScene(5);
         // }
+        TimerManager.StopTimer();
     }
 
     public void ChangeScene()
