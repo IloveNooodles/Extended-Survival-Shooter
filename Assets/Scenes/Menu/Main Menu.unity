@@ -3679,7 +3679,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Score
+  m_text: Time
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cdb5e2f171eb7ed458d1e6e1793d2cd7, type: 2}
   m_sharedMaterial: {fileID: -3872621889343875428, guid: cdb5e2f171eb7ed458d1e6e1793d2cd7, type: 2}
