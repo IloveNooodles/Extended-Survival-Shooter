@@ -31,6 +31,14 @@ Library yang digunakan, di antaranya adalah:
 - Score Board
 ![Scoreboard](/Screenshot/Scoreboard.jpg)
 - Shopkeeper
+![Shopkeeper](/Screenshot/ShopKeeper.PNG)
+![Shopkeeper Stage 2](/Screenshot/ShopKeeperStage2.PNG)
+![Pet Shop](/Screenshot/Pet%20Shop.PNG)
+![Weapon Shop](/Screenshot/Weapon%20Shop.PNG)
+- Pet
+![Holy Tree](/Screenshot/Holy%20Tree.PNG)
+![Death Warrior](/Screenshot/Death%20Warrior.PNG)
+![Dark Wizard](/Screenshot/Dark%20Wizard.PNG)
 - Credits
 
 ## **Pembagian Kerja**
