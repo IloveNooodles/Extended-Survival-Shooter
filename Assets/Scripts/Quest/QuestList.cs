@@ -30,12 +30,12 @@ public class QuestList : MonoBehaviour
         /* Init quest title, description and reward */
         const string firstQuestTitle = "Kalahkan musuh!";
         const string firstQuestDescription =
-            "Ketika kamu ingin mengalahkan boss, kamu dihalangi oleh banyak zombie zombie aneh. Kalahkan mereka!";
-        const int firstQuestReward = 200;
-        const string secondQuestTitle = "Kumpulkan Harta";
+            "Kamu ditugaskan untuk membantu warga dalam membasmi zombie-zombie yang membunuh warga!";
+        const int firstQuestReward = 300;
+        const string secondQuestTitle = "Bertahan!";
         const string secondQuestDescription =
-            "Kamu merasa bahwa kamu perlu persiapan yang banyak, Maka kamu berniat untuk mengumpulkan gold";
-        const int secondQuestReward = 100;
+            "Saat kamu mengejar orang misterius, banyak zombie muncul menyerang kamu! Bertahanlah dan jangan mati!";
+        const int secondQuestReward = 200;
         const string thirdQuestTitle = "Kejar orang misterius";
         const string thirdQuestDescription = "Kejar orang misterius itu dan ungkap semua rahasianya!";
         const int thirdQuestReward = 300;
@@ -48,17 +48,17 @@ public class QuestList : MonoBehaviour
         string eren = ItemName.Eren;
         
         /* First Quest */
-        string[] firstTarget = {EnemyName.Zombunny};
+        string[] firstTarget = {EnemyName.Zombunny, EnemyName.Zombear, EnemyName.Hellepant};
         List<QuestGoal> list = new List<QuestGoal>();
         for (int i = 0; i < firstTarget.Length; i++)
         {
             string target = firstTarget[i];
-            KillQuestGoal killQuestGoal = new KillQuestGoal(EnemyName.GetEnemyId(target), target, 0);
-            // list.Add(killQuestGoal);
+            KillQuestGoal killQuestGoal = new KillQuestGoal(EnemyName.GetEnemyId(target), target, 3);
+            list.Add(killQuestGoal);
         }
         
-        SpendQuestGoal spentQuestGoal = new SpendQuestGoal(ItemName.ItemId(bullet), bullet, 5);
-        list.Add(spentQuestGoal);
+        // SpendQuestGoal spentQuestGoal = new SpendQuestGoal(ItemName.ItemId(bullet), bullet, 5);
+        // list.Add(spentQuestGoal);
 
         Quest addedQuest = new Quest(firstQuestTitle,
             firstQuestDescription, firstQuestReward,
@@ -68,7 +68,7 @@ public class QuestList : MonoBehaviour
         
         /* Second Quest */
         list = new List<QuestGoal>();
-        spentQuestGoal = new SpendQuestGoal( ItemName.ItemId(gold), gold, 1);
+        SpendQuestGoal spentQuestGoal = new SpendQuestGoal( ItemName.ItemId(gold), gold, 300);
         
         list.Add(spentQuestGoal);
         addedQuest = new Quest(secondQuestTitle,
