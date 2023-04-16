@@ -8,16 +8,14 @@ public class GameFinishedManager : MonoBehaviour
     void Start()
     {
         PlayerPrefs.SetString("toScoreboard", "true");
-        // PlayerPrefs.SetFloat("Time", 200f);
-        Debug.Log("Time: " + PlayerPrefs.GetFloat("Time", 0f));
-        Debug.Log("Tsssiis: " + PlayerPrefs.GetString("toScoreboard", "false"));
+
+        StartCoroutine(ToLeaderboard());
     }
 
-    void Update()
+    IEnumerator ToLeaderboard()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            SceneManager.LoadScene(0);
-        }
+        yield return new WaitForSeconds(5f);
+        Cursor.lockState = CursorLockMode.None;
+        SceneManager.LoadScene(0);
     }
 }
