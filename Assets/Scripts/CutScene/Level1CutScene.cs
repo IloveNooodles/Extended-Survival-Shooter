@@ -69,7 +69,7 @@ public class Level1CutScene : MonoBehaviour
     }
 
     IEnumerator endCutScene(){
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(21f);
         player.SetActive(true);
         mainCamera.SetActive(true);
         enemyManager.SetActive(true);

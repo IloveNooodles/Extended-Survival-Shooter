@@ -14,7 +14,7 @@ public class GameFinishedManager : MonoBehaviour
 
     IEnumerator ToLeaderboard()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(23f);
         Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene(0);
     }

@@ -71,8 +71,8 @@ public class CutSceneManager : MonoBehaviour
 
     IEnumerator endFirstCityCutScene()
     {
-        yield return new WaitForSeconds(0f);
-        // yield return new WaitForSeconds(18.85f);
+        // yield return new WaitForSeconds(0f);
+        yield return new WaitForSeconds(18.85f);
         playerQuest.UpdateSelfQuest();
         TimerManager.StartTimer();
         firstCityCutScene.endCutScene();
@@ -90,8 +90,8 @@ public class CutSceneManager : MonoBehaviour
 
     IEnumerator endSecondCityCutScene()
     {
-        yield return new WaitForSeconds(0f);
-        // yield return new WaitForSeconds(21.5f);
+        // yield return new WaitForSeconds(0f);
+        yield return new WaitForSeconds(21.5f);
         secondCityCutScene.endCutScene();
     }
 
@@ -103,8 +103,8 @@ public class CutSceneManager : MonoBehaviour
 
     IEnumerator endThirdCityCutScene()
     {
-        yield return new WaitForSeconds(0);
-        // yield return new WaitForSeconds(17);
+        // yield return new WaitForSeconds(0);
+        yield return new WaitForSeconds(17);
         playerQuest.Track(GoalType.Spend, ItemName.ItemId(ItemName.Eren), 1);
         thirdCityCutScene.endCutScene();
     }
@@ -117,8 +117,8 @@ public class CutSceneManager : MonoBehaviour
 
     IEnumerator endBossSpawnCutScene()
     {
-        yield return new WaitForSeconds(0);
-        // yield return new WaitForSeconds(15);
+        // yield return new WaitForSeconds(0);
+        yield return new WaitForSeconds(15);
         playerQuest.UpdateQuestBoard();
         bossSpawnCutScene.endCutScene();
     }
