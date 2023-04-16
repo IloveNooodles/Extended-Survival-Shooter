@@ -11,10 +11,13 @@ public class GameData
     public int gold;
     public int score;
     public int completedQuest;
+
     public int weapon;
+    public bool[] weaponBought;
 
     public int pet;
-    public int petHealth;
+    public int[] petHealth;
+    public bool[] petBought;
 
     public string lastSavedDate;
     public string saveName;
@@ -26,9 +29,14 @@ public class GameData
         this.gold = 0;
         this.score = 0;
         this.completedQuest = 0;
-        this.pet = 0;
-        this.petHealth = 100;
+
         this.weapon = 0;
+        this.weaponBought = new bool[] {true, false, false, false};
+        
+        this.pet = 4;
+        this.petHealth = new int[] {};
+        this.petBought = new bool[] {false, false, false};
+        
         this.lastSavedDate = DateTime.Now.ToString();
         this.saveName = "Save Slot X";
     }

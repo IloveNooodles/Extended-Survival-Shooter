@@ -205,12 +205,31 @@ public class PetManager : MonoBehaviour, IDataPersistence
     public void LoadData(GameData data)
     {
         currentPetIndex = data.pet;
-        petHealth[currentPetIndex].currentHealth = data.petHealth;
+
+        for (int i = 0; i < petHealth.Length; i++)
+        {
+            petHealth[i].currentHealth = data.petHealth[i];
+        }
+
+        for (int i = 0; i < isPetBought.Length; i++)
+        {
+            isPetBought[i] = data.petBought[i];
+        }
     }
 
     public void SaveData(ref GameData data)
     {
         data.pet = currentPetIndex;
-        data.petHealth = petHealth[currentPetIndex].currentHealth;
+        
+        data.petHealth = new int[petHealth.Length];
+        for (int i = 0; i < petHealth.Length; i++)
+        {
+            data.petHealth[i] = petHealth[i].currentHealth;
+        }
+
+        for (int i = 0; i < isPetBought.Length; i++)
+        {
+            data.petBought[i] = isPetBought[i];
+        }
     }
 }

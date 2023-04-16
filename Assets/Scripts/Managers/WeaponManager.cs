@@ -72,10 +72,20 @@ public class WeaponManager : MonoBehaviour, IDataPersistence
     public void LoadData(GameData data)
     {
         currentWeaponIndex = data.weapon;
+
+        for (int i = 0; i < isWeaponBought.Length; i++)
+        {
+            isWeaponBought[i] = data.weaponBought[i];
+        }
     }
 
     public void SaveData(ref GameData data)
     {
         data.weapon = currentWeaponIndex;
+
+        for (int i = 0; i < isWeaponBought.Length; i++)
+        {
+            data.weaponBought[i] = isWeaponBought[i];
+        }
     }
 }

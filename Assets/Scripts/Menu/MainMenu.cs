@@ -14,9 +14,6 @@ public class MainMenu : MonoBehaviour
                 scoreboard.SetActive(false);
         
                 string toScoreboard = PlayerPrefs.GetString("toScoreboard", "false");
-                Debug.Log("Time: " + PlayerPrefs.GetFloat("Time", 0f));
-                Debug.Log("Tsssiis: " + PlayerPrefs.GetString("toScoreboard", "false"));
-                Debug.Log(toScoreboard);
 
                 if (toScoreboard == "true")
                 {
