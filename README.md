@@ -43,12 +43,13 @@ Library yang digunakan, di antaranya adalah:
 ![Death Warrior](/Screenshot/Death%20Warrior.PNG)
 ![Dark Wizard](/Screenshot/Dark%20Wizard.PNG)
 - Credits
+![Credits](/Screenshot/Credits.PNG)
 
 ## **Pembagian Kerja**
 | Nama | NIM | Tugas | Persiapan (Jam) | Pengerjaan (Jam) |
 | :---: | :---: | :---: |:---------------:|:----------------:|
-| Fayza Nadia | 13520001 | Main Menu, Scoreboard |        0        |        0         |
-| Diky Restu Maulana | 13520017 | Weapon |        0        |        0         |
-| Muhammad Garebaldhie Er Rahman | 13520029 | Game Over, Story Mode |        0        |        0         |
-| Bryan Bernigen | 13520034 | Cheat, Story Mode |        0        |        0         |
+| Fayza Nadia | 13520001 | Main Menu, Scoreboard |        35        |        90         |
+| Diky Restu Maulana | 13520017 | Weapon |        20        |        40         |
+| Muhammad Garebaldhie Er Rahman | 13520029 | Game Over, Story Mode |        20        |        150         |
+| Bryan Bernigen | 13520034 | Cheat, Story Mode |        20        |        150         |
 | Firizky Ardiansyah | 13520095 | Shopekeeper, Pet |       32        |       100        |
