@@ -2536,9 +2536,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b29a173ea7b44de4b99206bcd6dc78d7, type: 2}
   - {fileID: 11400000, guid: 24927221287d6d44ba5fec1a5c774d3c, type: 2}
   weaponItems:
-  - {fileID: 11400000, guid: f286e4877f007e146a0d9c930febc077, type: 2}
   - {fileID: 11400000, guid: f3d804e64c8c97746b087b599251e325, type: 2}
   - {fileID: 11400000, guid: c152b3261a1ab974ab1fb72bd29ec089, type: 2}
+  - {fileID: 11400000, guid: d14a49cfa8defe545aba2ce3d25ab1b0, type: 2}
   - {fileID: 11400000, guid: 4a47324e299edaf49a55f8d3b8411f04, type: 2}
   shopItemDatas:
   - {fileID: 1231813921}

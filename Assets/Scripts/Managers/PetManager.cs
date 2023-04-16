@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class PetManager : MonoBehaviour, IDataPersistence
 {
     [SerializeField] public GameObject[] petsPrefab;
-    public static int currentPetIndex = 1;
+    public static int currentPetIndex = 4;
 
     public GameObject summoningMagic;
 
@@ -15,7 +15,7 @@ public class PetManager : MonoBehaviour, IDataPersistence
 
     private GameObject player;
 
-    public static bool[] isPetBought;
+    public static bool[] isPetBought = {false, false, false};
 
     private static PetHealth[] petHealth;
 
@@ -28,7 +28,7 @@ public class PetManager : MonoBehaviour, IDataPersistence
         if (pets == null || pets.Length == 0 || pets[0] == null)
         {
             pets = new GameObject[petsPrefab.Length];
-            isPetBought = new bool[pets.Length];
+            // isPetBought = new bool[pets.Length];
             int i = 0;
             petHealth = new PetHealth[pets.Length];
 
@@ -46,7 +46,7 @@ public class PetManager : MonoBehaviour, IDataPersistence
 
                 pets[i] = Instantiate(pet);
                 pets[i].tag = "Pet";
-                isPetBought[i] = false;
+                // isPetBought[i] = false;
                 petHealth[i] = pets[i].GetComponent<PetHealth>();
                 i++;
             }

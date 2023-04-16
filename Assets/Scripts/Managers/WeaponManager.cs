@@ -3,8 +3,10 @@
 public class WeaponManager : MonoBehaviour, IDataPersistence
 {
     [SerializeField] public GameObject[] weaponsPrefab;
-    int currentWeaponIndex = 0;
+    public static int currentWeaponIndex = 0;
     public static IWeapon currentWeapon;
+    public static bool[] isWeaponBought = {true, false, false, false};
+    
 
     public void Awake()
     {
@@ -41,6 +43,7 @@ public class WeaponManager : MonoBehaviour, IDataPersistence
 
     public void ChangeWeapon(int index)
     {
+        if(!isWeaponBought[index]) return;
         if (currentWeaponIndex == index) return;
 
         weaponsPrefab[currentWeaponIndex].SetActive(false);

@@ -47,13 +47,10 @@ public class ShopManager : MonoBehaviour
         petSectionPanel = petSection.transform.GetChild(1).gameObject;
         weaponSectionPanel = weaponSection.transform.GetChild(1).gameObject;
 
-       
-
 
         loadPetItems();
     }
 
-    
 
     public void loadPetItems()
     {
@@ -122,16 +119,32 @@ public class ShopManager : MonoBehaviour
             shopItemDatas[i].cost.text = weaponItems[i].cost.ToString();
             shopItemDatas[i].thumbnail.texture = weaponItems[i].thumbnail;
 
-            if (i == 1)
+            if (i == WeaponManager.currentWeaponIndex)
             {
                 shopItemDatas[i].buyButton.gameObject.SetActive(false);
                 shopItemDatas[i].equipButton.gameObject.SetActive(false);
                 shopItemDatas[i].unequipButton.gameObject.SetActive(false);
                 shopItemDatas[i].equippedText.gameObject.SetActive(true);
             }
+            else if (WeaponManager.isWeaponBought[i])
+            {
+                shopItemDatas[i].buyButton.gameObject.SetActive(false);
+                shopItemDatas[i].equipButton.gameObject.SetActive(true);
+                shopItemDatas[i].unequipButton.gameObject.SetActive(false);
+                shopItemDatas[i].equippedText.gameObject.SetActive(false);
+            }
             else
             {
                 shopItemDatas[i].buyButton.gameObject.SetActive(true);
+                if (GoldManager.Gold < weaponItems[i].cost)
+                {
+                    shopItemDatas[i].buyButton.interactable = false;
+                }
+                else
+                {
+                    shopItemDatas[i].buyButton.interactable = true;
+                }
+
                 shopItemDatas[i].equipButton.gameObject.SetActive(false);
                 shopItemDatas[i].unequipButton.gameObject.SetActive(false);
                 shopItemDatas[i].equippedText.gameObject.SetActive(false);
@@ -197,7 +210,6 @@ public class ShopManager : MonoBehaviour
         int lastScene = PlayerPrefs.GetInt("lastScene");
         PlayerPrefs.SetInt("lastScene", SceneManager.GetActiveScene().buildIndex);
         SceneManager.LoadScene(lastScene);
-        
     }
 
     public void BuyButton(int itemIdx)
@@ -215,8 +227,9 @@ public class ShopManager : MonoBehaviour
         }
         else
         {
-            
-            
+            WeaponManager.isWeaponBought[itemIdx] = true;
+            WeaponManager.currentWeaponIndex = itemIdx;
+
             GoldManager.Gold -= weaponItems[itemIdx].cost;
             golds = GoldManager.Gold;
             goldsText.text = golds.ToString();
@@ -233,13 +246,17 @@ public class ShopManager : MonoBehaviour
         }
         else
         {
+            WeaponManager.currentWeaponIndex = itemIdx;
             loadWeaponItems();
         }
     }
 
     public void UnequipButton(int itemIdx)
     {
-        PetManager.currentPetIndex = 4;
-        loadPetItems();
+        if (currentActiveSection == 0)
+        {
+            PetManager.currentPetIndex = 4;
+            loadPetItems();
+        }
     }
 }
