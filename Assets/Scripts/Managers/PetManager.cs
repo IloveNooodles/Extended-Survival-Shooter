@@ -151,22 +151,22 @@ public class PetManager : MonoBehaviour, IDataPersistence
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha7))
-        {
-            ChangePet(0);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha8))
-        {
-            ChangePet(1);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha9))
-        {
-            ChangePet(2);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha0))
-        {
-            ChangePet(pets.Length);
-        }
+        // if (Input.GetKeyDown(KeyCode.Alpha7))
+        // {
+        //     ChangePet(0);
+        // }
+        // else if (Input.GetKeyDown(KeyCode.Alpha8))
+        // {
+        //     ChangePet(1);
+        // }
+        // else if (Input.GetKeyDown(KeyCode.Alpha9))
+        // {
+        //     ChangePet(2);
+        // }
+        // else if (Input.GetKeyDown(KeyCode.Alpha0))
+        // {
+        //     ChangePet(pets.Length);
+        // }
     }
 
     void ChangePet(int index)

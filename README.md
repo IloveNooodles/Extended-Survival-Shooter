@@ -43,9 +43,9 @@ Library yang digunakan, di antaranya adalah:
 
 ## **Pembagian Kerja**
 | Nama | NIM | Tugas | Persiapan (Jam) | Pengerjaan (Jam) |
-| :---: | :---: | :---: | :---: | :---: |
-| Fayza Nadia | 13520001 | Main Menu, Scoreboard | 0 | 0 |
-| Diky Restu Maulana | 13520017 | Weapon | 0 | 0 |
-| Muhammad Garebaldhie Er Rahman | 13520029 | Game Over, Story Mode | 0 | 0 |
-| Bryan Bernigen | 13520034 | Cheat, Story Mode | 0 | 0 |
-| Firizky Ardiansyah | 13520095 | Shopekeeper, Pet | 0 | 0 |
+| :---: | :---: | :---: |:---------------:|:----------------:|
+| Fayza Nadia | 13520001 | Main Menu, Scoreboard |        0        |        0         |
+| Diky Restu Maulana | 13520017 | Weapon |        0        |        0         |
+| Muhammad Garebaldhie Er Rahman | 13520029 | Game Over, Story Mode |        0        |        0         |
+| Bryan Bernigen | 13520034 | Cheat, Story Mode |        0        |        0         |
+| Firizky Ardiansyah | 13520095 | Shopekeeper, Pet |       32        |       100        |
