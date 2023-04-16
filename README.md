@@ -18,6 +18,9 @@ Library yang digunakan, di antaranya adalah:
 - **Scene Management**, untuk pengaturan scene dan navigasi
 - **TMPro**, untuk pengaturan text pada game
 - **Timeline**, untuk pengaturan animasi pada game
+- **Hovl Studio**, untuk particle shopkeeper dan pet 
+- **Monster SFX**, untuk sound effect pet
+- **SketchFab for unity**, importer otomatis sketchfab
 
 ## **Screenshot**
 - Main Menu
