@@ -31,6 +31,7 @@ Library yang digunakan, di antaranya adalah:
 - Story Mode
 ![CutScene](/Screenshot/CutScene.jpg)
 ![Gameplay](/Screenshot/Gameplay.jpg)
+![Gameplay Save Game](/Screenshot/SaveGame2.jpg)
 - Score Board
 ![Scoreboard](/Screenshot/Scoreboard.jpg)
 - Shopkeeper
@@ -43,7 +44,7 @@ Library yang digunakan, di antaranya adalah:
 ![Death Warrior](/Screenshot/Death%20Warrior.PNG)
 ![Dark Wizard](/Screenshot/Dark%20Wizard.PNG)
 - Credits
-![Credits](/Screenshot/Credits.PNG)
+![Credits](/Screenshot/Credits.jpg)
 
 ## **Pembagian Kerja**
 | Nama | NIM | Tugas | Persiapan (Jam) | Pengerjaan (Jam) |
